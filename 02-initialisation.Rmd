@@ -1,0 +1,19 @@
+# Initialisation
+
+Using test data to initialise the model
+
+```{r setup, include=F}
+library(MadingleyR)
+```
+
+
+Spatial model domain = c(min_long, max_long, min_lat, max_lat)
+```{r,  message=FALSE}
+spatial_window = c(31, 35, -5, -1)
+```
+
+Plot the spatial window to check selection
+```{r}
+plot_spatialwindow(spatial_window)
+```
+

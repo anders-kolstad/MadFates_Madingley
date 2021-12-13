@@ -1,10 +1,28 @@
 # Installation
 
-Hei
+Madingley is written in C++, but an R version is also available. Although a little bit less flexible perhaps, it should be more than sufficient four this project. And much more familiar.
+
+```{r setup, include=F}
+library(MadingleyR)
+```
 
 
 ```{r, eval=F}
 library(devtools)
 install_github('MadingleyR/MadingleyR', subdir='Package', build_vignettes = F)
 ```
+
+I could not get the vignetts to build. 
+
+```{r}
+vignette(package ="MadingleyR") 
+```
+They can, however, be view [here](https://github.com/MadingleyR/MadingleyR).
+
+```{r, eval=F}
+MadingleyR::madingley_version()
+```
+This line also did not work. The verdsion seems to be 1.0.2. Source version, I don't know.
+
+
 

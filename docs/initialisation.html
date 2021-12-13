@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Installation | Runnging the Madingley Model with Norwegian data</title>
-  <meta name="description" content="Chapter 2 Installation | Runnging the Madingley Model with Norwegian data" />
+  <title>Chapter 3 Initialisation | Runnging the Madingley Model with Norwegian data</title>
+  <meta name="description" content="Chapter 3 Initialisation | Runnging the Madingley Model with Norwegian data" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Installation | Runnging the Madingley Model with Norwegian data" />
+  <meta property="og:title" content="Chapter 3 Initialisation | Runnging the Madingley Model with Norwegian data" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Installation | Runnging the Madingley Model with Norwegian data" />
+  <meta name="twitter:title" content="Chapter 3 Initialisation | Runnging the Madingley Model with Norwegian data" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="initialisation.html"/>
+<link rel="prev" href="installation.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -153,17 +153,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installation" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Installation</h1>
-<p>Madingley is written in C++, but an R version is also available. Although a little bit less flexible perhaps, it should be more than sufficient four this project. And much more familiar.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="installation.html#cb1-1"></a><span class="kw">library</span>(devtools)</span>
-<span id="cb1-2"><a href="installation.html#cb1-2"></a><span class="kw">install_github</span>(<span class="st">&#39;MadingleyR/MadingleyR&#39;</span>, <span class="dt">subdir=</span><span class="st">&#39;Package&#39;</span>, <span class="dt">build_vignettes =</span> F)</span></code></pre></div>
-<p>I could not get the vignetts to build.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="installation.html#cb2-1"></a><span class="kw">vignette</span>(<span class="dt">package =</span><span class="st">&quot;MadingleyR&quot;</span>) </span></code></pre></div>
-<pre><code>## no vignettes found</code></pre>
-<p>They can, however, be view <a href="https://github.com/MadingleyR/MadingleyR">here</a>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="installation.html#cb4-1"></a>MadingleyR<span class="op">::</span><span class="kw">madingley_version</span>()</span></code></pre></div>
-<p>This line also did not work. The verdsion seems to be 1.0.2. Source version, I don’t know.</p>
+<div id="initialisation" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Initialisation</h1>
+<p>Using test data to initialise the model</p>
+<p>Spatial model domain = c(min_long, max_long, min_lat, max_lat)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="initialisation.html#cb1-1"></a>spatial_window =<span class="st"> </span><span class="kw">c</span>(<span class="dv">31</span>, <span class="dv">35</span>, <span class="dv">-5</span>, <span class="dv">-1</span>)</span></code></pre></div>
+<p>Plot the spatial window to check selection</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="initialisation.html#cb2-1"></a><span class="kw">plot_spatialwindow</span>(spatial_window)</span></code></pre></div>
+<p><img src="02-initialisation_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 
 </div>
             </section>
@@ -171,8 +168,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="initialisation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="installation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -214,7 +211,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null
