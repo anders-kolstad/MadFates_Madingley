@@ -6,8 +6,6 @@ site: "bookdown::bookdown_site"
 output:
   bookdown::gitbook: default
 documentclass: book
-bibliography: ["book.bib", "packages.bib"]
-biblio-style: apalike
 link-citations: yes
 ---
 
