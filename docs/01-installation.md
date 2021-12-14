@@ -8,10 +8,19 @@ Madingley is written in C++, but an R version is also available. Although a litt
 
 ```r
 library(devtools)
-install_github('MadingleyR/MadingleyR', subdir='Package', build_vignettes = F)
+install_github('MadingleyR/MadingleyR', subdir='Package', build_vignettes = T, force = T)
 ```
 
-I could not get the vignetts to build. 
+I could not get the vignettes to build. It crashed on line 52 in Madinley.Rmd with this function call:
+
+
+```r
+MadingleyR::madingley_version()
+```
+Error message: ./madingley: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.29' not found (required by ./madingley)
+running command 'cd "/home/NINA.NO/anders.kolstad/R/x86_64-pc-linux-gnu-library/4.0/MadingleyR/lin_exec/" && ./madingley version' had status 1Error in x[[jj]][iseq] <- vjj : replacement has length zero
+
+This tells us that R cannot fint GLIBC
 
 
 ```r
@@ -24,9 +33,6 @@ vignette(package ="MadingleyR")
 They can, however, be view [here](https://github.com/MadingleyR/MadingleyR).
 
 
-```r
-MadingleyR::madingley_version()
-```
 This line also did not work. The verdsion seems to be 1.0.2. Source version, I don't know.
 
 

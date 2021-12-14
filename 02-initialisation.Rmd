@@ -1,14 +1,9 @@
 # Step 1 & 2
-
-
-## Load data
-
-Using defult data to initialise the model
-
 ```{r setup, include=F}
 library(MadingleyR)
 ```
 
+## Load data
 
 Spatial model domain = c(min_long, max_long, min_lat, max_lat)
 ```{r,  message=FALSE}
@@ -20,6 +15,68 @@ Plot the spatial window to check selection
 plot_spatialwindow(spatial_window)
 ```
 
+
+Using default data to initialise the model. The spatial inputs is a relatively big list of raster files, but the others are small data frames. 
+```{r, message=FALSE, results='hide', cache=T}
+sptl_inp = madingley_inputs("spatial inputs")
+chrt_def = madingley_inputs("cohort definition")
+stck_def = madingley_inputs("stock definition")
+mdl_prms = madingley_inputs("model parameters") # useful later for running the model
+```
+
+
+The Spatial Input is the environmental variables in the form of several raster layers. I think the 12 slots are months of a year.
+```{r}
+str(sptl_inp,2)
+```
+
+The cohort definitions look like this, and can be modified by the user. 
+```{r}
+DT::datatable(chrt_def,
+  extensions = "FixedColumns",
+  options = list(
+    scrollX = TRUE,
+    scrollY=T,
+    pageLength = 10))
+```
+The stock definitions are in the default input data limited to evergreen and deciduous plants. 
+```{r}
+DT::datatable(stck_def,
+  extensions = "FixedColumns",
+  options = list(
+    scrollX = TRUE,
+    scrollY=T,
+    pageLength = 10))
+```
+The model parameters are perhaps a bit more cryptic:
+```{r}
+DT::datatable(mdl_prms,
+  extensions = "FixedColumns",
+  options = list(
+    scrollX = TRUE,
+    scrollY=T,
+    pageLength = 20))
+```
+They are divided into 12 categories:
+```{r}
+cat(unique(mdl_prms$category), sep="\n")
+```
+
+
 ## Initialisation
 
-...
+Model initialisation is done using ```madingley_init()``` by supplying the input data above (excl. model parameters). Also one can set the maximum number of cohors allowed per cell. The default is 500 and max is 1000. a higher number increases computation time due to more cohort interactions. 
+
+```{r, cache=T, eval=F}
+mdata = madingley_init(spatial_window = spatial_window,
+                       cohort_def = chrt_def,
+                       stock_def = stck_def,
+                       spatial_inputs = sptl_inp,
+                       max_cohort = 50)
+```
+This throws an error:
+```./madingley: /lib/x86_64-linux-gnu/libm.so.6: version GLIBC_2.29 not found (required by ./madingley)
+cannot open file /tmp/RtmpEF9AGw/madingley_outs_14_12_21_13_39_45/cohort_properties/FullCohortProperties_99999.csv: No such file or directoryError in file(file, "rt") : cannot open the connection```
+
+
+

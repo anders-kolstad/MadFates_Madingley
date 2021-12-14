@@ -30,9 +30,13 @@ Paper on the [model itself](https://journals.plos.org/plosbiology/article?id=10.
 
 ## Terms and definitions
 
-Cohorts - Organisms with similar functional roles are grouped into cohorts which are treated as sinle entities in the model to reduce computational requirements.
+- Cohorts - Organisms with similar functional roles are grouped into cohorts which are treated as sinle entities in the model to reduce computational requirements.
 
-Stock - autotrofic biomass is treated as a single entity (stock).
+- Stock - autotrofic biomass is treated as a single entity (stock).
+
+- Model initialisation - After loading input data the model is run once without a year parameter. Not sure why exactly, or what the output is. 
+
+- Spin-up phase - The model needs to run for 100-1000 simulated years without any user modifications to allow the ecosystem componets to reach a stable state. 
 
 
 
