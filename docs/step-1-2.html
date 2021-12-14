@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Runniging the Madingley Model with Norwegian data</title>
-  <meta name="description" content="Runniging the Madingley Model with Norwegian data" />
+  <title>Chapter 3 Step 1 &amp; 2 | Runniging the Madingley Model with Norwegian data</title>
+  <meta name="description" content="Chapter 3 Step 1 &amp; 2 | Runniging the Madingley Model with Norwegian data" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Runniging the Madingley Model with Norwegian data" />
+  <meta property="og:title" content="Chapter 3 Step 1 &amp; 2 | Runniging the Madingley Model with Norwegian data" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Runniging the Madingley Model with Norwegian data" />
+  <meta name="twitter:title" content="Chapter 3 Step 1 &amp; 2 | Runniging the Madingley Model with Norwegian data" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="installation.html"/>
 
-<link rel="next" href="installation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -161,29 +161,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Runniging the Madingley Model with Norwegian data</h1>
-<p class="author"><em>Anders L. Kolstad</em></p>
-<p class="date"><em>2021-12-14</em></p>
+<div id="step-1-2" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Step 1 &amp; 2</h1>
+<div id="load-data" class="section level2">
+<h2><span class="header-section-number">3.1</span> Load data</h2>
+<p>Using defult data to initialise the model</p>
+<p>Spatial model domain = c(min_long, max_long, min_lat, max_lat)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="step-1-2.html#cb5-1"></a>spatial_window =<span class="st"> </span><span class="kw">c</span>(<span class="dv">31</span>, <span class="dv">35</span>, <span class="dv">-5</span>, <span class="dv">-1</span>)</span></code></pre></div>
+<p>Plot the spatial window to check selection</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="step-1-2.html#cb6-1"></a><span class="kw">plot_spatialwindow</span>(spatial_window)</span></code></pre></div>
+<p><img src="02-initialisation_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
-<div id="introduction" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>This work is part of the MadFates project, run by Joachim Töpper. The goal is to learn bit about the Madinley model and its potential for modelling biomass distributions across trophic levels in Norwegian boreal ecosystem. Perhaps limited to forests.</p>
-<p>This page is hosted in GitHub and produced using bookdown.</p>
-<div id="some-useful-links" class="section level2">
-<h2><span class="header-section-number">1.1</span> Some useful links</h2>
-<p>Paper on the <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/geb.13354">R package</a></p>
-<p>Paper on the <a href="https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841">model itself</a></p>
-<div id="examples-of-use" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Examples of use</h3>
-<p><a href="https://onlinelibrary.wiley.com/doi/10.1111/ecog.05191">Removing carnivores</a></p>
-<p><a href="https://www.nature.com/articles/s41598-020-70960-9">Land-use change</a></p>
-</div>
-</div>
-<div id="terms-and-definitions" class="section level2">
-<h2><span class="header-section-number">1.2</span> Terms and definitions</h2>
-<p>Cohorts - Organisms with similar functional roles are grouped into cohorts which are treated as sinle entities in the model to reduce computational requirements.</p>
-<p>Stock - autotrofic biomass is treated as a single entity (stock).</p>
+<div id="initialisation" class="section level2">
+<h2><span class="header-section-number">3.2</span> Initialisation</h2>
+<p>…</p>
 
 </div>
 </div>
@@ -192,8 +183,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
+<a href="installation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="installation.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

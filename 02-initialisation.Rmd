@@ -1,6 +1,9 @@
-# Initialisation
+# Step 1 & 2
 
-Using test data to initialise the model
+
+## Load data
+
+Using defult data to initialise the model
 
 ```{r setup, include=F}
 library(MadingleyR)
@@ -17,3 +20,6 @@ Plot the spatial window to check selection
 plot_spatialwindow(spatial_window)
 ```
 
+## Initialisation
+
+...

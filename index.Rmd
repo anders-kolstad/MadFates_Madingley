@@ -1,5 +1,5 @@
 --- 
-title: "Runnging the Madingley Model with Norwegian data"
+title: "Runniging the Madingley Model with Norwegian data"
 author: "Anders L. Kolstad"
 date: "`r Sys.Date()`"
 site: "bookdown::bookdown_site"
@@ -14,6 +14,27 @@ link-citations: yes
 This work is part of the MadFates project, run by Joachim Töpper. The goal is to learn bit about the Madinley model and its potential for modelling biomass distributions across trophic levels in Norwegian boreal ecosystem. Perhaps limited to forests.
 
 This page is hosted in GitHub and produced using bookdown.
+
+## Some useful links
+
+Paper on the [R package](https://onlinelibrary.wiley.com/doi/full/10.1111/geb.13354)
+
+Paper on the [model itself](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841)
+
+### Examples of use
+
+[Removing carnivores](https://onlinelibrary.wiley.com/doi/10.1111/ecog.05191)
+
+[Land-use change](https://www.nature.com/articles/s41598-020-70960-9)
+
+
+## Terms and definitions
+
+Cohorts - Organisms with similar functional roles are grouped into cohorts which are treated as sinle entities in the model to reduce computational requirements.
+
+Stock - autotrofic biomass is treated as a single entity (stock).
+
+
 
 
 

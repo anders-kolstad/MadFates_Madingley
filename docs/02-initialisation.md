@@ -1,6 +1,9 @@
-# Initialisation
+# Step 1 & 2
 
-Using test data to initialise the model
+
+## Load data
+
+Using defult data to initialise the model
 
 
 
@@ -19,3 +22,6 @@ plot_spatialwindow(spatial_window)
 
 <img src="02-initialisation_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
+## Initialisation
+
+...
