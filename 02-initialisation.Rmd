@@ -1,6 +1,7 @@
 # Step 1 & 2
 ```{r setup, include=F}
 library(MadingleyR)
+knitr::opts_chunk$set(comment='%') # the default ## read as headers in the knitted version
 ```
 
 ## Load data

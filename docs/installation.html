@@ -176,15 +176,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Madingley is written in C++, but an R version is also available. Although a little bit less flexible perhaps, it should be more than sufficient four this project. And much more familiar.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="installation.html#cb1-1"></a><span class="kw">library</span>(devtools)</span>
 <span id="cb1-2"><a href="installation.html#cb1-2"></a><span class="kw">install_github</span>(<span class="st">&#39;MadingleyR/MadingleyR&#39;</span>, <span class="dt">subdir=</span><span class="st">&#39;Package&#39;</span>, <span class="dt">build_vignettes =</span> T, <span class="dt">force =</span> T)</span></code></pre></div>
-<p>I could not get the vignettes to build. It crashed on line 52 in Madinley.Rmd with this function call:</p>
+<p>I could not get the vignettes to build. It crashed on line 52 in Madinlgey.Rmd with this function call:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="installation.html#cb2-1"></a>MadingleyR<span class="op">::</span><span class="kw">madingley_version</span>()</span></code></pre></div>
 <p>Error message: ./madingley: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.29’ not found (required by ./madingley)
 running command ‘cd “/home/NINA.NO/anders.kolstad/R/x86_64-pc-linux-gnu-library/4.0/MadingleyR/lin_exec/” &amp;&amp; ./madingley version’ had status 1Error in x[[jj]][iseq] &lt;- vjj : replacement has length zero</p>
-<p>This tells us that R cannot fint GLIBC</p>
+<p>This tells us that R cannot fint libm versionGLIBC 2.29. The installation works fine on my windows machine, but not on the linux server.</p>
+<p>So, I installed without building vignettes…</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="installation.html#cb3-1"></a><span class="kw">vignette</span>(<span class="dt">package =</span><span class="st">&quot;MadingleyR&quot;</span>) </span></code></pre></div>
 <pre><code>## no vignettes found</code></pre>
 <p>They can, however, be view <a href="https://github.com/MadingleyR/MadingleyR">here</a>.</p>
-<p>This line also did not work. The verdsion seems to be 1.0.2. Source version, I don’t know.</p>
+<p>But, as long as the model can’t find libm, the model cannot run.</p>
 
 </div>
             </section>
