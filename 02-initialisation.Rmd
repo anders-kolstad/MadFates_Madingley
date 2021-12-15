@@ -30,6 +30,24 @@ The Spatial Input is the environmental variables in the form of several raster l
 ```{r}
 str(sptl_inp,2)
 ```
+```{r}
+temp <- sptl_inp$precipitation
+class(temp)
+```
+```{r}
+temp
+```
+The resolution is 1 degree, which is approx. 111 km at the equator. 
+
+```{r}
+plot(temp[[1:4]])
+rm(temp)
+```
+
+```{r}
+
+```
+
 
 The cohort definitions look like this, and can be modified by the user. 
 ```{r}
