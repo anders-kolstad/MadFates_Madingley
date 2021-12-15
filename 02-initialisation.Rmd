@@ -3,9 +3,11 @@
 library(MadingleyR)
 ```
 
+
+
 ## Load data
 
-Spatial model domain = c(min_long, max_long, min_lat, max_lat)
+Defining the study area in degree long-lat.
 ```{r,  message=FALSE}
 spatial_window = c(31, 35, -5, -1)
 ```
@@ -14,9 +16,9 @@ Plot the spatial window to check selection
 ```{r}
 plot_spatialwindow(spatial_window)
 ```
+This corresponds to somewhere in the Serengetti I think.
 
-
-Using default data to initialise the model. The spatial inputs is a relatively big list of raster files, but the others are small data frames. 
+This is the  default data to initialise the model. The spatial inputs is a relatively big list of raster files, but the others are small data frames. 
 ```{r, message=FALSE, results='hide', cache=T}
 sptl_inp = madingley_inputs("spatial inputs")
 chrt_def = madingley_inputs("cohort definition")
