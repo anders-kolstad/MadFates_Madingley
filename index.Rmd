@@ -11,7 +11,7 @@ link-citations: yes
 
 # Introduction
 
-This work is part of the MadFates project, run by Joachim Töpper. The goal is to learn bit about the Madinley model and its potential for modelling biomass distributions across trophic levels in Norwegian boreal ecosystem. Perhaps limited to forests.
+This work is part of the MadFates project, run by Joachim Töpper. The goal is to learn bit about the Madingley model and its potential for modeling biomass distributions across trophic levels in Norwegian boreal ecosystem. Perhaps limited to forests.
 
 This page is hosted in GitHub and produced using bookdown.
 
@@ -38,6 +38,7 @@ Paper on the [model itself](https://journals.plos.org/plosbiology/article?id=10.
 
 - Spin-up phase - The model needs to run for 100-1000 simulated years without any user modifications to allow the ecosystem componets to reach a stable state. 
 
+- HANPP - human appropriation of net primary productivity
 
 
 
