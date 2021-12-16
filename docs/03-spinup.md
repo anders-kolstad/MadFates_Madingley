@@ -42,13 +42,13 @@ str(mdata2,1)
 
 ```
 % List of 10
-%  $ cohorts          :'data.frame':	1576 obs. of  16 variables:
+%  $ cohorts          :'data.frame':	1581 obs. of  16 variables:
 %  $ stocks           :'data.frame':	32 obs. of  3 variables:
 %  $ cohort_def       :'data.frame':	9 obs. of  14 variables:
 %  $ stock_def        :'data.frame':	2 obs. of  10 variables:
 %  $ time_line_cohorts:'data.frame':	23 obs. of  11 variables:
 %  $ time_line_stocks :'data.frame':	23 obs. of  3 variables:
-%  $ out_dir_name     : chr "/madingley_outs_15_12_21_15_23_02/"
+%  $ out_dir_name     : chr "/madingley_outs_16_12_21_15_38_33/"
 %  $ spatial_window   : num [1:4] 31 35 -5 -1
 %  $ out_path         : chr "temp"
 %  $ grid_size        : num 1
@@ -76,7 +76,7 @@ plot_densities(mdata2)
 ```
 
 ```
-% loading inputs from: temp/madingley_outs_15_12_21_15_23_02/
+% loading inputs from: temp/madingley_outs_16_12_21_15_38_33/
 ```
 
 <img src="03-spinup_files/figure-html/unnamed-chunk-4-1.png" width="672" />
@@ -88,7 +88,7 @@ plot_trophicpyramid(mdata2)
 ```
 
 ```
-% loading inputs from: temp/madingley_outs_15_12_21_15_23_02/
+% loading inputs from: temp/madingley_outs_16_12_21_15_38_33/
 ```
 
 <img src="03-spinup_files/figure-html/unnamed-chunk-5-1.png" width="672" />
@@ -100,7 +100,7 @@ plot_foodweb(mdata2, max_flows = 5)
 ```
 
 ```
-% loading inputs from: temp/madingley_outs_15_12_21_15_23_02/
+% loading inputs from: temp/madingley_outs_16_12_21_15_38_33/
 ```
 
 <img src="03-spinup_files/figure-html/unnamed-chunk-6-1.png" width="672" />
@@ -112,7 +112,15 @@ plot_spatialbiomass(mdata2, functional_filter = TRUE)
 ```
 
 ```
-% loading inputs from: temp/madingley_outs_15_12_21_15_23_02/
+% loading inputs from: temp/madingley_outs_16_12_21_15_38_33/
 ```
 
 <img src="03-spinup_files/figure-html/unnamed-chunk-7-1.png" width="864" />
+
+
+```r
+save(mdata2, chrt_def, mdl_prms, sptl_inp, stck_def, 
+        file = "data/spinupOut_demo.RData")
+```
+
+

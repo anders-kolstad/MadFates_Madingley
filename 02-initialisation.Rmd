@@ -1,6 +1,7 @@
 # Step 1 - 3
 ```{r setup, include=F}
 library(MadingleyR)
+library(raster)
 knitr::opts_chunk$set(comment='%') # the default ## read as headers in the knitted version
 ```
 
@@ -42,12 +43,12 @@ temp
 ```
 The resolution is 1 degree, which is approx. 111 km at the equator. 
 
-Plotting monsth jan-april
+Plotting precipitation for months jan-april
 ```{r}
 plot(temp[[1:4]])
 rm(temp)
 ```
-The data has global coverage.
+The data has global coverage. I'm assuming this is WorldClim data, but not sure.
 
 
 The cohort definitions look like this, and can be modified by the user. 

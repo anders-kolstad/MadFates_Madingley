@@ -24,7 +24,7 @@
 <meta name="author" content="Anders L. Kolstad" />
 
 
-<meta name="date" content="2021-12-15" />
+<meta name="date" content="2021-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="step-1---3.html"/>
-
+<link rel="next" href="norway-case-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -156,6 +156,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="step-1---3.html"><a href="step-1---3.html#step-3---initialisation"><i class="fa fa-check"></i><b>3.3</b> Step 3 - Initialisation</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="step-4---spin-up-and-demonstrating-plotting-functions.html"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html"><i class="fa fa-check"></i><b>4</b> Step 4 - Spin-up and demonstrating plotting functions</a></li>
+<li class="chapter" data-level="5" data-path="norway-case-1.html"><a href="norway-case-1.html"><i class="fa fa-check"></i><b>5</b> Norway case 1</a><ul>
+<li class="chapter" data-level="5.1" data-path="norway-case-1.html"><a href="norway-case-1.html#spin-up"><i class="fa fa-check"></i><b>5.1</b> Spin-up</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -175,20 +178,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="step-4---spin-up-and-demonstrating-plotting-functions" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Step 4 - Spin-up and demonstrating plotting functions</h1>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb28-1"></a><span class="kw">library</span>(MadingleyR)</span>
-<span id="cb28-2"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb28-2"></a>knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">comment=</span><span class="st">&#39;%&#39;</span>)</span>
-<span id="cb28-3"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb28-3"></a><span class="kw">load</span>(<span class="st">&quot;data/initOut_demo.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb33-1"></a><span class="kw">library</span>(MadingleyR)</span>
+<span id="cb33-2"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb33-2"></a>knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">comment=</span><span class="st">&#39;%&#39;</span>)</span>
+<span id="cb33-3"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb33-3"></a><span class="kw">load</span>(<span class="st">&quot;data/initOut_demo.RData&quot;</span>)</span></code></pre></div>
 <p>The spin-up usualy requires a 100-1000 year simulation for the ecosystem parameters to stabilise. Here we will use just 2 years for demonstration. The function takes as input the output data fram <code>madingley_init()</code> as well as the standard model input variables /(which can be modified).</p>
 <p>The below code is the same as in the vignette example except I had to define my own output folder for some reason.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb29-1"></a>mdata2 &lt;-<span class="st">  </span><span class="kw">madingley_run</span>(</span>
-<span id="cb29-2"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb29-2"></a>  <span class="dt">out_dir =</span> <span class="st">&quot;temp&quot;</span>,</span>
-<span id="cb29-3"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb29-3"></a>  <span class="dt">madingley_data =</span> mdata, </span>
-<span id="cb29-4"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb29-4"></a>  <span class="dt">years =</span> <span class="dv">2</span>, </span>
-<span id="cb29-5"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb29-5"></a>  <span class="dt">cohort_def =</span> chrt_def, </span>
-<span id="cb29-6"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb29-6"></a>  <span class="dt">stock_def =</span> stck_def, </span>
-<span id="cb29-7"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb29-7"></a>  <span class="dt">spatial_inputs =</span> sptl_inp, </span>
-<span id="cb29-8"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb29-8"></a>  <span class="dt">model_parameters =</span> mdl_prms,</span>
-<span id="cb29-9"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb29-9"></a>  <span class="dt">max_cohort =</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb34-1"></a>mdata2 &lt;-<span class="st">  </span><span class="kw">madingley_run</span>(</span>
+<span id="cb34-2"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb34-2"></a>  <span class="dt">out_dir =</span> <span class="st">&quot;temp&quot;</span>,</span>
+<span id="cb34-3"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb34-3"></a>  <span class="dt">madingley_data =</span> mdata, </span>
+<span id="cb34-4"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb34-4"></a>  <span class="dt">years =</span> <span class="dv">2</span>, </span>
+<span id="cb34-5"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb34-5"></a>  <span class="dt">cohort_def =</span> chrt_def, </span>
+<span id="cb34-6"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb34-6"></a>  <span class="dt">stock_def =</span> stck_def, </span>
+<span id="cb34-7"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb34-7"></a>  <span class="dt">spatial_inputs =</span> sptl_inp, </span>
+<span id="cb34-8"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb34-8"></a>  <span class="dt">model_parameters =</span> mdl_prms,</span>
+<span id="cb34-9"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb34-9"></a>  <span class="dt">max_cohort =</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>% Processing: realm_classification, land_mask, hanpp, available_water_capacity
 % Processing: Ecto_max, Endo_C_max, Endo_H_max, Endo_O_max
 % Processing: terrestrial_net_primary_productivity_1-12
@@ -196,44 +199,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 % Processing: precipitation_1-12
 % Processing: ground_frost_frequency_1-12
 % Processing: diurnal_temperature_range_1-12</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb31-1"></a><span class="co"># Runtime approx 30 sec</span></span>
-<span id="cb31-2"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb31-2"></a></span>
-<span id="cb31-3"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb31-3"></a><span class="co"># View the contents of mdata2</span></span>
-<span id="cb31-4"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb31-4"></a><span class="kw">str</span>(mdata2,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb36-1"></a><span class="co"># Runtime approx 30 sec</span></span>
+<span id="cb36-2"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb36-2"></a></span>
+<span id="cb36-3"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb36-3"></a><span class="co"># View the contents of mdata2</span></span>
+<span id="cb36-4"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb36-4"></a><span class="kw">str</span>(mdata2,<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>% List of 10
-%  $ cohorts          :&#39;data.frame&#39;:    1576 obs. of  16 variables:
+%  $ cohorts          :&#39;data.frame&#39;:    1581 obs. of  16 variables:
 %  $ stocks           :&#39;data.frame&#39;:    32 obs. of  3 variables:
 %  $ cohort_def       :&#39;data.frame&#39;:    9 obs. of  14 variables:
 %  $ stock_def        :&#39;data.frame&#39;:    2 obs. of  10 variables:
 %  $ time_line_cohorts:&#39;data.frame&#39;:    23 obs. of  11 variables:
 %  $ time_line_stocks :&#39;data.frame&#39;:    23 obs. of  3 variables:
-%  $ out_dir_name     : chr &quot;/madingley_outs_15_12_21_15_23_02/&quot;
+%  $ out_dir_name     : chr &quot;/madingley_outs_16_12_21_15_38_33/&quot;
 %  $ spatial_window   : num [1:4] 31 35 -5 -1
 %  $ out_path         : chr &quot;temp&quot;
 %  $ grid_size        : num 1</code></pre>
 <p>This output is similar to the previous outpur from madingley_init() only it also contains stocks and cohorts as timeslines.</p>
 <p>Lets view these timelines.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb33-1"></a><span class="kw">plot_timelines</span>(mdata2)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb38-1"></a><span class="kw">plot_timelines</span>(mdata2)</span></code></pre></div>
 <pre><code>% Warning in xtfrm.data.frame(x): cannot xtfrm data frames
 
 % Warning in xtfrm.data.frame(x): cannot xtfrm data frames</code></pre>
 <p><img src="03-spinup_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 Plot body mass density</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb35-1"></a><span class="kw">plot_densities</span>(mdata2)</span></code></pre></div>
-<pre><code>% loading inputs from: temp/madingley_outs_15_12_21_15_23_02/</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb40-1"></a><span class="kw">plot_densities</span>(mdata2)</span></code></pre></div>
+<pre><code>% loading inputs from: temp/madingley_outs_16_12_21_15_38_33/</code></pre>
 <p><img src="03-spinup_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Plot trophic pyramid</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb37-1"></a><span class="kw">plot_trophicpyramid</span>(mdata2)</span></code></pre></div>
-<pre><code>% loading inputs from: temp/madingley_outs_15_12_21_15_23_02/</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb42-1"></a><span class="kw">plot_trophicpyramid</span>(mdata2)</span></code></pre></div>
+<pre><code>% loading inputs from: temp/madingley_outs_16_12_21_15_38_33/</code></pre>
 <p><img src="03-spinup_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Create log10-binned food-web plot</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb39-1"></a><span class="kw">plot_foodweb</span>(mdata2, <span class="dt">max_flows =</span> <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>% loading inputs from: temp/madingley_outs_15_12_21_15_23_02/</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb44-1"></a><span class="kw">plot_foodweb</span>(mdata2, <span class="dt">max_flows =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>% loading inputs from: temp/madingley_outs_16_12_21_15_38_33/</code></pre>
 <p><img src="03-spinup_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Plot the spatial biomass</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb41-1"></a><span class="kw">plot_spatialbiomass</span>(mdata2, <span class="dt">functional_filter =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>% loading inputs from: temp/madingley_outs_15_12_21_15_23_02/</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb46-1"></a><span class="kw">plot_spatialbiomass</span>(mdata2, <span class="dt">functional_filter =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>% loading inputs from: temp/madingley_outs_16_12_21_15_38_33/</code></pre>
 <p><img src="03-spinup_files/figure-html/unnamed-chunk-7-1.png" width="864" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb48-1"></a><span class="kw">save</span>(mdata2, chrt_def, mdl_prms, sptl_inp, stck_def, </span>
+<span id="cb48-2"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html#cb48-2"></a>        <span class="dt">file =</span> <span class="st">&quot;data/spinupOut_demo.RData&quot;</span>)</span></code></pre></div>
 
 </div>
             </section>
@@ -241,8 +246,8 @@ Plot body mass density</p>
           </div>
         </div>
       </div>
-<a href="step-1---3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="step-1---3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="norway-case-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

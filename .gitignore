@@ -27,3 +27,5 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 MadFates_Madingley.Rproj
+# Temp folder
+temp

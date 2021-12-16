@@ -24,7 +24,7 @@
 <meta name="author" content="Anders L. Kolstad" />
 
 
-<meta name="date" content="2021-12-15" />
+<meta name="date" content="2021-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,6 +156,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="step-1---3.html"><a href="step-1---3.html#step-3---initialisation"><i class="fa fa-check"></i><b>3.3</b> Step 3 - Initialisation</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="step-4---spin-up-and-demonstrating-plotting-functions.html"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html"><i class="fa fa-check"></i><b>4</b> Step 4 - Spin-up and demonstrating plotting functions</a></li>
+<li class="chapter" data-level="5" data-path="norway-case-1.html"><a href="norway-case-1.html"><i class="fa fa-check"></i><b>5</b> Norway case 1</a><ul>
+<li class="chapter" data-level="5.1" data-path="norway-case-1.html"><a href="norway-case-1.html#spin-up"><i class="fa fa-check"></i><b>5.1</b> Spin-up</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -176,7 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Runniging the Madingley Model with Norwegian data</h1>
 <p class="author"><em>Anders L. Kolstad</em></p>
-<p class="date"><em>2021-12-15</em></p>
+<p class="date"><em>2021-12-16</em></p>
 </div>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -199,8 +202,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Stock - autotrofic biomass is treated as a single entity (stock).</p></li>
 <li><p>Model initialisation - After loading input data the model is run once without a year parameter. Not sure why exactly, or what the output is.</p></li>
 <li><p>Spin-up phase - The model needs to run for 100-1000 simulated years without any user modifications to allow the ecosystem componets to reach a stable state.</p></li>
-<li><p>HANPP - human appropriation of net primary productivity</p></li>
+<li><p>HANPP - human appropriation of net primary productivity. The variable spans from zero (or actually with some points &lt;0 which I don’t understand how to interpret) and 1200. I’m not sure what the units are, but probably they are the same as for the autrophic biomass. In <a href="https://github.com/MadingleyR/MadingleyR/blob/master/CaseStudies/CASESTUDY2.md">case study 2</a> they simply set the value to a uniform value between zero and one in this way:</p></li>
 </ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>sptl_inp<span class="op">$</span>hanpp[] =<span class="st"> </span>fractional_veg_production[i]</span></code></pre></div>
+<p>and set ‘apply_hanpp =1’ which reduces NPP in fractions provided in the hanpp spatial input raster.
+The example HANPP input data is from year 2005.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a><span class="kw">library</span>(MadingleyR)</span>
+<span id="cb2-2"><a href="index.html#cb2-2"></a><span class="kw">library</span>(raster)</span>
+<span id="cb2-3"><a href="index.html#cb2-3"></a>sptl_inp =<span class="st"> </span><span class="kw">madingley_inputs</span>(<span class="st">&quot;spatial inputs&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: package &#39;rgdal&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Reading default input rasters from:  C:/Users/anders.kolstad/Documents/R/R-4.1.1/library/MadingleyR/spatial_input_rasters.............</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1"></a>raster<span class="op">::</span><span class="kw">plot</span>(sptl_inp<span class="op">$</span>hanpp, <span class="dt">main =</span> <span class="st">&quot;HANPP anno 2005&quot;</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="480" /></p>
 
 </div>
 </div>

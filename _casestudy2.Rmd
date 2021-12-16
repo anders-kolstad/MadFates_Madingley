@@ -1,0 +1,27 @@
+# Casestudy 2
+
+Se example [here](https://github.com/MadingleyR/MadingleyR/blob/master/CaseStudies/CASESTUDY2.md).
+
+```{r setup, include=F}
+library(MadingleyR)
+knitr::opts_chunk$set(comment='%')
+```
+
+Run initialisation and spin-up with default settings
+```{r, cache=T, echo=F}
+# Set model params
+spatial_window = c(31, 35, -5, -1) # region of interest: Serengeti
+sptl_inp = madingley_inputs('spatial inputs') # load default inputs
+
+# Initialise model
+mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = sptl_inp)
+
+# Run spin-up of 5 years 
+mdata2 = madingley_run(
+  out_dir = "temp",
+  madingley_data = mdata,
+  spatial_inputs = sptl_inp,
+  years = 5)
+```
+
+

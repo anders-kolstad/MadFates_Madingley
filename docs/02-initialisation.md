@@ -89,7 +89,7 @@ temp
 ```
 The resolution is 1 degree, which is approx. 111 km at the equator. 
 
-Plotting monsth jan-april
+Plotting precipitation for months jan-april
 
 ```r
 plot(temp[[1:4]])
@@ -100,7 +100,7 @@ plot(temp[[1:4]])
 ```r
 rm(temp)
 ```
-The data has global coverage.
+The data has global coverage. I'm assuming this is WorldClim data, but not sure.
 
 
 The cohort definitions look like this, and can be modified by the user. 

@@ -8,3 +8,5 @@ step-1---load-data
 step-2---modify-input-parameters
 step-3---initialisation
 step-4---spin-up-and-demonstrating-plotting-functions
+norway-case-1
+spin-up
