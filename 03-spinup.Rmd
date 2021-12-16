@@ -1,0 +1,60 @@
+# Step 4 - Spin-up and demonstrating plotting functions
+
+```{r}
+library(MadingleyR)
+knitr::opts_chunk$set(comment='%')
+load("data/initOut_demo.RData")
+```
+
+The spin-up usualy requires a 100-1000 year simulation for the ecosystem parameters to stabilise. Here we will use just 2 years for demonstration. The function takes as input the output data fram ```madingley_init()``` as well as the standard model input variables /(which can be modified). 
+
+The below code is the same as in the vignette example except I had to define my own output folder for some reason. 
+```{r, cache=T}
+mdata2 <-  madingley_run(
+  out_dir = "temp",
+  madingley_data = mdata, 
+  years = 2, 
+  cohort_def = chrt_def, 
+  stock_def = stck_def, 
+  spatial_inputs = sptl_inp, 
+  model_parameters = mdl_prms,
+  max_cohort = 100)
+
+# Runtime approx 30 sec
+
+# View the contents of mdata2
+str(mdata2,1)
+```
+
+This output is similar to the previous outpur from madingley_init() only it also contains stocks and cohorts as timeslines. 
+
+Lets view these timelines.
+```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+plot_timelines(mdata2)
+```
+Plot body mass density
+```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+plot_densities(mdata2)
+```
+
+Plot trophic pyramid
+```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+plot_trophicpyramid(mdata2)
+```
+
+Create log10-binned food-web plot
+```{r, fig.height=6, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+plot_foodweb(mdata2, max_flows = 5)
+```
+
+Plot the spatial biomass
+```{r, fig.height=7, fig.width=9, message=FALSE,error=FALSE,linewidth=90}
+plot_spatialbiomass(mdata2, functional_filter = TRUE)
+```
+
+```{r}
+save(mdata2, chrt_def, mdl_prms, sptl_inp, stck_def, 
+        file = "data/spinupOut_demo.RData")
+```
+
+

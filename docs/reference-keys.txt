@@ -3,6 +3,8 @@ some-useful-links
 examples-of-use
 terms-and-definitions
 installation
-step-1-2
-load-data
-initialisation
+step-1---3
+step-1---load-data
+step-2---modify-input-parameters
+step-3---initialisation
+step-4---spin-up-and-demonstrating-plotting-functions

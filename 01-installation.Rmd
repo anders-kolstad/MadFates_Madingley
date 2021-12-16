@@ -14,12 +14,15 @@ library(devtools)
 install_github('MadingleyR/MadingleyR', subdir='Package', build_vignettes = F, force = T)
 ```
 
+
 I still could not get the vignettes to build. It crashes between line 133-144 in Madingley.Rmd which is where ```madingley_run()``` is first used. 
 
 ```{r, eval=F}
 MadingleyR::madingley_version()
 ```
-Versoins are up-to-date.
+Versions are up-to-date.
+
+
 
 When trying to install this on the server I get the following error: ./madingley: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.29' not found (required by ./madingley)
 running command 'cd "/home/NINA.NO/anders.kolstad/R/x86_64-pc-linux-gnu-library/4.0/MadingleyR/lin_exec/" && ./madingley version' had status 1Error in x[[jj]][iseq] <- vjj : replacement has length zero

@@ -2,26 +2,32 @@
 
 Madingley is written in C++, but an R version is also available. Although a little bit less flexible perhaps, it should be more than sufficient four this project. And much more familiar.
 
+Madinley requires libm.so.6: version GLIBC_2.29. I thnk this is required for running the C++ executables. Perhaps its only requires on linux machines, i don't know. But in any case, the Rstudio server on NINA (Ubuntu 18.04) har libc6 v. 2.27 and IT don't want to upgrade due to dependencies with other software. Therefore I'm forces to work locally on my Windows laptop.
+
 
 
 
 
 ```r
 library(devtools)
-install_github('MadingleyR/MadingleyR', subdir='Package', build_vignettes = T, force = T)
+install_github('MadingleyR/MadingleyR', subdir='Package', build_vignettes = F, force = T)
 ```
 
-I could not get the vignettes to build. It crashed on line 52 in Madinley.Rmd with this function call:
+
+I still could not get the vignettes to build. It crashes between line 133-144 in Madingley.Rmd which is where ```madingley_run()``` is first used. 
 
 
 ```r
 MadingleyR::madingley_version()
 ```
-Error message: ./madingley: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.29' not found (required by ./madingley)
+Versions are up-to-date.
+
+
+
+When trying to install this on the server I get the following error: ./madingley: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.29' not found (required by ./madingley)
 running command 'cd "/home/NINA.NO/anders.kolstad/R/x86_64-pc-linux-gnu-library/4.0/MadingleyR/lin_exec/" && ./madingley version' had status 1Error in x[[jj]][iseq] <- vjj : replacement has length zero
 
-This tells us that R cannot fint GLIBC
-
+The vignette could not be build.
 
 ```r
 vignette(package ="MadingleyR") 
@@ -30,10 +36,7 @@ vignette(package ="MadingleyR")
 ```
 ## no vignettes found
 ```
-They can, however, be view [here](https://github.com/MadingleyR/MadingleyR).
-
-
-This line also did not work. The verdsion seems to be 1.0.2. Source version, I don't know.
+It can, however, be viewed [here](https://github.com/MadingleyR/MadingleyR).
 
 
 
