@@ -1,120 +1,25 @@
-# Norway case 1
+# Norway - default settings
 
 This is just a first look at what the model predicts for Norway with default settings.
 
-
-```r
-library(MadingleyR)
-library(ggplot2)
-library(ggpubr)
-library(raster)
-```
-
-```
-## Loading required package: sp
-```
-
-```
-## 
-## Attaching package: 'raster'
-```
-
-```
-## The following object is masked from 'package:ggpubr':
-## 
-##     rotate
-```
-
-```r
-library(ggstance)
-```
-
-```
-## Warning: package 'ggstance' was built under R version 4.1.2
-```
-
-```
-## 
-## Attaching package: 'ggstance'
-```
-
-```
-## The following objects are masked from 'package:ggplot2':
-## 
-##     geom_errorbarh, GeomErrorbarh
-```
-
-```r
-knitr::opts_chunk$set(comment='%')
-load("data/initOut_demo.RData")
-
-sptl_inp = madingley_inputs("spatial inputs")
-```
-
-```
-## Loading required package: rgdal
-```
-
-```
-## Warning: package 'rgdal' was built under R version 4.1.2
-```
-
-```
-## Please note that rgdal will be retired by the end of 2023,
-## plan transition to sf/stars/terra functions using GDAL and PROJ
-## at your earliest convenience.
-## 
-## rgdal: version: 1.5-27, (SVN revision 1148)
-## Geospatial Data Abstraction Library extensions to R successfully loaded
-## Loaded GDAL runtime: GDAL 3.2.1, released 2020/12/29
-## Path to GDAL shared files: C:/Users/anders.kolstad/Documents/R/R-4.1.1/library/rgdal/gdal
-## GDAL binary built with GEOS: TRUE 
-## Loaded PROJ runtime: Rel. 7.2.1, January 1st, 2021, [PJ_VERSION: 721]
-## Path to PROJ shared files: C:/Users/anders.kolstad/Documents/R/R-4.1.1/library/rgdal/proj
-## PROJ CDN enabled: FALSE
-## Linking to sp version:1.4-6
-## To mute warnings of possible GDAL/OSR exportToProj4() degradation,
-## use options("rgdal_show_exportToProj4_warnings"="none") before loading sp or rgdal.
-## Overwritten PROJ_LIB was C:/Users/anders.kolstad/Documents/R/R-4.1.1/library/rgdal/proj
-```
-
-```
-## Reading default input rasters from:  C:/Users/anders.kolstad/Documents/R/R-4.1.1/library/MadingleyR/spatial_input_rasters.............
-```
-
-```r
-chrt_def = madingley_inputs("cohort definition")
-stck_def = madingley_inputs("stock definition")
-mdl_prms = madingley_inputs("model parameters") # useful later for running the model
-```
-
-Setting the spatial window to cover Norway
+This page was last updated ``2021-12-17 12:19:46``
 
 
-```r
-spatial_window = c(5, 31, 58, 71)
-```
 
-Plot the spatial window to check selection
+First we try with 4 x 4 grid cells (16 grid cells, with dispersion) in south-central Norway. Then we try with just one grid cell, but a longer temporal scope.
 
-```r
-plot_spatialwindow(spatial_window)
-```
+## 16 grid cells
 
-<img src="04-Norway1_files/figure-html/unnamed-chunk-3-1.png" width="672" />
-
-Because the spatial window needs to be square (I think), it is difficult to get Norway nicely fitting inside. I will start with a more narrow scope, just looking at southern-central Norway
-
-
+Lets start with a too big bonding box for illustration.
 
 ```r
 spatial_window = c(5, 12, 58, 65)
 plot_spatialwindow(spatial_window)
 ```
 
-<img src="04-Norway1_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="04-Norway1_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
-The default resolution is 1 degree, giving (7 x 7 =) 49 cells in this case, which is too much. The resolution is defined by the spatial input rasters, but 1 degree resolution is the maximum. Finer resolutio is possible. I will therefore focus on just Central Norway. Plotting on top of mean annual temperature.
+The default resolution is 1 degree, giving (7 x 7 =) 49 cells in this case, which is too much for testing purpuses due to compuatation time. The resolution is defined by the spatial input rasters, but 1 degree resolution is the maximum. Finer resolution is possible, ut not courser. I will therefore focus on just Central Norway. Plotting on top of mean annual temperature.
 
 
 ```r
@@ -129,7 +34,7 @@ plot_spatialwindow(spatial_window,
                    input_raster = mat)
 ```
 
-<img src="04-Norway1_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="04-Norway1_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 Notice how at high latitudes, one degree north-south is much longer in distance compared to 1 degree east-west.
 
@@ -152,8 +57,6 @@ mdata <-  madingley_init(spatial_window = spatial_window,
 % Processing: diurnal_temperature_range_1-12
 % 
 ```
-
-## Spin-up
 
 
 ```r
@@ -190,9 +93,9 @@ plot_timelines(mdata2)
 % Warning in xtfrm.data.frame(x): cannot xtfrm data frames
 ```
 
-<img src="04-Norway1_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="04-Norway1_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
-The 10 year spin up was probably way too short, and we can see much variation, even a collaps-like event for one group. The pattern for the autotrophs is just the seasonal variation.
+The 10 year spin up was probably way too short, and we can see much variation or instability, but none the less, the seasonal patterns is visible for both autotrophs and heterotrophs, but it it much to little. There should be almost no ectotherm biomass in winter. Bird migration I don't think is accounted for either. I predict this will be the biggest challenge - getting the Madingley model to capture the seasonal phenological stages. 
 
 
 Exploring the cohorts in mdata2. Looking only at herbivorous endotherms, we can look at the relationship between individual size and abundance
@@ -212,7 +115,7 @@ ggplot(data = temp)+
   theme_bw(base_size = 20)
 ```
 
-<img src="04-Norway1_files/figure-html/unnamed-chunk-10-1.png" width="480" />
+<img src="04-Norway1_files/figure-html/unnamed-chunk-7-1.png" width="480" />
 
 ```r
 # plotting all grid cells and all cohorts or FG 0
@@ -267,7 +170,7 @@ ggplot(temp2, aes(x = CohortAbundance,
   scale_x_continuous(expand = expansion(mult=c(.2,.2)))
 ```
 
-<img src="04-Norway1_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="04-Norway1_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 Obs, beware of strong dodging in thsi figure in place to be able to read all labels. 
 
@@ -282,10 +185,10 @@ plot_densities(mdata2)
 ```
 
 ```
-% loading inputs from: temp/madingley_outs_16_12_21_15_34_12/
+% loading inputs from: temp/madingley_outs_17_12_21_12_20_01/
 ```
 
-<img src="04-Norway1_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="04-Norway1_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 I'm not good at reading these figures yet.
 
@@ -295,10 +198,10 @@ plot_trophicpyramid(mdata2)
 ```
 
 ```
-% loading inputs from: temp/madingley_outs_16_12_21_15_34_12/
+% loading inputs from: temp/madingley_outs_17_12_21_12_20_01/
 ```
 
-<img src="04-Norway1_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="04-Norway1_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 Hmm, omnivores have a big biomass but only feed on herbivores, not plants.
 
@@ -309,10 +212,10 @@ plot_foodweb(mdata2, max_flows = 5)
 ```
 
 ```
-% loading inputs from: temp/madingley_outs_16_12_21_15_34_12/
+% loading inputs from: temp/madingley_outs_17_12_21_12_20_01/
 ```
 
-<img src="04-Norway1_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="04-Norway1_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 The interactions are dominated by carnivorous insects eating omnivorous insects. Omnivorous insects must have a high turn over, because their combined biomass is low at any one time.
 
@@ -323,9 +226,86 @@ plot_spatialbiomass(mdata2, functional_filter = TRUE)
 ```
 
 ```
-% loading inputs from: temp/madingley_outs_16_12_21_15_34_12/
+% loading inputs from: temp/madingley_outs_17_12_21_12_20_01/
 ```
 
-<img src="04-Norway1_files/figure-html/unnamed-chunk-16-1.png" width="864" />
+<img src="04-Norway1_files/figure-html/unnamed-chunk-13-1.png" width="864" />
 
 The next step I think is to go though the model parameters in mdl_prms and see if the settings make sense for boreal, mainly forested or alpine, ecosystem. We can also change values in the spatial input sptl_inp, for example setting the max biomass for ectotherms (we don't have large reptiles here).
+
+
+## Single grid cell
+Using a single grid cell we can run the simulation for longer, and see how that affects things.
+
+
+```r
+spatial_window = c(9, 10, 60, 61)
+plot_spatialwindow(spatial_window, 
+                   ylim=c(55,65), xlim=c(-10,20),
+                   input_raster = mat)
+```
+
+<img src="04-Norway1_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+
+
+```r
+mdata <-  madingley_init(spatial_window = spatial_window,
+                       cohort_def = chrt_def,
+                       stock_def = stck_def,
+                       spatial_inputs = sptl_inp,
+                       max_cohort = 100)
+```
+
+```
+% Processing: realm_classification, land_mask, hanpp, available_water_capacity
+% Processing: Ecto_max, Endo_C_max, Endo_H_max, Endo_O_max
+% Processing: terrestrial_net_primary_productivity_1-12
+% Processing: near-surface_temperature_1-12
+% Processing: precipitation_1-12
+% Processing: ground_frost_frequency_1-12
+% Processing: diurnal_temperature_range_1-12
+% 
+```
+Using 100 years instead of 10
+
+```r
+mdata2 <-  madingley_run(
+  out_dir = "temp",
+  madingley_data = mdata, 
+  years = 100, 
+  cohort_def = chrt_def, 
+  stock_def = stck_def, 
+  spatial_inputs = sptl_inp, 
+  model_parameters = mdl_prms,
+  max_cohort = 100,
+  silenced = TRUE)
+```
+
+```
+% Warning in system(run_exec, intern = T): running command '"C:/Users/
+% anders.kolstad/Documents/R/R-4.1.1/library/MadingleyR/win_exec/madingley.bat"'
+% had status 5
+```
+
+```r
+# Runtime approx 45 sec
+```
+
+
+```r
+plot_timelines(mdata2)
+```
+
+```
+% Warning in xtfrm.data.frame(x): cannot xtfrm data frames
+
+% Warning in xtfrm.data.frame(x): cannot xtfrm data frames
+```
+
+<img src="04-Norway1_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+
+The components seem to stabilise relatively fast, and after ~20 there are no long-term trends (results vary between each time this page is rendered). The relative biomass distribution between functional groups is different. This is probably a characteristic of this grid cell, and how less to do with the number of years simulated by the model. 
+
+
+
+

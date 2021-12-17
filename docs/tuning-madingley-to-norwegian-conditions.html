@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Runniging the Madingley Model with Norwegian data</title>
-  <meta name="description" content="Page not found | Runniging the Madingley Model with Norwegian data" />
+  <title>Chapter 6 Tuning Madingley to Norwegian conditions | Runniging the Madingley Model with Norwegian data</title>
+  <meta name="description" content="Chapter 6 Tuning Madingley to Norwegian conditions | Runniging the Madingley Model with Norwegian data" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Runniging the Madingley Model with Norwegian data" />
+  <meta property="og:title" content="Chapter 6 Tuning Madingley to Norwegian conditions | Runniging the Madingley Model with Norwegian data" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Runniging the Madingley Model with Norwegian data" />
+  <meta name="twitter:title" content="Chapter 6 Tuning Madingley to Norwegian conditions | Runniging the Madingley Model with Norwegian data" />
   
   
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="norway---default-settings.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -178,18 +178,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="tuning-madingley-to-norwegian-conditions" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Tuning Madingley to Norwegian conditions</h1>
+<p>This page was last updated <code>2021-12-17 15:57:16</code></p>
+<h2>
+Climate data
+</h2>
+<p>There are five climate data inputs:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="tuning-madingley-to-norwegian-conditions.html#cb1-1"></a><span class="kw">cat</span>(<span class="kw">names</span>(sptl_inp[<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>)]), <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>% available_water_capacity
+% near-surface_temperature
+% precipitation
+% ground_frost_frequency
+% diurnal_temperature_range</code></pre>
+<p>They are on a monthly resolution. I’m not sure about what time period the default rasters represents, but these layers can easily be changes, or modified, to either simulate climate change or to model ecosystem structure under a different past climate to use as a referanse point in say ecological condition assesments.</p>
+<p>Lets explore the seasonal variation in some of these datasets</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="tuning-madingley-to-norwegian-conditions.html#cb3-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span><span class="st">`</span><span class="dt">near-surface_temperature</span><span class="st">`</span></span>
+<span id="cb3-2"><a href="tuning-madingley-to-norwegian-conditions.html#cb3-2"></a></span>
+<span id="cb3-3"><a href="tuning-madingley-to-norwegian-conditions.html#cb3-3"></a>box &lt;-<span class="st"> </span><span class="kw">bb</span>( <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">20</span>),</span>
+<span id="cb3-4"><a href="tuning-madingley-to-norwegian-conditions.html#cb3-4"></a>  <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">55</span>,<span class="dv">65</span>))</span>
+<span id="cb3-5"><a href="tuning-madingley-to-norwegian-conditions.html#cb3-5"></a></span>
+<span id="cb3-6"><a href="tuning-madingley-to-norwegian-conditions.html#cb3-6"></a><span class="kw">tm_shape</span>(temp[[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">6</span>)]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb3-7"><a href="tuning-madingley-to-norwegian-conditions.html#cb3-7"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>,<span class="op">-</span><span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>, <span class="dv">30</span>))    <span class="co">#seq(-30,30,10))</span></span></code></pre></div>
+<p><img src="05-Norway2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="tuning-madingley-to-norwegian-conditions.html#cb4-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
+<p>Minusgrader i Januar (øverst) og varmegrader i juni (nederst).</p>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="norway---default-settings.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

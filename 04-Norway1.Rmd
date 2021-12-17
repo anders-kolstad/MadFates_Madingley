@@ -1,8 +1,10 @@
-# Norway case 1
+# Norway - default settings
 
 This is just a first look at what the model predicts for Norway with default settings.
 
-```{r}
+This page was last updated ```r Sys.time() ```
+
+```{r setup, include=F}
 library(MadingleyR)
 library(ggplot2)
 library(ggpubr)
@@ -17,26 +19,17 @@ stck_def = madingley_inputs("stock definition")
 mdl_prms = madingley_inputs("model parameters") # useful later for running the model
 ```
 
-Setting the spatial window to cover Norway
+First we try with 4 x 4 grid cells (16 grid cells, with dispersion) in south-central Norway. Then we try with just one grid cell, but a longer temporal scope.
 
-```{r,  message=FALSE}
-spatial_window = c(5, 31, 58, 71)
-```
+## 16 grid cells
 
-Plot the spatial window to check selection
-```{r}
-plot_spatialwindow(spatial_window)
-```
-
-Because the spatial window needs to be square (I think), it is difficult to get Norway nicely fitting inside. I will start with a more narrow scope, just looking at southern-central Norway
-
-
+Lets start with a too big bonding box for illustration.
 ```{r,  message=FALSE}
 spatial_window = c(5, 12, 58, 65)
 plot_spatialwindow(spatial_window)
 ```
 
-The default resolution is 1 degree, giving (7 x 7 =) 49 cells in this case, which is too much. The resolution is defined by the spatial input rasters, but 1 degree resolution is the maximum. Finer resolutio is possible. I will therefore focus on just Central Norway. Plotting on top of mean annual temperature.
+The default resolution is 1 degree, giving (7 x 7 =) 49 cells in this case, which is too much for testing purpuses due to compuatation time. The resolution is defined by the spatial input rasters, but 1 degree resolution is the maximum. Finer resolution is possible, ut not courser. I will therefore focus on just Central Norway. Plotting on top of mean annual temperature.
 
 ```{r}
 mat = mean(sptl_inp[[10]])
@@ -59,8 +52,6 @@ mdata <-  madingley_init(spatial_window = spatial_window,
                        max_cohort = 100)
 ```
 
-## Spin-up
-
 ```{r, cache=T}
 mdata2 <-  madingley_run(
   out_dir = "temp",
@@ -80,7 +71,7 @@ mdata2 <-  madingley_run(
 plot_timelines(mdata2)
 ```
 
-The 10 year spin up was probably way too short, and we can see much variation, even a collaps-like event for one group. The pattern for the autotrophs is just the seasonal variation.
+The 10 year spin up was probably way too short, and we can see much variation or instability, but none the less, the seasonal patterns is visible for both autotrophs and heterotrophs, but it it much to little. There should be almost no ectotherm biomass in winter. Bird migration I don't think is accounted for either. I predict this will be the biggest challenge - getting the Madingley model to capture the seasonal phenological stages. 
 
 
 Exploring the cohorts in mdata2. Looking only at herbivorous endotherms, we can look at the relationship between individual size and abundance
@@ -181,3 +172,47 @@ plot_spatialbiomass(mdata2, functional_filter = TRUE)
 ```
 
 The next step I think is to go though the model parameters in mdl_prms and see if the settings make sense for boreal, mainly forested or alpine, ecosystem. We can also change values in the spatial input sptl_inp, for example setting the max biomass for ectotherms (we don't have large reptiles here).
+
+
+## Single grid cell
+Using a single grid cell we can run the simulation for longer, and see how that affects things.
+
+```{r,  message=FALSE, fig.width=7, fig.width=7}
+spatial_window = c(9, 10, 60, 61)
+plot_spatialwindow(spatial_window, 
+                   ylim=c(55,65), xlim=c(-10,20),
+                   input_raster = mat)
+```
+
+```{r}
+mdata <-  madingley_init(spatial_window = spatial_window,
+                       cohort_def = chrt_def,
+                       stock_def = stck_def,
+                       spatial_inputs = sptl_inp,
+                       max_cohort = 100)
+```
+Using 100 years instead of 10
+```{r, cache=T}
+mdata2 <-  madingley_run(
+  out_dir = "temp",
+  madingley_data = mdata, 
+  years = 100, 
+  cohort_def = chrt_def, 
+  stock_def = stck_def, 
+  spatial_inputs = sptl_inp, 
+  model_parameters = mdl_prms,
+  max_cohort = 100,
+  silenced = TRUE)
+
+# Runtime approx 45 sec
+```
+
+```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+plot_timelines(mdata2)
+```
+
+The components seem to stabilise relatively fast, and after ~20 years there are no long-term trends (results vary between each time this page is rendered). The relative biomass distribution between functional groups is different. This is probably a characteristic of this grid cell, and have less to do with the number of years simulated by the model. 
+
+
+
+
