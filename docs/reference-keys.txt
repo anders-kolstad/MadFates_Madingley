@@ -14,3 +14,6 @@ norway---default-settings
 grid-cells
 single-grid-cell
 tuning-madingley-to-norwegian-conditions
+exploring-spatial-inputs
+climate-data
+other-spatial-inputs
