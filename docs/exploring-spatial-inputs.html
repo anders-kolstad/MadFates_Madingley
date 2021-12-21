@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Exploring spatial inputs | Runniging the Madingley Model with Norwegian data</title>
-  <meta name="description" content="Chapter 6 Exploring spatial inputs | Runniging the Madingley Model with Norwegian data" />
+  <title>Chapter 6 Exploring spatial inputs | Running the Madingley Model with Norwegian data</title>
+  <meta name="description" content="Chapter 6 Exploring spatial inputs | Running the Madingley Model with Norwegian data" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Exploring spatial inputs | Runniging the Madingley Model with Norwegian data" />
+  <meta property="og:title" content="Chapter 6 Exploring spatial inputs | Running the Madingley Model with Norwegian data" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Exploring spatial inputs | Runniging the Madingley Model with Norwegian data" />
+  <meta name="twitter:title" content="Chapter 6 Exploring spatial inputs | Running the Madingley Model with Norwegian data" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Anders L. Kolstad" />
 
 
-<meta name="date" content="2021-12-16" />
+<meta name="date" content="2021-12-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="norway---default-settings.html"/>
-
+<link rel="next" href="exploring-model-parameters.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -164,6 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html#climate-data"><i class="fa fa-check"></i><b>6.1</b> Climate data</a></li>
 <li class="chapter" data-level="6.2" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html#other-spatial-inputs"><i class="fa fa-check"></i><b>6.2</b> Other spatial inputs</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="exploring-model-parameters.html"><a href="exploring-model-parameters.html"><i class="fa fa-check"></i><b>7</b> Exploring model parameters</a></li>
 </ul>
 
       </nav>
@@ -173,7 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Runniging the Madingley Model with Norwegian data</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Running the Madingley Model with Norwegian data</a>
           </h1>
         </div>
 
@@ -183,12 +184,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="exploring-spatial-inputs" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Exploring spatial inputs</h1>
-<p>This page was last updated <code>2021-12-20 13:22:30</code></p>
+<p>This page was last updated <code>2021-12-21 10:30:56</code></p>
 <p>On this page I am exploring the spatial inputs to see if they make sense fir Norway.</p>
 <div id="climate-data" class="section level2">
 <h2><span class="header-section-number">6.1</span> Climate data</h2>
 <p>There are five climate data inputs:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="exploring-spatial-inputs.html#cb1-1"></a><span class="kw">cat</span>(<span class="kw">names</span>(sptl_inp[<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>)]), <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="exploring-spatial-inputs.html#cb79-1"></a><span class="kw">cat</span>(<span class="kw">names</span>(sptl_inp[<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>)]), <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>% available_water_capacity
 % near-surface_temperature
 % precipitation
@@ -199,69 +200,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>
 Available water capacity
 </h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="exploring-spatial-inputs.html#cb3-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span>available_water_capacity</span>
-<span id="cb3-2"><a href="exploring-spatial-inputs.html#cb3-2"></a></span>
-<span id="cb3-3"><a href="exploring-spatial-inputs.html#cb3-3"></a>box &lt;-<span class="st"> </span><span class="kw">bb</span>( <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">30</span>),</span>
-<span id="cb3-4"><a href="exploring-spatial-inputs.html#cb3-4"></a>  <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">70</span>))</span>
-<span id="cb3-5"><a href="exploring-spatial-inputs.html#cb3-5"></a><span class="kw">tm_shape</span>(temp, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb3-6"><a href="exploring-spatial-inputs.html#cb3-6"></a><span class="st">  </span><span class="kw">tm_raster</span>()    <span class="co">#seq(-30,30,10))</span></span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="exploring-spatial-inputs.html#cb4-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="exploring-spatial-inputs.html#cb81-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span>available_water_capacity</span>
+<span id="cb81-2"><a href="exploring-spatial-inputs.html#cb81-2"></a></span>
+<span id="cb81-3"><a href="exploring-spatial-inputs.html#cb81-3"></a>box &lt;-<span class="st"> </span><span class="kw">bb</span>( <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">30</span>),</span>
+<span id="cb81-4"><a href="exploring-spatial-inputs.html#cb81-4"></a>  <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">70</span>))</span>
+<span id="cb81-5"><a href="exploring-spatial-inputs.html#cb81-5"></a><span class="kw">tm_shape</span>(temp, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb81-6"><a href="exploring-spatial-inputs.html#cb81-6"></a><span class="st">  </span><span class="kw">tm_raster</span>()    <span class="co">#seq(-30,30,10))</span></span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="exploring-spatial-inputs.html#cb82-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
 <p>This looks a bit un-nuanced. Ket’s first see this pattern in a continental context. Note: there’s only one band here (annual means).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="exploring-spatial-inputs.html#cb5-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span>available_water_capacity</span>
-<span id="cb5-2"><a href="exploring-spatial-inputs.html#cb5-2"></a></span>
-<span id="cb5-3"><a href="exploring-spatial-inputs.html#cb5-3"></a>box2 &lt;-<span class="st"> </span><span class="kw">bb</span>( <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>,<span class="dv">80</span>),</span>
-<span id="cb5-4"><a href="exploring-spatial-inputs.html#cb5-4"></a>  <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">70</span>))</span>
-<span id="cb5-5"><a href="exploring-spatial-inputs.html#cb5-5"></a><span class="kw">tm_shape</span>(temp, <span class="dt">bbox =</span> box2)<span class="op">+</span></span>
-<span id="cb5-6"><a href="exploring-spatial-inputs.html#cb5-6"></a><span class="st">  </span><span class="kw">tm_raster</span>()    <span class="co">#seq(-30,30,10))</span></span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="exploring-spatial-inputs.html#cb6-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="exploring-spatial-inputs.html#cb83-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span>available_water_capacity</span>
+<span id="cb83-2"><a href="exploring-spatial-inputs.html#cb83-2"></a></span>
+<span id="cb83-3"><a href="exploring-spatial-inputs.html#cb83-3"></a>box2 &lt;-<span class="st"> </span><span class="kw">bb</span>( <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>,<span class="dv">80</span>),</span>
+<span id="cb83-4"><a href="exploring-spatial-inputs.html#cb83-4"></a>  <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">70</span>))</span>
+<span id="cb83-5"><a href="exploring-spatial-inputs.html#cb83-5"></a><span class="kw">tm_shape</span>(temp, <span class="dt">bbox =</span> box2)<span class="op">+</span></span>
+<span id="cb83-6"><a href="exploring-spatial-inputs.html#cb83-6"></a><span class="st">  </span><span class="kw">tm_raster</span>()    <span class="co">#seq(-30,30,10))</span></span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="exploring-spatial-inputs.html#cb84-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
 <p>The majo, expected patterns are visible, but Norway non-the-less have values that are comparateble to parts of Sahara. WHat does this environmental varieble actually represent?</p>
 <h3>
 Temperature
 </h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="exploring-spatial-inputs.html#cb7-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span><span class="st">`</span><span class="dt">near-surface_temperature</span><span class="st">`</span></span>
-<span id="cb7-2"><a href="exploring-spatial-inputs.html#cb7-2"></a></span>
-<span id="cb7-3"><a href="exploring-spatial-inputs.html#cb7-3"></a><span class="co">#box &lt;- bb( xlim = c(-10,20),</span></span>
-<span id="cb7-4"><a href="exploring-spatial-inputs.html#cb7-4"></a><span class="co">#  ylim = c(55,65))</span></span>
-<span id="cb7-5"><a href="exploring-spatial-inputs.html#cb7-5"></a></span>
-<span id="cb7-6"><a href="exploring-spatial-inputs.html#cb7-6"></a><span class="kw">tm_shape</span>(temp[[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">6</span>)]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb7-7"><a href="exploring-spatial-inputs.html#cb7-7"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>,<span class="op">-</span><span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>, <span class="dv">30</span>))    <span class="co">#seq(-30,30,10))</span></span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="exploring-spatial-inputs.html#cb8-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="exploring-spatial-inputs.html#cb85-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span><span class="st">`</span><span class="dt">near-surface_temperature</span><span class="st">`</span></span>
+<span id="cb85-2"><a href="exploring-spatial-inputs.html#cb85-2"></a></span>
+<span id="cb85-3"><a href="exploring-spatial-inputs.html#cb85-3"></a><span class="co">#box &lt;- bb( xlim = c(-10,20),</span></span>
+<span id="cb85-4"><a href="exploring-spatial-inputs.html#cb85-4"></a><span class="co">#  ylim = c(55,65))</span></span>
+<span id="cb85-5"><a href="exploring-spatial-inputs.html#cb85-5"></a></span>
+<span id="cb85-6"><a href="exploring-spatial-inputs.html#cb85-6"></a><span class="kw">tm_shape</span>(temp[[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">6</span>)]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb85-7"><a href="exploring-spatial-inputs.html#cb85-7"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>,<span class="op">-</span><span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>, <span class="dv">30</span>))    <span class="co">#seq(-30,30,10))</span></span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="exploring-spatial-inputs.html#cb86-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
 <p>Minusgrader i Januar (øverst) og varmegrader i juni (nederst).</p>
 <h3>
 Precipitation
 </h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="exploring-spatial-inputs.html#cb9-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span>precipitation</span>
-<span id="cb9-2"><a href="exploring-spatial-inputs.html#cb9-2"></a></span>
-<span id="cb9-3"><a href="exploring-spatial-inputs.html#cb9-3"></a><span class="co">#box &lt;- bb( xlim = c(-10,20),</span></span>
-<span id="cb9-4"><a href="exploring-spatial-inputs.html#cb9-4"></a><span class="co">#  ylim = c(55,65))</span></span>
-<span id="cb9-5"><a href="exploring-spatial-inputs.html#cb9-5"></a></span>
-<span id="cb9-6"><a href="exploring-spatial-inputs.html#cb9-6"></a><span class="kw">tm_shape</span>(temp[[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>, <span class="dv">9</span>)]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb9-7"><a href="exploring-spatial-inputs.html#cb9-7"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">600</span>,<span class="dv">100</span>))</span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="exploring-spatial-inputs.html#cb10-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="exploring-spatial-inputs.html#cb87-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span>precipitation</span>
+<span id="cb87-2"><a href="exploring-spatial-inputs.html#cb87-2"></a></span>
+<span id="cb87-3"><a href="exploring-spatial-inputs.html#cb87-3"></a><span class="co">#box &lt;- bb( xlim = c(-10,20),</span></span>
+<span id="cb87-4"><a href="exploring-spatial-inputs.html#cb87-4"></a><span class="co">#  ylim = c(55,65))</span></span>
+<span id="cb87-5"><a href="exploring-spatial-inputs.html#cb87-5"></a></span>
+<span id="cb87-6"><a href="exploring-spatial-inputs.html#cb87-6"></a><span class="kw">tm_shape</span>(temp[[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>, <span class="dv">9</span>)]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb87-7"><a href="exploring-spatial-inputs.html#cb87-7"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">600</span>,<span class="dv">100</span>))</span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="exploring-spatial-inputs.html#cb88-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
 <p>The W-E gradiant is evident in the precipitatin data.</p>
 <h3>
 Ground frost frequency
 </h3>
 <p>This is probably the number of ground frost days per month.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="exploring-spatial-inputs.html#cb11-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span>ground_frost_frequency</span>
-<span id="cb11-2"><a href="exploring-spatial-inputs.html#cb11-2"></a></span>
-<span id="cb11-3"><a href="exploring-spatial-inputs.html#cb11-3"></a><span class="kw">tm_shape</span>(temp[[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>, <span class="dv">9</span>)]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb11-4"><a href="exploring-spatial-inputs.html#cb11-4"></a><span class="st">  </span><span class="kw">tm_raster</span>()</span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="exploring-spatial-inputs.html#cb12-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="exploring-spatial-inputs.html#cb89-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span>ground_frost_frequency</span>
+<span id="cb89-2"><a href="exploring-spatial-inputs.html#cb89-2"></a></span>
+<span id="cb89-3"><a href="exploring-spatial-inputs.html#cb89-3"></a><span class="kw">tm_shape</span>(temp[[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>, <span class="dv">9</span>)]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb89-4"><a href="exploring-spatial-inputs.html#cb89-4"></a><span class="st">  </span><span class="kw">tm_raster</span>()</span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="exploring-spatial-inputs.html#cb90-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
 <h3>
 Diurnal temperature range
 </h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="exploring-spatial-inputs.html#cb13-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span>diurnal_temperature_range</span>
-<span id="cb13-2"><a href="exploring-spatial-inputs.html#cb13-2"></a></span>
-<span id="cb13-3"><a href="exploring-spatial-inputs.html#cb13-3"></a><span class="kw">tm_shape</span>(temp[[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>, <span class="dv">9</span>)]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb13-4"><a href="exploring-spatial-inputs.html#cb13-4"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">5</span>))</span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="exploring-spatial-inputs.html#cb14-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="exploring-spatial-inputs.html#cb91-1"></a>temp &lt;-<span class="st"> </span>sptl_inp<span class="op">$</span>diurnal_temperature_range</span>
+<span id="cb91-2"><a href="exploring-spatial-inputs.html#cb91-2"></a></span>
+<span id="cb91-3"><a href="exploring-spatial-inputs.html#cb91-3"></a><span class="kw">tm_shape</span>(temp[[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">6</span>, <span class="dv">9</span>)]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb91-4"><a href="exploring-spatial-inputs.html#cb91-4"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">5</span>))</span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="exploring-spatial-inputs.html#cb92-1"></a><span class="kw">rm</span>(temp)</span></code></pre></div>
 <p>This must be the difference between day and nighttime temperatures. There is a coast-inlanbd gradient with oceanic climates being lass variable on a diurnal scale.</p>
 <h3>
 WorldClim
@@ -271,12 +272,12 @@ WorldClim
 - precipitation BIO12 (also pmean?)
 - mean diurnal range BIO2</p>
 <p>Using 10 arcdegrees resolution (1/6 of a degree) and only the tile that covers the bulk of southern Norway</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="exploring-spatial-inputs.html#cb15-1"></a>Norbioclim&lt;-<span class="kw">getData</span>(<span class="st">&#39;worldclim&#39;</span>,<span class="dt">var=</span><span class="st">&#39;tmean&#39;</span>,<span class="dt">res=</span><span class="dv">10</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="exploring-spatial-inputs.html#cb93-1"></a>Norbioclim&lt;-<span class="kw">getData</span>(<span class="st">&#39;worldclim&#39;</span>,<span class="dt">var=</span><span class="st">&#39;tmean&#39;</span>,<span class="dt">res=</span><span class="dv">10</span>) </span></code></pre></div>
 <p>The above chunk failed unfortunately. See: <a href="https://github.com/rspatial/raster/issues/191" class="uri">https://github.com/rspatial/raster/issues/191</a></p>
 </div>
 <div id="other-spatial-inputs" class="section level2">
 <h2><span class="header-section-number">6.2</span> Other spatial inputs</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="exploring-spatial-inputs.html#cb16-1"></a><span class="kw">cat</span>(<span class="kw">names</span>(sptl_inp[<span class="op">-</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>)]), <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="exploring-spatial-inputs.html#cb94-1"></a><span class="kw">cat</span>(<span class="kw">names</span>(sptl_inp[<span class="op">-</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>)]), <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>% realm_classification
 % land_mask
 % hanpp
@@ -286,66 +287,66 @@ WorldClim
 % Endo_O_max
 % terrestrial_net_primary_productivity</code></pre>
 <p>Realm classifivation and the land mask are basically the same. They’re just a masks seperating terrestrial land from the marine environment. Realm classifications has three levels (sea, land, antarctica, whereas land_mask treats Antarctica as land. Only terrestrial ecosystems are supported in the R version of Madingley. The C++ version also include marine ecosystems.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="exploring-spatial-inputs.html#cb18-1"></a><span class="kw">tmap_arrange</span>(</span>
-<span id="cb18-2"><a href="exploring-spatial-inputs.html#cb18-2"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>realm_classification)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
-<span id="cb18-3"><a href="exploring-spatial-inputs.html#cb18-3"></a><span class="st">  </span><span class="kw">tm_raster</span>(),    <span class="co">#seq(-30,30,10))</span></span>
-<span id="cb18-4"><a href="exploring-spatial-inputs.html#cb18-4"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>land_mask)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
-<span id="cb18-5"><a href="exploring-spatial-inputs.html#cb18-5"></a><span class="st">  </span><span class="kw">tm_raster</span>())</span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="exploring-spatial-inputs.html#cb96-1"></a><span class="kw">tmap_arrange</span>(</span>
+<span id="cb96-2"><a href="exploring-spatial-inputs.html#cb96-2"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>realm_classification)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
+<span id="cb96-3"><a href="exploring-spatial-inputs.html#cb96-3"></a><span class="st">  </span><span class="kw">tm_raster</span>(),    <span class="co">#seq(-30,30,10))</span></span>
+<span id="cb96-4"><a href="exploring-spatial-inputs.html#cb96-4"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>land_mask)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
+<span id="cb96-5"><a href="exploring-spatial-inputs.html#cb96-5"></a><span class="st">  </span><span class="kw">tm_raster</span>())</span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <h3>
 HANPP
 </h3>
 <p>Single band.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="exploring-spatial-inputs.html#cb19-1"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>hanpp, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb19-2"><a href="exploring-spatial-inputs.html#cb19-2"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">500</span>,<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">200</span>,<span class="dv">300</span>,<span class="dv">400</span>,<span class="dv">500</span>))</span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="exploring-spatial-inputs.html#cb97-1"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>hanpp, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb97-2"><a href="exploring-spatial-inputs.html#cb97-2"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">500</span>,<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">200</span>,<span class="dv">300</span>,<span class="dv">400</span>,<span class="dv">500</span>))</span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>The human land use is very limited in Norway according to this data. It’s probably true. More detailed data could perhaps be found and used, such as AR5, but I’m not going into that now.</p>
 <h3>
 Max and min individual biomass
 </h3>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="exploring-spatial-inputs.html#cb20-1"></a><span class="kw">tmap_arrange</span>(</span>
-<span id="cb20-2"><a href="exploring-spatial-inputs.html#cb20-2"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Ecto_max)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
-<span id="cb20-3"><a href="exploring-spatial-inputs.html#cb20-3"></a><span class="st">  </span><span class="kw">tm_raster</span>(),    <span class="co">#seq(-30,30,10))</span></span>
-<span id="cb20-4"><a href="exploring-spatial-inputs.html#cb20-4"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_C_max)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
-<span id="cb20-5"><a href="exploring-spatial-inputs.html#cb20-5"></a><span class="st">  </span><span class="kw">tm_raster</span>(),</span>
-<span id="cb20-6"><a href="exploring-spatial-inputs.html#cb20-6"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_H_max)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
-<span id="cb20-7"><a href="exploring-spatial-inputs.html#cb20-7"></a><span class="st">  </span><span class="kw">tm_raster</span>(),    <span class="co">#seq(-30,30,10))</span></span>
-<span id="cb20-8"><a href="exploring-spatial-inputs.html#cb20-8"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_O_max)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
-<span id="cb20-9"><a href="exploring-spatial-inputs.html#cb20-9"></a><span class="st">  </span><span class="kw">tm_raster</span>())</span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="exploring-spatial-inputs.html#cb98-1"></a><span class="kw">tmap_arrange</span>(</span>
+<span id="cb98-2"><a href="exploring-spatial-inputs.html#cb98-2"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Ecto_max)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
+<span id="cb98-3"><a href="exploring-spatial-inputs.html#cb98-3"></a><span class="st">  </span><span class="kw">tm_raster</span>(),    <span class="co">#seq(-30,30,10))</span></span>
+<span id="cb98-4"><a href="exploring-spatial-inputs.html#cb98-4"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_C_max)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
+<span id="cb98-5"><a href="exploring-spatial-inputs.html#cb98-5"></a><span class="st">  </span><span class="kw">tm_raster</span>(),</span>
+<span id="cb98-6"><a href="exploring-spatial-inputs.html#cb98-6"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_H_max)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
+<span id="cb98-7"><a href="exploring-spatial-inputs.html#cb98-7"></a><span class="st">  </span><span class="kw">tm_raster</span>(),    <span class="co">#seq(-30,30,10))</span></span>
+<span id="cb98-8"><a href="exploring-spatial-inputs.html#cb98-8"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_O_max)<span class="op">+</span><span class="co">#, bbox = box)+</span></span>
+<span id="cb98-9"><a href="exploring-spatial-inputs.html#cb98-9"></a><span class="st">  </span><span class="kw">tm_raster</span>())</span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Ectothermic species are allowed (by the model) to get much bigger around the tropics (top). These are probably reptiles.</p>
 <p>Endothermic Carnivores are allowed to get the biggest in the north.</p>
 <p>Pure Herbivores are allowed to get biggest in Africa (savannahs). The units seem to be in minutes for some reason. The max allowed size for herbivores is</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="exploring-spatial-inputs.html#cb21-1"></a><span class="kw">maxValue</span>(sptl_inp<span class="op">$</span>Endo_H_max)<span class="op">/</span><span class="dv">1000000</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="exploring-spatial-inputs.html#cb99-1"></a><span class="kw">maxValue</span>(sptl_inp<span class="op">$</span>Endo_H_max)<span class="op">/</span><span class="dv">1000000</span></span></code></pre></div>
 <pre><code>% [1] 3.940034</code></pre>
 <p>tons.</p>
 <p>Omnivores are allowed to get biggest further north than the pure herbivores. They can only grow to 190 kg.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="exploring-spatial-inputs.html#cb23-1"></a><span class="kw">maxValue</span>(sptl_inp<span class="op">$</span>Endo_O_max)<span class="op">/</span><span class="dv">1000</span></span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="exploring-spatial-inputs.html#cb101-1"></a><span class="kw">maxValue</span>(sptl_inp<span class="op">$</span>Endo_O_max)<span class="op">/</span><span class="dv">1000</span></span></code></pre></div>
 <pre><code>% [1] 190.7923</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="exploring-spatial-inputs.html#cb25-1"></a><span class="kw">tmap_arrange</span>(</span>
-<span id="cb25-2"><a href="exploring-spatial-inputs.html#cb25-2"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Ecto_max, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb25-3"><a href="exploring-spatial-inputs.html#cb25-3"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">10000</span>,<span class="dv">1000</span>)), </span>
-<span id="cb25-4"><a href="exploring-spatial-inputs.html#cb25-4"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_C_max, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb25-5"><a href="exploring-spatial-inputs.html#cb25-5"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">50000</span>,<span class="dv">10000</span>)),</span>
-<span id="cb25-6"><a href="exploring-spatial-inputs.html#cb25-6"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_H_max, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb25-7"><a href="exploring-spatial-inputs.html#cb25-7"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">700000</span>,<span class="dv">100000</span>)),    </span>
-<span id="cb25-8"><a href="exploring-spatial-inputs.html#cb25-8"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_O_max, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb25-9"><a href="exploring-spatial-inputs.html#cb25-9"></a><span class="st">  </span><span class="kw">tm_raster</span>())</span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="exploring-spatial-inputs.html#cb103-1"></a><span class="kw">tmap_arrange</span>(</span>
+<span id="cb103-2"><a href="exploring-spatial-inputs.html#cb103-2"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Ecto_max, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb103-3"><a href="exploring-spatial-inputs.html#cb103-3"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">10000</span>,<span class="dv">1000</span>)), </span>
+<span id="cb103-4"><a href="exploring-spatial-inputs.html#cb103-4"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_C_max, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb103-5"><a href="exploring-spatial-inputs.html#cb103-5"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">50000</span>,<span class="dv">10000</span>)),</span>
+<span id="cb103-6"><a href="exploring-spatial-inputs.html#cb103-6"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_H_max, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb103-7"><a href="exploring-spatial-inputs.html#cb103-7"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="dt">style =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">700000</span>,<span class="dv">100000</span>)),    </span>
+<span id="cb103-8"><a href="exploring-spatial-inputs.html#cb103-8"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>Endo_O_max, <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb103-9"><a href="exploring-spatial-inputs.html#cb103-9"></a><span class="st">  </span><span class="kw">tm_raster</span>())</span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>In Norway, ectotherms can get to about 6 kg. The biggest species are probably snakes.
 Carnivores can grow to 40 kg. About right for a wolf. Bears are omnivores. They can grow to 200 kg in Norway. Pure herbivores are allowed to grow to about 500 kg.</p>
 <p>The data make sense, also for Norway.</p>
 <h3>
 NPP
 </h3>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="exploring-spatial-inputs.html#cb26-1"></a><span class="kw">tmap_arrange</span>(</span>
-<span id="cb26-2"><a href="exploring-spatial-inputs.html#cb26-2"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>terrestrial_net_primary_productivity[[<span class="dv">1</span>]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb26-3"><a href="exploring-spatial-inputs.html#cb26-3"></a><span class="st">  </span><span class="kw">tm_raster</span>()</span>
-<span id="cb26-4"><a href="exploring-spatial-inputs.html#cb26-4"></a>,</span>
-<span id="cb26-5"><a href="exploring-spatial-inputs.html#cb26-5"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>terrestrial_net_primary_productivity[[<span class="dv">7</span>]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
-<span id="cb26-6"><a href="exploring-spatial-inputs.html#cb26-6"></a><span class="st">  </span><span class="kw">tm_raster</span>()</span>
-<span id="cb26-7"><a href="exploring-spatial-inputs.html#cb26-7"></a>)</span></code></pre></div>
-<p><img src="05-Norway2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="exploring-spatial-inputs.html#cb104-1"></a><span class="kw">tmap_arrange</span>(</span>
+<span id="cb104-2"><a href="exploring-spatial-inputs.html#cb104-2"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>terrestrial_net_primary_productivity[[<span class="dv">1</span>]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb104-3"><a href="exploring-spatial-inputs.html#cb104-3"></a><span class="st">  </span><span class="kw">tm_raster</span>()</span>
+<span id="cb104-4"><a href="exploring-spatial-inputs.html#cb104-4"></a>,</span>
+<span id="cb104-5"><a href="exploring-spatial-inputs.html#cb104-5"></a><span class="kw">tm_shape</span>(sptl_inp<span class="op">$</span>terrestrial_net_primary_productivity[[<span class="dv">7</span>]], <span class="dt">bbox =</span> box)<span class="op">+</span></span>
+<span id="cb104-6"><a href="exploring-spatial-inputs.html#cb104-6"></a><span class="st">  </span><span class="kw">tm_raster</span>()</span>
+<span id="cb104-7"><a href="exploring-spatial-inputs.html#cb104-7"></a>)</span></code></pre></div>
+<p><img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>NPP for January to the left and july to the right. NPP is zero in winter, which is good.</p>
 
 </div>
@@ -355,8 +356,8 @@ NPP
           </div>
         </div>
       </div>
-<a href="norway---default-settings.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="norway---default-settings.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exploring-model-parameters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

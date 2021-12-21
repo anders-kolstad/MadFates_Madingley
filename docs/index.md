@@ -1,7 +1,7 @@
 --- 
-title: "Runniging the Madingley Model with Norwegian data"
+title: "Running the Madingley Model with Norwegian data"
 author: "Anders L. Kolstad"
-date: "2021-12-16"
+date: "2021-12-21"
 site: "bookdown::bookdown_site"
 output:
   bookdown::gitbook: default
