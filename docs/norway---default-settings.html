@@ -164,7 +164,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html#climate-data"><i class="fa fa-check"></i><b>6.1</b> Climate data</a></li>
 <li class="chapter" data-level="6.2" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html#other-spatial-inputs"><i class="fa fa-check"></i><b>6.2</b> Other spatial inputs</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="exploring-model-parameters.html"><a href="exploring-model-parameters.html"><i class="fa fa-check"></i><b>7</b> Exploring model parameters</a></li>
 </ul>
 
       </nav>
@@ -185,27 +184,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="norway---default-settings" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Norway - default settings</h1>
 <p>This is just a first look at what the model predicts for Norway with default settings.</p>
-<p>This page was last updated <code>2021-12-21 10:29:00</code></p>
+<p>This page was last updated <code>2021-12-21 16:02:22</code></p>
 <p>First we try with 4 x 4 grid cells (16 grid cells, with dispersion) in south-central Norway. Then we try with just one grid cell, but a longer temporal scope.</p>
 <div id="grid-cells" class="section level2">
 <h2><span class="header-section-number">5.1</span> 16 grid cells</h2>
 <p>Lets start with a too big bonding box for illustration.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="norway---default-settings.html#cb49-1"></a>spatial_window =<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">58</span>, <span class="dv">65</span>)</span>
-<span id="cb49-2"><a href="norway---default-settings.html#cb49-2"></a><span class="kw">plot_spatialwindow</span>(spatial_window)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="norway---default-settings.html#cb1-1"></a>spatial_window =<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">58</span>, <span class="dv">65</span>)</span>
+<span id="cb1-2"><a href="norway---default-settings.html#cb1-2"></a><span class="kw">plot_spatialwindow</span>(spatial_window)</span></code></pre></div>
 <p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>The default resolution is 1 degree, giving (7 x 7 =) 49 cells in this case, which is too much for testing purpuses due to compuatation time. The resolution is defined by the spatial input rasters, but 1 degree resolution is the maximum. Finer resolution is possible, ut not courser. I will therefore focus on just Central Norway. Plotting on top of mean annual temperature.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="norway---default-settings.html#cb50-1"></a>mat =<span class="st"> </span><span class="kw">mean</span>(sptl_inp[[<span class="dv">10</span>]])</span></code></pre></div>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="norway---default-settings.html#cb51-1"></a>spatial_window =<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">59</span>, <span class="dv">63</span>)</span>
-<span id="cb51-2"><a href="norway---default-settings.html#cb51-2"></a><span class="kw">plot_spatialwindow</span>(spatial_window, </span>
-<span id="cb51-3"><a href="norway---default-settings.html#cb51-3"></a>                   <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">55</span>,<span class="dv">65</span>), <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">20</span>),</span>
-<span id="cb51-4"><a href="norway---default-settings.html#cb51-4"></a>                   <span class="dt">input_raster =</span> mat)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="norway---default-settings.html#cb2-1"></a>mat =<span class="st"> </span><span class="kw">mean</span>(sptl_inp[[<span class="dv">10</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="norway---default-settings.html#cb3-1"></a>spatial_window =<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">59</span>, <span class="dv">63</span>)</span>
+<span id="cb3-2"><a href="norway---default-settings.html#cb3-2"></a><span class="kw">plot_spatialwindow</span>(spatial_window, </span>
+<span id="cb3-3"><a href="norway---default-settings.html#cb3-3"></a>                   <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">55</span>,<span class="dv">65</span>), <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">20</span>),</span>
+<span id="cb3-4"><a href="norway---default-settings.html#cb3-4"></a>                   <span class="dt">input_raster =</span> mat)</span></code></pre></div>
 <p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Notice how at high latitudes, one degree north-south is much longer in distance compared to 1 degree east-west.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="norway---default-settings.html#cb52-1"></a>mdata &lt;-<span class="st">  </span><span class="kw">madingley_init</span>(<span class="dt">spatial_window =</span> spatial_window,</span>
-<span id="cb52-2"><a href="norway---default-settings.html#cb52-2"></a>                       <span class="dt">cohort_def =</span> chrt_def,</span>
-<span id="cb52-3"><a href="norway---default-settings.html#cb52-3"></a>                       <span class="dt">stock_def =</span> stck_def,</span>
-<span id="cb52-4"><a href="norway---default-settings.html#cb52-4"></a>                       <span class="dt">spatial_inputs =</span> sptl_inp,</span>
-<span id="cb52-5"><a href="norway---default-settings.html#cb52-5"></a>                       <span class="dt">max_cohort =</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="norway---default-settings.html#cb4-1"></a>mdata &lt;-<span class="st">  </span><span class="kw">madingley_init</span>(<span class="dt">spatial_window =</span> spatial_window,</span>
+<span id="cb4-2"><a href="norway---default-settings.html#cb4-2"></a>                       <span class="dt">cohort_def =</span> chrt_def,</span>
+<span id="cb4-3"><a href="norway---default-settings.html#cb4-3"></a>                       <span class="dt">stock_def =</span> stck_def,</span>
+<span id="cb4-4"><a href="norway---default-settings.html#cb4-4"></a>                       <span class="dt">spatial_inputs =</span> sptl_inp,</span>
+<span id="cb4-5"><a href="norway---default-settings.html#cb4-5"></a>                       <span class="dt">max_cohort =</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>% Processing: realm_classification, land_mask, hanpp, available_water_capacity
 % Processing: Ecto_max, Endo_C_max, Endo_H_max, Endo_O_max
 % Processing: terrestrial_net_primary_productivity_1-12
@@ -214,114 +213,141 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 % Processing: ground_frost_frequency_1-12
 % Processing: diurnal_temperature_range_1-12
 % </code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="norway---default-settings.html#cb54-1"></a>mdata2 &lt;-<span class="st">  </span><span class="kw">madingley_run</span>(</span>
-<span id="cb54-2"><a href="norway---default-settings.html#cb54-2"></a>  <span class="dt">out_dir =</span> <span class="st">&quot;temp&quot;</span>,</span>
-<span id="cb54-3"><a href="norway---default-settings.html#cb54-3"></a>  <span class="dt">madingley_data =</span> mdata, </span>
-<span id="cb54-4"><a href="norway---default-settings.html#cb54-4"></a>  <span class="dt">years =</span> <span class="dv">10</span>, </span>
-<span id="cb54-5"><a href="norway---default-settings.html#cb54-5"></a>  <span class="dt">cohort_def =</span> chrt_def, </span>
-<span id="cb54-6"><a href="norway---default-settings.html#cb54-6"></a>  <span class="dt">stock_def =</span> stck_def, </span>
-<span id="cb54-7"><a href="norway---default-settings.html#cb54-7"></a>  <span class="dt">spatial_inputs =</span> sptl_inp, </span>
-<span id="cb54-8"><a href="norway---default-settings.html#cb54-8"></a>  <span class="dt">model_parameters =</span> mdl_prms,</span>
-<span id="cb54-9"><a href="norway---default-settings.html#cb54-9"></a>  <span class="dt">max_cohort =</span> <span class="dv">100</span>,</span>
-<span id="cb54-10"><a href="norway---default-settings.html#cb54-10"></a>  <span class="dt">silenced =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="norway---default-settings.html#cb6-1"></a>mdata2 &lt;-<span class="st">  </span><span class="kw">madingley_run</span>(</span>
+<span id="cb6-2"><a href="norway---default-settings.html#cb6-2"></a>  <span class="dt">out_dir =</span> <span class="st">&quot;temp&quot;</span>,</span>
+<span id="cb6-3"><a href="norway---default-settings.html#cb6-3"></a>  <span class="dt">madingley_data =</span> mdata, </span>
+<span id="cb6-4"><a href="norway---default-settings.html#cb6-4"></a>  <span class="dt">years =</span> <span class="dv">10</span>, </span>
+<span id="cb6-5"><a href="norway---default-settings.html#cb6-5"></a>  <span class="dt">cohort_def =</span> chrt_def, </span>
+<span id="cb6-6"><a href="norway---default-settings.html#cb6-6"></a>  <span class="dt">stock_def =</span> stck_def, </span>
+<span id="cb6-7"><a href="norway---default-settings.html#cb6-7"></a>  <span class="dt">spatial_inputs =</span> sptl_inp, </span>
+<span id="cb6-8"><a href="norway---default-settings.html#cb6-8"></a>  <span class="dt">model_parameters =</span> mdl_prms,</span>
+<span id="cb6-9"><a href="norway---default-settings.html#cb6-9"></a>  <span class="dt">max_cohort =</span> <span class="dv">100</span>,</span>
+<span id="cb6-10"><a href="norway---default-settings.html#cb6-10"></a>  <span class="dt">silenced =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>% Warning in system(run_exec, intern = T): running command &#39;&quot;C:/Users/
 % anders.kolstad/Documents/R/R-4.1.1/library/MadingleyR/win_exec/madingley.bat&quot;&#39;
 % had status 5</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="norway---default-settings.html#cb56-1"></a><span class="co"># Runtime approx 15 sec</span></span></code></pre></div>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="norway---default-settings.html#cb57-1"></a><span class="kw">plot_timelines</span>(mdata2)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="norway---default-settings.html#cb8-1"></a><span class="co"># Runtime approx 15 sec</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="norway---default-settings.html#cb9-1"></a><span class="kw">plot_timelines</span>(mdata2)</span></code></pre></div>
 <pre><code>% Warning in xtfrm.data.frame(x): cannot xtfrm data frames
 
 % Warning in xtfrm.data.frame(x): cannot xtfrm data frames</code></pre>
 <p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>The 10 year spin up was probably way too short, and we can see much variation or instability, but none the less, the seasonal patterns is visible for both autotrophs and heterotrophs, but it it much to little. There should be almost no ectotherm biomass in winter. Bird migration I don’t think is accounted for either. I predict this will be the biggest challenge - getting the Madingley model to capture the seasonal phenological stages.</p>
 <p>Exploring the cohorts in mdata2. Looking only at herbivorous endotherms, we can look at the relationship between individual size and abundance</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="norway---default-settings.html#cb59-1"></a>temp &lt;-<span class="st"> </span>mdata2<span class="op">$</span>cohorts</span>
-<span id="cb59-2"><a href="norway---default-settings.html#cb59-2"></a>temp &lt;-<span class="st"> </span>temp[temp<span class="op">$</span>FunctionalGroupIndex<span class="op">==</span><span class="dv">0</span>,]</span>
-<span id="cb59-3"><a href="norway---default-settings.html#cb59-3"></a></span>
-<span id="cb59-4"><a href="norway---default-settings.html#cb59-4"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> temp)<span class="op">+</span></span>
-<span id="cb59-5"><a href="norway---default-settings.html#cb59-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(IndividualBodyMass), </span>
-<span id="cb59-6"><a href="norway---default-settings.html#cb59-6"></a>                 <span class="dt">y =</span>  <span class="kw">log</span>(CohortAbundance)</span>
-<span id="cb59-7"><a href="norway---default-settings.html#cb59-7"></a>                 ),</span>
-<span id="cb59-8"><a href="norway---default-settings.html#cb59-8"></a>             <span class="dt">alpha=</span>.<span class="dv">1</span>, </span>
-<span id="cb59-9"><a href="norway---default-settings.html#cb59-9"></a>             <span class="dt">size=</span><span class="dv">8</span>, </span>
-<span id="cb59-10"><a href="norway---default-settings.html#cb59-10"></a>             <span class="dt">colour=</span><span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb59-11"><a href="norway---default-settings.html#cb59-11"></a>             <span class="dt">pch=</span><span class="dv">16</span>)<span class="op">+</span></span>
-<span id="cb59-12"><a href="norway---default-settings.html#cb59-12"></a><span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="norway---default-settings.html#cb11-1"></a>temp &lt;-<span class="st"> </span>mdata2<span class="op">$</span>cohorts</span>
+<span id="cb11-2"><a href="norway---default-settings.html#cb11-2"></a>temp &lt;-<span class="st"> </span>temp[temp<span class="op">$</span>FunctionalGroupIndex<span class="op">==</span><span class="dv">0</span>,]</span>
+<span id="cb11-3"><a href="norway---default-settings.html#cb11-3"></a></span>
+<span id="cb11-4"><a href="norway---default-settings.html#cb11-4"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> temp)<span class="op">+</span></span>
+<span id="cb11-5"><a href="norway---default-settings.html#cb11-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(IndividualBodyMass), </span>
+<span id="cb11-6"><a href="norway---default-settings.html#cb11-6"></a>                 <span class="dt">y =</span>  <span class="kw">log</span>(CohortAbundance)</span>
+<span id="cb11-7"><a href="norway---default-settings.html#cb11-7"></a>                 ),</span>
+<span id="cb11-8"><a href="norway---default-settings.html#cb11-8"></a>             <span class="dt">alpha=</span>.<span class="dv">1</span>, </span>
+<span id="cb11-9"><a href="norway---default-settings.html#cb11-9"></a>             <span class="dt">size=</span><span class="dv">8</span>, </span>
+<span id="cb11-10"><a href="norway---default-settings.html#cb11-10"></a>             <span class="dt">colour=</span><span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb11-11"><a href="norway---default-settings.html#cb11-11"></a>             <span class="dt">pch=</span><span class="dv">16</span>)<span class="op">+</span></span>
+<span id="cb11-12"><a href="norway---default-settings.html#cb11-12"></a><span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)</span></code></pre></div>
 <p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-7-1.png" width="480" /></p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="norway---default-settings.html#cb60-1"></a><span class="co"># plotting all grid cells and all cohorts or FG 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="norway---default-settings.html#cb12-1"></a><span class="co"># plotting all grid cells and all cohorts or FG 0</span></span></code></pre></div>
 <p>No relationship.</p>
 <p>Lets look at biomass differences between functional groups. First,let make more intuitive names for the functional groups.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="norway---default-settings.html#cb61-1"></a>link &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb61-2"><a href="norway---default-settings.html#cb61-2"></a>  <span class="dt">FG =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">8</span>,<span class="dv">1</span>),</span>
-<span id="cb61-3"><a href="norway---default-settings.html#cb61-3"></a>  <span class="dt">FGname =</span> <span class="kw">c</span>(<span class="st">&quot;Endo. herb.&quot;</span>,</span>
-<span id="cb61-4"><a href="norway---default-settings.html#cb61-4"></a>             <span class="st">&quot;Endo. carn.&quot;</span>,</span>
-<span id="cb61-5"><a href="norway---default-settings.html#cb61-5"></a>             <span class="st">&quot;Endo. omni.&quot;</span>,</span>
-<span id="cb61-6"><a href="norway---default-settings.html#cb61-6"></a>             <span class="st">&quot;Ecto. sem. herb.&quot;</span>, <span class="co"># semelparous (insect etc)</span></span>
-<span id="cb61-7"><a href="norway---default-settings.html#cb61-7"></a>             <span class="st">&quot;Ecto. sem. carn.&quot;</span>,</span>
-<span id="cb61-8"><a href="norway---default-settings.html#cb61-8"></a>             <span class="st">&quot;Ecto. sem. omni.&quot;</span>,</span>
-<span id="cb61-9"><a href="norway---default-settings.html#cb61-9"></a>             <span class="st">&quot;Ecto. itero. herb.&quot;</span>, <span class="co"># iteroparous (reptiles etc)</span></span>
-<span id="cb61-10"><a href="norway---default-settings.html#cb61-10"></a>             <span class="st">&quot;Ecto. itero. carn.&quot;</span>,</span>
-<span id="cb61-11"><a href="norway---default-settings.html#cb61-11"></a>             <span class="st">&quot;Ecto. itero. omni.&quot;</span></span>
-<span id="cb61-12"><a href="norway---default-settings.html#cb61-12"></a>             )</span>
-<span id="cb61-13"><a href="norway---default-settings.html#cb61-13"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="norway---default-settings.html#cb62-1"></a>temp &lt;-<span class="st"> </span>mdata2<span class="op">$</span>cohorts</span>
-<span id="cb62-2"><a href="norway---default-settings.html#cb62-2"></a></span>
-<span id="cb62-3"><a href="norway---default-settings.html#cb62-3"></a>temp2 &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">data =</span> temp,</span>
-<span id="cb62-4"><a href="norway---default-settings.html#cb62-4"></a>                   IndividualBodyMass<span class="op">~</span><span class="kw">factor</span>(FunctionalGroupIndex),</span>
-<span id="cb62-5"><a href="norway---default-settings.html#cb62-5"></a>                   <span class="dt">FUN =</span> mean)</span>
-<span id="cb62-6"><a href="norway---default-settings.html#cb62-6"></a>temp2<span class="op">$</span>CohortAbundance &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">data =</span> temp,</span>
-<span id="cb62-7"><a href="norway---default-settings.html#cb62-7"></a>                   CohortAbundance<span class="op">~</span><span class="kw">factor</span>(FunctionalGroupIndex),</span>
-<span id="cb62-8"><a href="norway---default-settings.html#cb62-8"></a>                   <span class="dt">FUN =</span> mean)[,<span class="dv">2</span>]</span>
-<span id="cb62-9"><a href="norway---default-settings.html#cb62-9"></a></span>
-<span id="cb62-10"><a href="norway---default-settings.html#cb62-10"></a><span class="kw">names</span>(temp2)[<span class="dv">1</span>]&lt;-<span class="st"> &quot;FG&quot;</span></span>
-<span id="cb62-11"><a href="norway---default-settings.html#cb62-11"></a></span>
-<span id="cb62-12"><a href="norway---default-settings.html#cb62-12"></a>temp2<span class="op">$</span>FG &lt;-<span class="st"> </span><span class="kw">as.character</span>(temp2<span class="op">$</span>FG)</span>
-<span id="cb62-13"><a href="norway---default-settings.html#cb62-13"></a>temp2<span class="op">$</span>FGname &lt;-<span class="st"> </span>link<span class="op">$</span>FGname[<span class="kw">match</span>(temp2<span class="op">$</span>FG, link<span class="op">$</span>FG)]</span>
-<span id="cb62-14"><a href="norway---default-settings.html#cb62-14"></a></span>
-<span id="cb62-15"><a href="norway---default-settings.html#cb62-15"></a></span>
-<span id="cb62-16"><a href="norway---default-settings.html#cb62-16"></a><span class="kw">ggplot</span>(temp2, <span class="kw">aes</span>(<span class="dt">x =</span> CohortAbundance,</span>
-<span id="cb62-17"><a href="norway---default-settings.html#cb62-17"></a>                 <span class="dt">y =</span> IndividualBodyMass,</span>
-<span id="cb62-18"><a href="norway---default-settings.html#cb62-18"></a>                 <span class="dt">label =</span> FGname))<span class="op">+</span></span>
-<span id="cb62-19"><a href="norway---default-settings.html#cb62-19"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">position =</span>  <span class="kw">position_dodge2v</span>(<span class="dv">2000</span>))<span class="op">+</span></span>
-<span id="cb62-20"><a href="norway---default-settings.html#cb62-20"></a><span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
-<span id="cb62-21"><a href="norway---default-settings.html#cb62-21"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">expansion</span>(<span class="dt">mult=</span><span class="kw">c</span>(.<span class="dv">2</span>,.<span class="dv">2</span>)))<span class="op">+</span></span>
-<span id="cb62-22"><a href="norway---default-settings.html#cb62-22"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">expansion</span>(<span class="dt">mult=</span><span class="kw">c</span>(.<span class="dv">2</span>,.<span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="norway---default-settings.html#cb13-1"></a>link &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb13-2"><a href="norway---default-settings.html#cb13-2"></a>  <span class="dt">FG =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">8</span>,<span class="dv">1</span>),</span>
+<span id="cb13-3"><a href="norway---default-settings.html#cb13-3"></a>  <span class="dt">FGname =</span> <span class="kw">c</span>(<span class="st">&quot;Endo. herb.&quot;</span>,</span>
+<span id="cb13-4"><a href="norway---default-settings.html#cb13-4"></a>             <span class="st">&quot;Endo. carn.&quot;</span>,</span>
+<span id="cb13-5"><a href="norway---default-settings.html#cb13-5"></a>             <span class="st">&quot;Endo. omni.&quot;</span>,</span>
+<span id="cb13-6"><a href="norway---default-settings.html#cb13-6"></a>             <span class="st">&quot;Ecto. sem. herb.&quot;</span>, <span class="co"># semelparous (insect etc)</span></span>
+<span id="cb13-7"><a href="norway---default-settings.html#cb13-7"></a>             <span class="st">&quot;Ecto. sem. carn.&quot;</span>,</span>
+<span id="cb13-8"><a href="norway---default-settings.html#cb13-8"></a>             <span class="st">&quot;Ecto. sem. omni.&quot;</span>,</span>
+<span id="cb13-9"><a href="norway---default-settings.html#cb13-9"></a>             <span class="st">&quot;Ecto. itero. herb.&quot;</span>, <span class="co"># iteroparous (reptiles etc)</span></span>
+<span id="cb13-10"><a href="norway---default-settings.html#cb13-10"></a>             <span class="st">&quot;Ecto. itero. carn.&quot;</span>,</span>
+<span id="cb13-11"><a href="norway---default-settings.html#cb13-11"></a>             <span class="st">&quot;Ecto. itero. omni.&quot;</span></span>
+<span id="cb13-12"><a href="norway---default-settings.html#cb13-12"></a>             )</span>
+<span id="cb13-13"><a href="norway---default-settings.html#cb13-13"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="norway---default-settings.html#cb14-1"></a>temp &lt;-<span class="st"> </span>mdata2<span class="op">$</span>cohorts</span>
+<span id="cb14-2"><a href="norway---default-settings.html#cb14-2"></a></span>
+<span id="cb14-3"><a href="norway---default-settings.html#cb14-3"></a>temp2 &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">data =</span> temp,</span>
+<span id="cb14-4"><a href="norway---default-settings.html#cb14-4"></a>                   IndividualBodyMass<span class="op">~</span><span class="kw">factor</span>(FunctionalGroupIndex),</span>
+<span id="cb14-5"><a href="norway---default-settings.html#cb14-5"></a>                   <span class="dt">FUN =</span> mean)</span>
+<span id="cb14-6"><a href="norway---default-settings.html#cb14-6"></a>temp2<span class="op">$</span>CohortAbundance &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">data =</span> temp,</span>
+<span id="cb14-7"><a href="norway---default-settings.html#cb14-7"></a>                   CohortAbundance<span class="op">~</span><span class="kw">factor</span>(FunctionalGroupIndex),</span>
+<span id="cb14-8"><a href="norway---default-settings.html#cb14-8"></a>                   <span class="dt">FUN =</span> mean)[,<span class="dv">2</span>]</span>
+<span id="cb14-9"><a href="norway---default-settings.html#cb14-9"></a></span>
+<span id="cb14-10"><a href="norway---default-settings.html#cb14-10"></a><span class="kw">names</span>(temp2)[<span class="dv">1</span>]&lt;-<span class="st"> &quot;FG&quot;</span></span>
+<span id="cb14-11"><a href="norway---default-settings.html#cb14-11"></a></span>
+<span id="cb14-12"><a href="norway---default-settings.html#cb14-12"></a>temp2<span class="op">$</span>FG &lt;-<span class="st"> </span><span class="kw">as.character</span>(temp2<span class="op">$</span>FG)</span>
+<span id="cb14-13"><a href="norway---default-settings.html#cb14-13"></a>temp2<span class="op">$</span>FGname &lt;-<span class="st"> </span>link<span class="op">$</span>FGname[<span class="kw">match</span>(temp2<span class="op">$</span>FG, link<span class="op">$</span>FG)]</span>
+<span id="cb14-14"><a href="norway---default-settings.html#cb14-14"></a></span>
+<span id="cb14-15"><a href="norway---default-settings.html#cb14-15"></a></span>
+<span id="cb14-16"><a href="norway---default-settings.html#cb14-16"></a><span class="kw">ggplot</span>(temp2, <span class="kw">aes</span>(<span class="dt">x =</span> CohortAbundance,</span>
+<span id="cb14-17"><a href="norway---default-settings.html#cb14-17"></a>                 <span class="dt">y =</span> IndividualBodyMass,</span>
+<span id="cb14-18"><a href="norway---default-settings.html#cb14-18"></a>                 <span class="dt">label =</span> FGname))<span class="op">+</span></span>
+<span id="cb14-19"><a href="norway---default-settings.html#cb14-19"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">position =</span>  <span class="kw">position_dodge2v</span>(<span class="dv">2000</span>))<span class="op">+</span></span>
+<span id="cb14-20"><a href="norway---default-settings.html#cb14-20"></a><span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb14-21"><a href="norway---default-settings.html#cb14-21"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">expansion</span>(<span class="dt">mult=</span><span class="kw">c</span>(.<span class="dv">2</span>,.<span class="dv">2</span>)))<span class="op">+</span></span>
+<span id="cb14-22"><a href="norway---default-settings.html#cb14-22"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">expansion</span>(<span class="dt">mult=</span><span class="kw">c</span>(.<span class="dv">2</span>,.<span class="dv">2</span>)))</span></code></pre></div>
 <p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<p>Obs, beware of strong dodging in thsi figure in place to be able to read all labels.</p>
-<p>Endothermic carnivores and herbivores are the biggest animals, but they make up a low proportion of the total biomass. Omnivorous ectotheric and semelparous species (insects) make up the bulk biomass.</p>
-<p>Note: The individual body mass is here the mean of all cohorts. If reproduction is low, mean individual body mass increases because of a higher propotion of older individuals (higher biomass in the cohors containing older individuals).</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="norway---default-settings.html#cb63-1"></a><span class="kw">plot_densities</span>(mdata2)</span></code></pre></div>
+<p>Obs, beware of strong dodging in this figure in place to be able to read all labels.</p>
+<p>Endothermic carnivores and herbivores are the biggest animals. Omnivorous ectotheric and semelparous species (insects) are small but numerous. The total biomass for a trophic group must somehow be the product of these two axes (se biomass pyramid below).</p>
+<p>Note: The individual body mass is here the mean of all cohorts. If reproduction is low, mean individual body mass increases because of a higher proportion of older individuals (higher biomass in the cohorst containing older individuals).</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="norway---default-settings.html#cb15-1"></a><span class="kw">plot_densities</span>(mdata2)</span></code></pre></div>
 <pre><code>% loading inputs from: temp/madingley_outs_21_12_21_10_29_15/</code></pre>
 <p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<p>I’m not good at reading these figures yet.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="norway---default-settings.html#cb65-1"></a><span class="kw">plot_trophicpyramid</span>(mdata2)</span></code></pre></div>
+<p>This figure is showing the distribution of total cohort biomass for each FG. For Herbivores (top right), the distribution is left-skewed, telling us that there is a threshold for how big a cohort cen get. This can be due to reproductive limitations og perhaps intraspecific competition leading to starvation or dispersal. Ectotherm biomass has a clear optimum, but no limitation in size, probably due to high plasticity in reproductive rates.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="norway---default-settings.html#cb17-1"></a><span class="kw">plot_trophicpyramid</span>(mdata2)</span></code></pre></div>
 <pre><code>% loading inputs from: temp/madingley_outs_21_12_21_10_29_15/</code></pre>
 <p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<p>Hmm, omnivores have a big biomass but only feed on herbivores, not plants.</p>
+<p>Hmm, omnivores have a big biomass but only feed on herbivores, not plants.
+Autrophic biomass is one quadrillion, or 100 trillion, og 10 000 billion kg. That’s 100 billion tons. These numbers are way to high. According to Wikipedia, 100 billion tons C is about 1/5th of the world biomass. Perhaps the unit in this figure should be g and not kg. The spatial inputs are given in grams, so it would make sense if these were also in grams. But even then the number is too big.</p>
+<p>The autrophic biomass in this figure is summed, accumulated for the whole year. Let me recreate the number in the figure.</p>
+<p>Rewrite autrophic biomass in a different way</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="norway---default-settings.html#cb19-1"></a><span class="dv">10</span><span class="op">^</span><span class="fl">15.17</span></span></code></pre></div>
+<pre><code>% [1] 1.479108e+15</code></pre>
+<p>This is the same as 1.47 * 10^15</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="norway---default-settings.html#cb21-1"></a><span class="fl">1.47</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="dv">15</span></span></code></pre></div>
+<pre><code>% [1] 1.47e+15</code></pre>
+<p>and the same as</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="norway---default-settings.html#cb23-1"></a><span class="kw">paste0</span>(<span class="st">&quot;10^&quot;</span>, <span class="kw">round</span>(</span>
+<span id="cb23-2"><a href="norway---default-settings.html#cb23-2"></a>  <span class="kw">log10</span>(<span class="fl">1.479108e+15</span>), <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>% [1] &quot;10^15.17&quot;</code></pre>
+<p>Now if we sum the biomass for the whole last year:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="norway---default-settings.html#cb25-1"></a>(biom &lt;-<span class="st"> </span><span class="kw">sum</span>(mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>TotalStockBiomass[</span>
+<span id="cb25-2"><a href="norway---default-settings.html#cb25-2"></a>  mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year<span class="op">==</span><span class="kw">max</span>(mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year) ]))</span></code></pre></div>
+<pre><code>% [1] 1.443508e+15</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="norway---default-settings.html#cb27-1"></a><span class="co">#Converted to base10 scientific</span></span>
+<span id="cb27-2"><a href="norway---default-settings.html#cb27-2"></a><span class="kw">paste0</span>(<span class="st">&quot;10^&quot;</span>, <span class="kw">round</span>(</span>
+<span id="cb27-3"><a href="norway---default-settings.html#cb27-3"></a>  <span class="kw">log10</span>(biom), <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>% [1] &quot;10^15.16&quot;</code></pre>
+<p>That’s it. But that’s weird, as the same ‘biomass’ is counted again and again each month.</p>
+<p>This is what the code looks like, (slightly modified) in plot_trophicpyramid()</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="norway---default-settings.html#cb29-1"></a>years &lt;-<span class="st">  </span><span class="dv">0</span></span>
+<span id="cb29-2"><a href="norway---default-settings.html#cb29-2"></a>tl &lt;-<span class="st">  </span>mdata2<span class="op">$</span>time_line_stocks</span>
+<span id="cb29-3"><a href="norway---default-settings.html#cb29-3"></a>tl &lt;-<span class="st">  </span><span class="kw">aggregate</span>(tl, <span class="dt">by =</span> <span class="kw">list</span>(tl<span class="op">$</span>Year), <span class="dt">FUN =</span> sum)</span>
+<span id="cb29-4"><a href="norway---default-settings.html#cb29-4"></a>tl &lt;-<span class="st">  </span>tl[(<span class="kw">nrow</span>(tl) <span class="op">-</span><span class="st"> </span><span class="kw">length</span>(years) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="kw">nrow</span>(tl), ]</span>
+<span id="cb29-5"><a href="norway---default-settings.html#cb29-5"></a>(biom &lt;-<span class="st"> </span><span class="kw">mean</span>(tl<span class="op">$</span>TotalStockBiomass))</span></code></pre></div>
 <p>Create log10-binned food-web plot</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="norway---default-settings.html#cb67-1"></a><span class="kw">plot_foodweb</span>(mdata2, <span class="dt">max_flows =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="norway---default-settings.html#cb30-1"></a><span class="kw">plot_foodweb</span>(mdata2, <span class="dt">max_flows =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>% loading inputs from: temp/madingley_outs_21_12_21_10_29_15/</code></pre>
-<p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>The interactions are dominated by carnivorous insects eating omnivorous insects. Omnivorous insects must have a high turn over, because their combined biomass is low at any one time.</p>
 <p>Plot the spatial biomass</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="norway---default-settings.html#cb69-1"></a><span class="kw">plot_spatialbiomass</span>(mdata2, <span class="dt">functional_filter =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="norway---default-settings.html#cb32-1"></a><span class="kw">plot_spatialbiomass</span>(mdata2, <span class="dt">functional_filter =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>% loading inputs from: temp/madingley_outs_21_12_21_10_29_15/</code></pre>
-<p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-13-1.png" width="864" /></p>
+<p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-18-1.png" width="864" /></p>
 <p>The next step I think is to go though the model parameters in mdl_prms and see if the settings make sense for boreal, mainly forested or alpine, ecosystem. We can also change values in the spatial input sptl_inp, for example setting the max biomass for ectotherms (we don’t have large reptiles here).</p>
 </div>
 <div id="single-grid-cell" class="section level2">
 <h2><span class="header-section-number">5.2</span> Single grid cell</h2>
 <p>Using a single grid cell we can run the simulation for longer, and see how that affects things.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="norway---default-settings.html#cb71-1"></a>spatial_window =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">60</span>, <span class="dv">61</span>)</span>
-<span id="cb71-2"><a href="norway---default-settings.html#cb71-2"></a><span class="kw">plot_spatialwindow</span>(spatial_window, </span>
-<span id="cb71-3"><a href="norway---default-settings.html#cb71-3"></a>                   <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">55</span>,<span class="dv">65</span>), <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">20</span>),</span>
-<span id="cb71-4"><a href="norway---default-settings.html#cb71-4"></a>                   <span class="dt">input_raster =</span> mat)</span></code></pre></div>
-<p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="norway---default-settings.html#cb72-1"></a>mdata &lt;-<span class="st">  </span><span class="kw">madingley_init</span>(<span class="dt">spatial_window =</span> spatial_window,</span>
-<span id="cb72-2"><a href="norway---default-settings.html#cb72-2"></a>                       <span class="dt">cohort_def =</span> chrt_def,</span>
-<span id="cb72-3"><a href="norway---default-settings.html#cb72-3"></a>                       <span class="dt">stock_def =</span> stck_def,</span>
-<span id="cb72-4"><a href="norway---default-settings.html#cb72-4"></a>                       <span class="dt">spatial_inputs =</span> sptl_inp,</span>
-<span id="cb72-5"><a href="norway---default-settings.html#cb72-5"></a>                       <span class="dt">max_cohort =</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="norway---default-settings.html#cb34-1"></a>spatial_window =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">60</span>, <span class="dv">61</span>)</span>
+<span id="cb34-2"><a href="norway---default-settings.html#cb34-2"></a><span class="kw">plot_spatialwindow</span>(spatial_window, </span>
+<span id="cb34-3"><a href="norway---default-settings.html#cb34-3"></a>                   <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">55</span>,<span class="dv">65</span>), <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">20</span>),</span>
+<span id="cb34-4"><a href="norway---default-settings.html#cb34-4"></a>                   <span class="dt">input_raster =</span> mat)</span></code></pre></div>
+<p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="norway---default-settings.html#cb35-1"></a>mdata &lt;-<span class="st">  </span><span class="kw">madingley_init</span>(<span class="dt">spatial_window =</span> spatial_window,</span>
+<span id="cb35-2"><a href="norway---default-settings.html#cb35-2"></a>                       <span class="dt">cohort_def =</span> chrt_def,</span>
+<span id="cb35-3"><a href="norway---default-settings.html#cb35-3"></a>                       <span class="dt">stock_def =</span> stck_def,</span>
+<span id="cb35-4"><a href="norway---default-settings.html#cb35-4"></a>                       <span class="dt">spatial_inputs =</span> sptl_inp,</span>
+<span id="cb35-5"><a href="norway---default-settings.html#cb35-5"></a>                       <span class="dt">max_cohort =</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>% Processing: realm_classification, land_mask, hanpp, available_water_capacity
 % Processing: Ecto_max, Endo_C_max, Endo_H_max, Endo_O_max
 % Processing: terrestrial_net_primary_productivity_1-12
@@ -331,25 +357,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 % Processing: diurnal_temperature_range_1-12
 % </code></pre>
 <p>Using 100 years instead of 10</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="norway---default-settings.html#cb74-1"></a>mdata2 &lt;-<span class="st">  </span><span class="kw">madingley_run</span>(</span>
-<span id="cb74-2"><a href="norway---default-settings.html#cb74-2"></a>  <span class="dt">out_dir =</span> <span class="st">&quot;temp&quot;</span>,</span>
-<span id="cb74-3"><a href="norway---default-settings.html#cb74-3"></a>  <span class="dt">madingley_data =</span> mdata, </span>
-<span id="cb74-4"><a href="norway---default-settings.html#cb74-4"></a>  <span class="dt">years =</span> <span class="dv">100</span>, </span>
-<span id="cb74-5"><a href="norway---default-settings.html#cb74-5"></a>  <span class="dt">cohort_def =</span> chrt_def, </span>
-<span id="cb74-6"><a href="norway---default-settings.html#cb74-6"></a>  <span class="dt">stock_def =</span> stck_def, </span>
-<span id="cb74-7"><a href="norway---default-settings.html#cb74-7"></a>  <span class="dt">spatial_inputs =</span> sptl_inp, </span>
-<span id="cb74-8"><a href="norway---default-settings.html#cb74-8"></a>  <span class="dt">model_parameters =</span> mdl_prms,</span>
-<span id="cb74-9"><a href="norway---default-settings.html#cb74-9"></a>  <span class="dt">max_cohort =</span> <span class="dv">100</span>,</span>
-<span id="cb74-10"><a href="norway---default-settings.html#cb74-10"></a>  <span class="dt">silenced =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="norway---default-settings.html#cb37-1"></a>mdata2 &lt;-<span class="st">  </span><span class="kw">madingley_run</span>(</span>
+<span id="cb37-2"><a href="norway---default-settings.html#cb37-2"></a>  <span class="dt">out_dir =</span> <span class="st">&quot;temp&quot;</span>,</span>
+<span id="cb37-3"><a href="norway---default-settings.html#cb37-3"></a>  <span class="dt">madingley_data =</span> mdata, </span>
+<span id="cb37-4"><a href="norway---default-settings.html#cb37-4"></a>  <span class="dt">years =</span> <span class="dv">100</span>, </span>
+<span id="cb37-5"><a href="norway---default-settings.html#cb37-5"></a>  <span class="dt">cohort_def =</span> chrt_def, </span>
+<span id="cb37-6"><a href="norway---default-settings.html#cb37-6"></a>  <span class="dt">stock_def =</span> stck_def, </span>
+<span id="cb37-7"><a href="norway---default-settings.html#cb37-7"></a>  <span class="dt">spatial_inputs =</span> sptl_inp, </span>
+<span id="cb37-8"><a href="norway---default-settings.html#cb37-8"></a>  <span class="dt">model_parameters =</span> mdl_prms,</span>
+<span id="cb37-9"><a href="norway---default-settings.html#cb37-9"></a>  <span class="dt">max_cohort =</span> <span class="dv">100</span>,</span>
+<span id="cb37-10"><a href="norway---default-settings.html#cb37-10"></a>  <span class="dt">silenced =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>% Warning in system(run_exec, intern = T): running command &#39;&quot;C:/Users/
 % anders.kolstad/Documents/R/R-4.1.1/library/MadingleyR/win_exec/madingley.bat&quot;&#39;
 % had status 5</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="norway---default-settings.html#cb76-1"></a><span class="co"># Runtime approx 45 sec</span></span></code></pre></div>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="norway---default-settings.html#cb77-1"></a><span class="kw">plot_timelines</span>(mdata2)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="norway---default-settings.html#cb39-1"></a><span class="co"># Runtime approx 45 sec</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="norway---default-settings.html#cb40-1"></a><span class="kw">plot_timelines</span>(mdata2)</span></code></pre></div>
 <pre><code>% Warning in xtfrm.data.frame(x): cannot xtfrm data frames
 
 % Warning in xtfrm.data.frame(x): cannot xtfrm data frames</code></pre>
-<p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>The components seem to stabilise relatively fast, and after ~20 years there are no long-term trends (results vary between each time this page is rendered). The relative biomass distribution between functional groups is different. This is probably a characteristic of this grid cell, and have less to do with the number of years simulated by the model.</p>
 
 </div>

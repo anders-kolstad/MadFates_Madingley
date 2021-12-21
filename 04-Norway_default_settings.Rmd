@@ -140,24 +140,67 @@ ggplot(temp2, aes(x = CohortAbundance,
 
 ```
 
-Obs, beware of strong dodging in thsi figure in place to be able to read all labels. 
+Obs, beware of strong dodging in this figure in place to be able to read all labels. 
 
-Endothermic carnivores and herbivores are the biggest animals, but they make up a low proportion of the total biomass. Omnivorous ectotheric and semelparous species (insects) make up the bulk biomass.
+Endothermic carnivores and herbivores are the biggest animals. Omnivorous ectotheric and semelparous species (insects) are small but numerous. The total biomass for a trophic group must somehow be the product of these two axes (se biomass pyramid below).
 
-Note: The individual body mass is here the mean of all cohorts. If reproduction is low, mean individual body mass increases because of a higher propotion of older individuals (higher biomass in the cohors containing older individuals).
+Note: The individual body mass is here the mean of all cohorts. If reproduction is low, mean individual body mass increases because of a higher proportion of older individuals (higher biomass in the cohorst containing older individuals).
 
 
 ```{r, fig.width=7, fig.height=7}
 plot_densities(mdata2)
 ```
 
-I'm not good at reading these figures yet.
+This figure is showing the distribution of total cohort biomass for each FG. For Herbivores (top right), the distribution is left-skewed, telling us that there is a threshold for how big a cohort cen get. This can be due to reproductive limitations og perhaps intraspecific competition leading to starvation or dispersal. Ectotherm biomass has a clear optimum, but no limitation in size, probably due to high plasticity in reproductive rates.  
 
 ```{r, fig.height=5, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
 plot_trophicpyramid(mdata2)
 ```
 
 Hmm, omnivores have a big biomass but only feed on herbivores, not plants.
+Autrophic biomass is one quadrillion, or 100 trillion, og 10 000 billion kg. That's 100 billion tons. These numbers are way to high. According to Wikipedia, 100 billion tons C is about 1/5th of the world biomass. Perhaps the unit in this figure should be g and not kg. The spatial inputs are given in grams, so it would make sense if these were also in grams. But even then the number is too big.
+
+The autrophic biomass in this figure is summed, accumulated for the whole of the last year. Let me recreate the number in the figure. 
+
+Rewrite autrophic biomass in a different way
+```{r}
+10^15.17
+```
+This is the same as 1.47 * 10^15
+```{r}
+1.47 * 10^15
+```
+
+and the same as
+```{r}
+paste0("10^", round(
+  log10(1.479108e+15), 2))
+```
+
+
+Now if we sum the biomass for the whole last year:
+```{r}
+(biom <- sum(mdata2$time_line_stocks$TotalStockBiomass[
+  mdata2$time_line_stocks$Year==max(mdata2$time_line_stocks$Year) ]))
+
+#Converted to base10 scientific
+paste0("10^", round(
+  log10(biom), 2))
+
+```
+That's it. But that's weird, as the same 'biomass' is counted again and again each month.
+
+
+
+This is what the code looks like, (slightly modified) in plot_trophicpyramid()
+```{r, eval=F}
+years <-  0
+tl <-  mdata2$time_line_stocks
+tl <-  aggregate(tl, by = list(tl$Year), FUN = sum)
+tl <-  tl[(nrow(tl) - length(years) + 1):nrow(tl), ]
+(biom <- mean(tl$TotalStockBiomass))
+```
+
 
 Create log10-binned food-web plot
 ```{r, fig.height=5, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
