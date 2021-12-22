@@ -14,4 +14,4 @@ single-grid-cell
 exploring-spatial-inputs
 climate-data
 other-spatial-inputs
-exploring-model-parameters
+trophic-pyramids

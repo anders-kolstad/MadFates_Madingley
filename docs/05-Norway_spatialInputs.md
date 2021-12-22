@@ -1,7 +1,7 @@
 # Exploring spatial inputs
 
 
-This page was last updated ``2021-12-21 10:30:56``
+This page was last updated ``2021-12-22 10:01:46``
 
 
 On this page I am exploring the spatial inputs to see if they make sense fir Norway.

@@ -2,7 +2,7 @@
 
 This is just a first look at what the model predicts for Norway with default settings.
 
-This page was last updated ``2021-12-21 16:02:22``
+This page was last updated ``2021-12-22 09:59:42``
 
 
 
@@ -81,6 +81,13 @@ mdata2 <-  madingley_run(
 ```r
 # Runtime approx 15 sec
 ```
+Save the output.
+
+```r
+save(mdata2, chrt_def, mdl_prms, sptl_inp, stck_def, 
+        file = "data/NorwayDefaultSpinup.RData")
+```
+
 
 
 ```r
@@ -93,7 +100,7 @@ plot_timelines(mdata2)
 % Warning in xtfrm.data.frame(x): cannot xtfrm data frames
 ```
 
-<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 The 10 year spin up was probably way too short, and we can see much variation or instability, but none the less, the seasonal patterns is visible for both autotrophs and heterotrophs, but it it much to little. There should be almost no ectotherm biomass in winter. Bird migration I don't think is accounted for either. I predict this will be the biggest challenge - getting the Madingley model to capture the seasonal phenological stages. 
 
@@ -115,11 +122,12 @@ ggplot(data = temp)+
   theme_bw(base_size = 20)
 ```
 
-<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-7-1.png" width="480" />
+<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-8-1.png" width="480" />
 
 ```r
 # plotting all grid cells and all cohorts or FG 0
 ```
+
 
 No relationship.
 
@@ -170,7 +178,7 @@ ggplot(temp2, aes(x = CohortAbundance,
   scale_x_continuous(expand = expansion(mult=c(.2,.2)))
 ```
 
-<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 Obs, beware of strong dodging in this figure in place to be able to read all labels. 
 
@@ -188,7 +196,7 @@ plot_densities(mdata2)
 % loading inputs from: temp/madingley_outs_21_12_21_10_29_15/
 ```
 
-<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 This figure is showing the distribution of total cohort biomass for each FG. For Herbivores (top right), the distribution is left-skewed, telling us that there is a threshold for how big a cohort cen get. This can be due to reproductive limitations og perhaps intraspecific competition leading to starvation or dispersal. Ectotherm biomass has a clear optimum, but no limitation in size, probably due to high plasticity in reproductive rates.  
 
@@ -201,77 +209,10 @@ plot_trophicpyramid(mdata2)
 % loading inputs from: temp/madingley_outs_21_12_21_10_29_15/
 ```
 
-<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
-Hmm, omnivores have a big biomass but only feed on herbivores, not plants.
-Autrophic biomass is one quadrillion, or 100 trillion, og 10 000 billion kg. That's 100 billion tons. These numbers are way to high. According to Wikipedia, 100 billion tons C is about 1/5th of the world biomass. Perhaps the unit in this figure should be g and not kg. The spatial inputs are given in grams, so it would make sense if these were also in grams. But even then the number is too big.
+Se the pge on trophic pyramids for a more detailed exploration of this figure and what it contains. 
 
-The autrophic biomass in this figure is summed, accumulated for the whole year. Let me recreate the number in the figure. 
-
-Rewrite autrophic biomass in a different way
-
-```r
-10^15.17
-```
-
-```
-% [1] 1.479108e+15
-```
-This is the same as 1.47 * 10^15
-
-```r
-1.47 * 10^15
-```
-
-```
-% [1] 1.47e+15
-```
-
-and the same as
-
-```r
-paste0("10^", round(
-  log10(1.479108e+15), 2))
-```
-
-```
-% [1] "10^15.17"
-```
-
-
-Now if we sum the biomass for the whole last year:
-
-```r
-(biom <- sum(mdata2$time_line_stocks$TotalStockBiomass[
-  mdata2$time_line_stocks$Year==max(mdata2$time_line_stocks$Year) ]))
-```
-
-```
-% [1] 1.443508e+15
-```
-
-```r
-#Converted to base10 scientific
-paste0("10^", round(
-  log10(biom), 2))
-```
-
-```
-% [1] "10^15.16"
-```
-That's it. But that's weird, as the same 'biomass' is counted again and again each month.
-
-
-
-This is what the code looks like, (slightly modified) in plot_trophicpyramid()
-
-```r
-years <-  0
-tl <-  mdata2$time_line_stocks
-tl <-  aggregate(tl, by = list(tl$Year), FUN = sum)
-tl <-  tl[(nrow(tl) - length(years) + 1):nrow(tl), ]
-(biom <- mean(tl$TotalStockBiomass))
-```
 
 
 Create log10-binned food-web plot
@@ -284,7 +225,7 @@ plot_foodweb(mdata2, max_flows = 5)
 % loading inputs from: temp/madingley_outs_21_12_21_10_29_15/
 ```
 
-<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 The interactions are dominated by carnivorous insects eating omnivorous insects. Omnivorous insects must have a high turn over, because their combined biomass is low at any one time.
 
@@ -298,7 +239,7 @@ plot_spatialbiomass(mdata2, functional_filter = TRUE)
 % loading inputs from: temp/madingley_outs_21_12_21_10_29_15/
 ```
 
-<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-18-1.png" width="864" />
+<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-14-1.png" width="864" />
 
 The next step I think is to go though the model parameters in mdl_prms and see if the settings make sense for boreal, mainly forested or alpine, ecosystem. We can also change values in the spatial input sptl_inp, for example setting the max biomass for ectotherms (we don't have large reptiles here).
 
@@ -314,7 +255,7 @@ plot_spatialwindow(spatial_window,
                    input_raster = mat)
 ```
 
-<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 
 ```r
@@ -371,7 +312,7 @@ plot_timelines(mdata2)
 % Warning in xtfrm.data.frame(x): cannot xtfrm data frames
 ```
 
-<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="04-Norway_default_settings_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 The components seem to stabilise relatively fast, and after ~20 years there are no long-term trends (results vary between each time this page is rendered). The relative biomass distribution between functional groups is different. This is probably a characteristic of this grid cell, and have less to do with the number of years simulated by the model. 
 

@@ -1,0 +1,160 @@
+# Trophic pyramids
+
+Exploring the biomass time series produced from running a 10 year spinup for 16 grid cells in central Norway.
+
+This page was last updated ```r Sys.time() ```
+
+```{r setup, include=F}
+library(MadingleyR)
+library(ggplot2)
+library(ggpubr)
+
+knitr::opts_chunk$set(comment='%')
+load("data/NorwayDefaultSpinup.RData")
+```
+
+```{r, fig.height=5, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+plot_trophicpyramid(mdata2)
+```
+
+Hmm, omnivores have a big biomass but only feed on herbivores, not plants.
+
+Autotrophic biomass is one quadrillion, or 100 trillion, og 10 000 billion kg. That's 100 billion tons. These numbers are way to high. According to Wikipedia, 100 billion tons C is about 1/5th of the world biomass. Perhaps the unit in this figure should be g and not kg. The spatial inputs are given in grams, so it would make sense if these were also in grams. But even then the number is too big, even after converting biomass to C.
+
+Hoeks et al 2020 Glo. Eco. Bio. got comparable values to us when using the same R package and same study extent (4x4 degrees). Harfoot et al 2014 got much lower values. For a single grid cell (aseasonal ecosystem in tropical Uganda) they got 24 611 tons og plant biomass. If we multiply that with 16 to become comparable to our study extent, we get `r 24611*16 ` tons, which is `r (24611*16)/(10^15.17/1000) ` times smaller than what we got. 
+
+However, how do our monthly estimates compare to Harfoot et al 2014.
+```{r}
+# our max monthly estimate in the last year of the spin up, converted to tons:
+(temp <- max(
+  mdata2$time_line_stocks$TotalStockBiomass[
+   mdata2$time_line_stocks$Year==max(mdata2$time_line_stocks$Year) ])/1000)
+
+#harfoots estimate 
+harfoot <- 24611*16
+
+temp/harfoot
+```
+Our values are about halv a million times bigger.
+If the values are actually in g's and not kg:
+```{r}
+temp <- temp/1000
+temp/harfoot
+```
+we're still far off. 
+
+
+
+
+The autrophic biomass in this figure is summed, accumulated for the whole of the last year. This is what the code looks like, (slightly modified) in plot_trophicpyramid()
+```{r, eval=F}
+years <-  0
+tl <-  mdata2$time_line_stocks
+tl <-  aggregate(tl, by = list(tl$Year), FUN = sum)
+tl <-  tl[(nrow(tl) - length(years) + 1):nrow(tl), ]
+(biom <- mean(tl$TotalStockBiomass))
+```
+
+Let me recreate the number in the figure. 
+Rewrite autrophic biomass in a different way
+```{r}
+10^15.17
+```
+This is the same as 1.47 * 10^15
+```{r}
+1.47 * 10^15
+```
+
+and the same as
+```{r}
+paste0("10^", round(
+  log10(1.479108e+15), 2))
+```
+
+
+Now if we sum the biomass for the whole last year:
+```{r}
+(biom <- sum(mdata2$time_line_stocks$TotalStockBiomass[
+  mdata2$time_line_stocks$Year==max(mdata2$time_line_stocks$Year) ]))
+
+#Converted to base10 scientific
+paste0("10^", round(
+  log10(biom), 2))
+
+```
+That's it. But that's weird, as the same 'biomass' is counted again and again each month.
+
+It makes more sense to me to just get the standing biomass for a given month. However, plant biomass peaks not in mid summer, but later.
+```{r}
+biom <- mdata2$time_line_stocks$TotalStockBiomass[
+  mdata2$time_line_stocks$Year==max(mdata2$time_line_stocks$Year) ]
+
+myY <- seq(0,max(biom), length.out = 5)
+myY2 <- round(seq(0,log10(max(biom)), length.out = 5), 0)
+myY2 <- paste0("10^", myY2)
+
+
+plot(biom, type="b", axes=F, ylab="Plant biomass (kg)", xlab="Month")
+axis(1, 1:12, month.abb, las=2)
+axis(2, myY, myY2)
+```
+
+It may be more appropriate to use the max for the last year, or the mean of the max over the last n-years.
+How do the monthly values compare to Harfoot et al 2014?
+
+
+What about the herbivore data.
+
+```{r}
+dat <- mdata2$time_line_cohorts
+#subset to only the last year
+dat <- dat[dat$Year == max(dat$Year),]
+# melt
+datm <- data.table::melt(dat,
+                         id.vars = c("Year", "Month"),
+                         variable.name = "FG",
+                         value.name = "biomass")
+
+datm$tons <- datm$biomass/1000000
+ggplot(dat = datm, aes(x = Month, y = tons, 
+                       colour = FG,
+                       linetype=FG))+
+  geom_line(size=1.5)+
+  theme_bw(base_size = 12)+
+  ylab("Biomass (tons)")
+```
+
+Combining the herbivores
+```{r}
+datherb <- datm[datm$FG == "Biomass_FG_0" |
+                  datm$FG == "Biomass_FG_3" |
+                  datm$FG == "Biomass_FG_6" ,]
+```
+
+Summed biomass across all months
+```{r}
+sum(datherb$tons)
+```
+
+Summed for the last month only
+```{r}
+sum(datherb$tons[datherb$Month==max(datherb$Month)])
+```
+
+
+Hoeks et al 2020 give the numbers for total herbivore biomass
+```{r}
+hoeks <- 10^11.11
+#convert to tonnage
+hoeks <- hoeks/1000
+```
+ This is a big number, even though the ecosystems are also different. 
+ 
+Harfoot et al 2014 get this number fo total herbivore biomass in tons (converted to same spatial extent)
+```{r}
+240*16
+```
+
+This is lower than all our numbers, but comparable to our max monthly estimate.
+
+

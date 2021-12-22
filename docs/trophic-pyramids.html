@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Trophic pyramids | Running the Madingley Model with Norwegian data</title>
+  <meta name="description" content="Chapter 7 Trophic pyramids | Running the Madingley Model with Norwegian data" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Trophic pyramids | Running the Madingley Model with Norwegian data" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Trophic pyramids | Running the Madingley Model with Norwegian data" />
+  
+  
+  
+
+<meta name="author" content="Anders L. Kolstad" />
+
+
+<meta name="date" content="2021-12-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="exploring-spatial-inputs.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.19/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/dt-ext-fixedcolumns-1.10.20/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedcolumns-1.10.20/js/dataTables.fixedColumns.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#some-useful-links"><i class="fa fa-check"></i><b>1.1</b> Some useful links</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#examples-of-use"><i class="fa fa-check"></i><b>1.1.1</b> Examples of use</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#terms-and-definitions"><i class="fa fa-check"></i><b>1.2</b> Terms and definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a></li>
+<li class="chapter" data-level="3" data-path="step-1---3.html"><a href="step-1---3.html"><i class="fa fa-check"></i><b>3</b> Step 1 - 3</a><ul>
+<li class="chapter" data-level="3.1" data-path="step-1---3.html"><a href="step-1---3.html#step-1---load-data"><i class="fa fa-check"></i><b>3.1</b> Step 1 - Load data</a></li>
+<li class="chapter" data-level="3.2" data-path="step-1---3.html"><a href="step-1---3.html#step-2---modify-input-parameters"><i class="fa fa-check"></i><b>3.2</b> Step 2 - Modify input parameters</a></li>
+<li class="chapter" data-level="3.3" data-path="step-1---3.html"><a href="step-1---3.html#step-3---initialisation"><i class="fa fa-check"></i><b>3.3</b> Step 3 - Initialisation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="step-4---spin-up-and-demonstrating-plotting-functions.html"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html"><i class="fa fa-check"></i><b>4</b> Step 4 - Spin-up and demonstrating plotting functions</a></li>
+<li class="chapter" data-level="5" data-path="norway---default-settings.html"><a href="norway---default-settings.html"><i class="fa fa-check"></i><b>5</b> Norway - default settings</a><ul>
+<li class="chapter" data-level="5.1" data-path="norway---default-settings.html"><a href="norway---default-settings.html#grid-cells"><i class="fa fa-check"></i><b>5.1</b> 16 grid cells</a></li>
+<li class="chapter" data-level="5.2" data-path="norway---default-settings.html"><a href="norway---default-settings.html#single-grid-cell"><i class="fa fa-check"></i><b>5.2</b> Single grid cell</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html"><i class="fa fa-check"></i><b>6</b> Exploring spatial inputs</a><ul>
+<li class="chapter" data-level="6.1" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html#climate-data"><i class="fa fa-check"></i><b>6.1</b> Climate data</a></li>
+<li class="chapter" data-level="6.2" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html#other-spatial-inputs"><i class="fa fa-check"></i><b>6.2</b> Other spatial inputs</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="trophic-pyramids.html"><a href="trophic-pyramids.html"><i class="fa fa-check"></i><b>7</b> Trophic pyramids</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Running the Madingley Model with Norwegian data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="trophic-pyramids" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Trophic pyramids</h1>
+<p>Exploring the biomass time series produced from running a 10 year spinup for 16 grid cells in central Norway.</p>
+<p>This page was last updated <code>2021-12-22 10:03:02</code></p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="trophic-pyramids.html#cb106-1"></a><span class="kw">plot_trophicpyramid</span>(mdata2)</span></code></pre></div>
+<pre><code>% loading inputs from: temp/madingley_outs_22_12_21_08_31_24/</code></pre>
+<p><img src="06-Trophic_pyramids_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Hmm, omnivores have a big biomass but only feed on herbivores, not plants.</p>
+<p>Autotrophic biomass is one quadrillion, or 100 trillion, og 10 000 billion kg. That’s 100 billion tons. These numbers are way to high. According to Wikipedia, 100 billion tons C is about 1/5th of the world biomass. Perhaps the unit in this figure should be g and not kg. The spatial inputs are given in grams, so it would make sense if these were also in grams. But even then the number is too big, even after converting biomass to C.</p>
+<p>Hoeks et al 2020 Glo. Eco. Bio. got comparable values to us when using the same R package and same study extent (4x4 degrees). Harfoot et al 2014 got much lower values. For a single grid cell (aseasonal ecosystem in tropical Uganda) they got 24 611 tons og plant biomass. If we multiply that with 16 to become comparable to our study extent, we get 3.9377610^{5} tons, which is 2.662252510^{-7} times smaller than what we got.</p>
+<p>However, how do our monthly estimates compare to Harfoot et al 2014.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="trophic-pyramids.html#cb108-1"></a><span class="co"># our max monthly estimate in the last year of the spin up, converted to tons:</span></span>
+<span id="cb108-2"><a href="trophic-pyramids.html#cb108-2"></a>(temp &lt;-<span class="st"> </span><span class="kw">max</span>(</span>
+<span id="cb108-3"><a href="trophic-pyramids.html#cb108-3"></a>  mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>TotalStockBiomass[</span>
+<span id="cb108-4"><a href="trophic-pyramids.html#cb108-4"></a>   mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year<span class="op">==</span><span class="kw">max</span>(mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year) ])<span class="op">/</span><span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>% [1] 2.14235e+11</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="trophic-pyramids.html#cb110-1"></a><span class="co">#harfoots estimate </span></span>
+<span id="cb110-2"><a href="trophic-pyramids.html#cb110-2"></a>harfoot &lt;-<span class="st"> </span><span class="dv">24611</span><span class="op">*</span><span class="dv">16</span></span>
+<span id="cb110-3"><a href="trophic-pyramids.html#cb110-3"></a></span>
+<span id="cb110-4"><a href="trophic-pyramids.html#cb110-4"></a>temp<span class="op">/</span>harfoot</span></code></pre></div>
+<pre><code>% [1] 544053</code></pre>
+<p>Our values are about halv a million times bigger.
+If the values are actually in g’s and not kg:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="trophic-pyramids.html#cb112-1"></a>temp &lt;-<span class="st"> </span>temp<span class="op">/</span><span class="dv">1000</span></span>
+<span id="cb112-2"><a href="trophic-pyramids.html#cb112-2"></a>temp<span class="op">/</span>harfoot</span></code></pre></div>
+<pre><code>% [1] 544.053</code></pre>
+<p>we’re still far off.</p>
+<p>The autrophic biomass in this figure is summed, accumulated for the whole of the last year. This is what the code looks like, (slightly modified) in plot_trophicpyramid()</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="trophic-pyramids.html#cb114-1"></a>years &lt;-<span class="st">  </span><span class="dv">0</span></span>
+<span id="cb114-2"><a href="trophic-pyramids.html#cb114-2"></a>tl &lt;-<span class="st">  </span>mdata2<span class="op">$</span>time_line_stocks</span>
+<span id="cb114-3"><a href="trophic-pyramids.html#cb114-3"></a>tl &lt;-<span class="st">  </span><span class="kw">aggregate</span>(tl, <span class="dt">by =</span> <span class="kw">list</span>(tl<span class="op">$</span>Year), <span class="dt">FUN =</span> sum)</span>
+<span id="cb114-4"><a href="trophic-pyramids.html#cb114-4"></a>tl &lt;-<span class="st">  </span>tl[(<span class="kw">nrow</span>(tl) <span class="op">-</span><span class="st"> </span><span class="kw">length</span>(years) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="kw">nrow</span>(tl), ]</span>
+<span id="cb114-5"><a href="trophic-pyramids.html#cb114-5"></a>(biom &lt;-<span class="st"> </span><span class="kw">mean</span>(tl<span class="op">$</span>TotalStockBiomass))</span></code></pre></div>
+<p>Let me recreate the number in the figure.
+Rewrite autrophic biomass in a different way</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="trophic-pyramids.html#cb115-1"></a><span class="dv">10</span><span class="op">^</span><span class="fl">15.17</span></span></code></pre></div>
+<pre><code>% [1] 1.479108e+15</code></pre>
+<p>This is the same as 1.47 * 10^15</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="trophic-pyramids.html#cb117-1"></a><span class="fl">1.47</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="dv">15</span></span></code></pre></div>
+<pre><code>% [1] 1.47e+15</code></pre>
+<p>and the same as</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="trophic-pyramids.html#cb119-1"></a><span class="kw">paste0</span>(<span class="st">&quot;10^&quot;</span>, <span class="kw">round</span>(</span>
+<span id="cb119-2"><a href="trophic-pyramids.html#cb119-2"></a>  <span class="kw">log10</span>(<span class="fl">1.479108e+15</span>), <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>% [1] &quot;10^15.17&quot;</code></pre>
+<p>Now if we sum the biomass for the whole last year:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="trophic-pyramids.html#cb121-1"></a>(biom &lt;-<span class="st"> </span><span class="kw">sum</span>(mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>TotalStockBiomass[</span>
+<span id="cb121-2"><a href="trophic-pyramids.html#cb121-2"></a>  mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year<span class="op">==</span><span class="kw">max</span>(mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year) ]))</span></code></pre></div>
+<pre><code>% [1] 1.48435e+15</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="trophic-pyramids.html#cb123-1"></a><span class="co">#Converted to base10 scientific</span></span>
+<span id="cb123-2"><a href="trophic-pyramids.html#cb123-2"></a><span class="kw">paste0</span>(<span class="st">&quot;10^&quot;</span>, <span class="kw">round</span>(</span>
+<span id="cb123-3"><a href="trophic-pyramids.html#cb123-3"></a>  <span class="kw">log10</span>(biom), <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>% [1] &quot;10^15.17&quot;</code></pre>
+<p>That’s it. But that’s weird, as the same ‘biomass’ is counted again and again each month.</p>
+<p>It makes more sense to me to just get the standing biomass for a given month. However, plant biomass peaks not in mid summer, but later.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="trophic-pyramids.html#cb125-1"></a>biom &lt;-<span class="st"> </span>mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>TotalStockBiomass[</span>
+<span id="cb125-2"><a href="trophic-pyramids.html#cb125-2"></a>  mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year<span class="op">==</span><span class="kw">max</span>(mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year) ]</span>
+<span id="cb125-3"><a href="trophic-pyramids.html#cb125-3"></a></span>
+<span id="cb125-4"><a href="trophic-pyramids.html#cb125-4"></a>myY &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="kw">max</span>(biom), <span class="dt">length.out =</span> <span class="dv">5</span>)</span>
+<span id="cb125-5"><a href="trophic-pyramids.html#cb125-5"></a>myY2 &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="kw">log10</span>(<span class="kw">max</span>(biom)), <span class="dt">length.out =</span> <span class="dv">5</span>), <span class="dv">0</span>)</span>
+<span id="cb125-6"><a href="trophic-pyramids.html#cb125-6"></a>myY2 &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;10^&quot;</span>, myY2)</span>
+<span id="cb125-7"><a href="trophic-pyramids.html#cb125-7"></a></span>
+<span id="cb125-8"><a href="trophic-pyramids.html#cb125-8"></a></span>
+<span id="cb125-9"><a href="trophic-pyramids.html#cb125-9"></a><span class="kw">plot</span>(biom, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">axes=</span>F, <span class="dt">ylab=</span><span class="st">&quot;Plant biomass (kg)&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Month&quot;</span>)</span>
+<span id="cb125-10"><a href="trophic-pyramids.html#cb125-10"></a><span class="kw">axis</span>(<span class="dv">1</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, month.abb, <span class="dt">las=</span><span class="dv">2</span>)</span>
+<span id="cb125-11"><a href="trophic-pyramids.html#cb125-11"></a><span class="kw">axis</span>(<span class="dv">2</span>, myY, myY2)</span></code></pre></div>
+<p><img src="06-Trophic_pyramids_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>It may be more appropriate to use the max for the last year, or the mean of the max over the last n-years.
+How do the monthly values compare to Harfoot et al 2014?</p>
+<p>What about the herbivore data.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="trophic-pyramids.html#cb126-1"></a>dat &lt;-<span class="st"> </span>mdata2<span class="op">$</span>time_line_cohorts</span>
+<span id="cb126-2"><a href="trophic-pyramids.html#cb126-2"></a><span class="co">#subset to only the last year</span></span>
+<span id="cb126-3"><a href="trophic-pyramids.html#cb126-3"></a>dat &lt;-<span class="st"> </span>dat[dat<span class="op">$</span>Year <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(dat<span class="op">$</span>Year),]</span>
+<span id="cb126-4"><a href="trophic-pyramids.html#cb126-4"></a><span class="co"># melt</span></span>
+<span id="cb126-5"><a href="trophic-pyramids.html#cb126-5"></a>datm &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">melt</span>(dat,</span>
+<span id="cb126-6"><a href="trophic-pyramids.html#cb126-6"></a>                         <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;Month&quot;</span>),</span>
+<span id="cb126-7"><a href="trophic-pyramids.html#cb126-7"></a>                         <span class="dt">variable.name =</span> <span class="st">&quot;FG&quot;</span>,</span>
+<span id="cb126-8"><a href="trophic-pyramids.html#cb126-8"></a>                         <span class="dt">value.name =</span> <span class="st">&quot;biomass&quot;</span>)</span></code></pre></div>
+<pre><code>% Warning in data.table::melt(dat, id.vars = c(&quot;Year&quot;, &quot;Month&quot;), variable.name
+% = &quot;FG&quot;, : The melt generic in data.table has been passed a data.frame and will
+% attempt to redirect to the relevant reshape2 method; please note that reshape2
+% is deprecated, and this redirection is now deprecated as well. To continue using
+% melt methods from reshape2 while both libraries are attached, e.g. melt.list,
+% you can prepend the namespace like reshape2::melt(dat). In the next version,
+% this warning will become an error.</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="trophic-pyramids.html#cb128-1"></a>datm<span class="op">$</span>tons &lt;-<span class="st"> </span>datm<span class="op">$</span>biomass<span class="op">/</span><span class="dv">1000000</span></span>
+<span id="cb128-2"><a href="trophic-pyramids.html#cb128-2"></a><span class="kw">ggplot</span>(<span class="dt">dat =</span> datm, <span class="kw">aes</span>(<span class="dt">x =</span> Month, <span class="dt">y =</span> tons, </span>
+<span id="cb128-3"><a href="trophic-pyramids.html#cb128-3"></a>                       <span class="dt">colour =</span> FG,</span>
+<span id="cb128-4"><a href="trophic-pyramids.html#cb128-4"></a>                       <span class="dt">linetype=</span>FG))<span class="op">+</span></span>
+<span id="cb128-5"><a href="trophic-pyramids.html#cb128-5"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="fl">1.5</span>)<span class="op">+</span></span>
+<span id="cb128-6"><a href="trophic-pyramids.html#cb128-6"></a><span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">12</span>)<span class="op">+</span></span>
+<span id="cb128-7"><a href="trophic-pyramids.html#cb128-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Biomass (tons)&quot;</span>)</span></code></pre></div>
+<p><img src="06-Trophic_pyramids_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Combining the herbivores</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="trophic-pyramids.html#cb129-1"></a>datherb &lt;-<span class="st"> </span>datm[datm<span class="op">$</span>FG <span class="op">==</span><span class="st"> &quot;Biomass_FG_0&quot;</span> <span class="op">|</span></span>
+<span id="cb129-2"><a href="trophic-pyramids.html#cb129-2"></a><span class="st">                  </span>datm<span class="op">$</span>FG <span class="op">==</span><span class="st"> &quot;Biomass_FG_3&quot;</span> <span class="op">|</span></span>
+<span id="cb129-3"><a href="trophic-pyramids.html#cb129-3"></a><span class="st">                  </span>datm<span class="op">$</span>FG <span class="op">==</span><span class="st"> &quot;Biomass_FG_6&quot;</span> ,]</span></code></pre></div>
+<p>Summed biomass across all months</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="trophic-pyramids.html#cb130-1"></a><span class="kw">sum</span>(datherb<span class="op">$</span>tons)</span></code></pre></div>
+<pre><code>% [1] 83650.28</code></pre>
+<p>Summed for the last month only</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="trophic-pyramids.html#cb132-1"></a><span class="kw">sum</span>(datherb<span class="op">$</span>tons[datherb<span class="op">$</span>Month<span class="op">==</span><span class="kw">max</span>(datherb<span class="op">$</span>Month)])</span></code></pre></div>
+<pre><code>% [1] 8374.995</code></pre>
+<p>Hoeks et al 2020 give the numbers for total herbivore biomass</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="trophic-pyramids.html#cb134-1"></a>hoeks &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="fl">11.11</span></span>
+<span id="cb134-2"><a href="trophic-pyramids.html#cb134-2"></a><span class="co">#convert to tonnage</span></span>
+<span id="cb134-3"><a href="trophic-pyramids.html#cb134-3"></a>hoeks &lt;-<span class="st"> </span>hoeks<span class="op">/</span><span class="dv">1000</span></span></code></pre></div>
+<p>This is a big number, even though the ecosystems are also different.</p>
+<p>Harfoot et al 2014 get this number fo total herbivore biomass in tons (converted to same spatial extent)</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="trophic-pyramids.html#cb135-1"></a><span class="dv">240</span><span class="op">*</span><span class="dv">16</span></span></code></pre></div>
+<pre><code>% [1] 3840</code></pre>
+<p>This is lower than all our numbers, but comparable to our max monthly estimate.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="exploring-spatial-inputs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
