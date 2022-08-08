@@ -6,7 +6,7 @@ knitr::opts_chunk$set(comment='%')
 load("data/initOut_demo.RData")
 ```
 
-The spin-up usualy requires a 100-1000 year simulation for the ecosystem parameters to stabilise. Here we will use just 2 years for demonstration. The function takes as input the output data fram ```madingley_init()``` as well as the standard model input variables /(which can be modified). 
+The spin-up usualy requires a 100-1000 year simulation for the ecosystem parameters to stabilise. Here we will use just 2 years for demonstration. The function takes as input the output data fram ```madingley_init()``` as well as the standard model input variables (which can be modified). 
 
 The below code is the same as in the vignette example except I had to define my own output folder for some reason. 
 ```{r, cache=T}
@@ -32,7 +32,8 @@ Lets view these timelines.
 ```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
 plot_timelines(mdata2)
 ```
-Plot body mass density
+
+Plot histograms for body mass:
 ```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
 plot_densities(mdata2)
 ```

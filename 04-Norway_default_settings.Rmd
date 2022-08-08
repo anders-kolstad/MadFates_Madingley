@@ -80,7 +80,7 @@ plot_timelines(mdata2)
 The 10 year spin up was probably way too short, and we can see much variation or instability, but none the less, the seasonal patterns is visible for both autotrophs and heterotrophs, but it it much to little. There should be almost no ectotherm biomass in winter. Bird migration I don't think is accounted for either. I predict this will be the biggest challenge - getting the Madingley model to capture the seasonal phenological stages. 
 
 
-Exploring the cohorts in mdata2. Looking only at herbivorous endotherms, we can look at the relationship between individual size and abundance
+Exploring the cohorts in mdata2. Looking only at herbivorous endotherms, we can look at the relationship between individual size (mean per grid cell) and abundance
 ```{r, fig.height=5, fig.width=5, message=FALSE,error=FALSE}
 temp <- mdata2$cohorts
 temp <- temp[temp$FunctionalGroupIndex==0,]
@@ -99,7 +99,7 @@ ggplot(data = temp)+
 ```
 
 
-No relationship.
+No strong pattern. This is perhaps not very useful, but simply illustrates the two factors that determine the cohort biomass.
 
 
 Lets look at biomass differences between functional groups. First,let make more intuitive names for the functional groups.
@@ -149,16 +149,16 @@ ggplot(temp2, aes(x = CohortAbundance,
 
 Obs, beware of strong dodging in this figure in place to be able to read all labels. 
 
-Endothermic carnivores and herbivores are the biggest animals. Omnivorous ectotheric and semelparous species (insects) are small but numerous. The total biomass for a trophic group must somehow be the product of these two axes (se biomass pyramid below).
+Endothermic carnivores and herbivores are the biggest animals. Omnivorous ectothermic and semelparous species (insects) are small but numerous. The total biomass for a trophic group must somehow be the product of these two axes (se biomass pyramid below).
 
-Note: The individual body mass is here the mean of all cohorts. If reproduction is low, mean individual body mass increases because of a higher proportion of older individuals (higher biomass in the cohorst containing older individuals).
+Note: The individual body mass is now the mean of all cohorts. If reproduction is low, mean individual body mass increases because of a higher proportion of older individuals (higher biomass in the cohorts containing older individuals).
 
 
 ```{r, fig.width=7, fig.height=7}
 plot_densities(mdata2)
 ```
 
-This figure is showing the distribution of total cohort biomass for each FG. For Herbivores (top right), the distribution is left-skewed, telling us that there is a threshold for how big a cohort cen get. This can be due to reproductive limitations og perhaps intraspecific competition leading to starvation or dispersal. Ectotherm biomass has a clear optimum, but no limitation in size, probably due to high plasticity in reproductive rates.  
+This figure is showing the distribution of total cohort biomass for each FG. For Herbivores (top left), the distribution is left-skewed, telling us that there is a threshold for how big a cohort can get. This can be due to reproductive limitations og perhaps intraspecific competition leading to starvation or dispersal. Ectotherm biomass has a clear optimum, but no limitation in size, probably due to high plasticity in reproductive rates.  
 
 ```{r, fig.height=5, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
 plot_trophicpyramid(mdata2)

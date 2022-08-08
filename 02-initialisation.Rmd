@@ -18,9 +18,10 @@ Plot the spatial window to check selection
 ```{r}
 plot_spatialwindow(spatial_window)
 ```
+
 This corresponds to somewhere in the Serengetti I think.
 
-This is the  default data to initialise the model. The spatial inputs is a relatively big list of raster files, but the others are small data frames. 
+Now I will define the input data - `madingley_inputs()` just contains the default data to initialise the model. All of these can be twaked by the user, which I will do later in the Norwegian example. The spatial inputs is a relatively big list of raster files, but the others are small data frames. 
 ```{r, message=FALSE, results='hide', cache=T}
 sptl_inp = madingley_inputs("spatial inputs")
 chrt_def = madingley_inputs("cohort definition")
@@ -87,7 +88,7 @@ We will not do any modifications at this stage
 
 ## Step 3 - Initialisation
 
-Model initialisation is done using ```madingley_init()``` by supplying the input data above (excl. model parameters). Also one can set the maximum number of cohors allowed per cell. The default is 500 and max is 1000. a higher number increases computation time due to more cohort interactions. 
+Model initialisation is done using ```madingley_init()``` by supplying the input data above (excl. model parameters). Also one can set the maximum number of cohorts allowed per cell. The default is 500 and max is 1000. a higher number increases computation time due to more cohort interactions. 
 
 ```{r, cache=T, eval=T}
 mdata <-  madingley_init(spatial_window = spatial_window,
@@ -102,7 +103,7 @@ Runtime is just a few seconds.
 str(mdata, 1)
 ```
 
-The output contain the cohors and stocks for each pixel.
+The output contain the cohorts and stocks for each pixel.
 
 ```{r}
 save(mdata, chrt_def, mdl_prms, sptl_inp, stck_def, 
