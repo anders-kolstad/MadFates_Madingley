@@ -45,13 +45,13 @@ Paper on the [model itself](https://journals.plos.org/plosbiology/article?id=10.
     + 7 = Ectothermic iteroparous carnivores (e.g. snakes)
     + 8 = Ectothermic iteroparous omnivores (e.g. ?)
     
-- `Cohorts` - Although an individual based model, this just means that the model represents interactions between individuals, and not that it models each of these interactions uniquely. To reduce computational time, individuals are gouped into cohorts if they:
+- `Cohorts` - Although an individual based model, this just means that the model represents interactions between individuals, and not that it models each of these interactions uniquely. To reduce computational time, individuals are grouped into cohorts if they:
 
     + belong to the same function group
     + exists inthe same grid cell
     + have identical continuous traits (e.g. body mass)
     
-Note that a cohort does not care about species indentities. The user can set the number of cohorts. The default is 500 and the maximum in 1000. This is per cell.
+Note that a cohort does not care about species identities. The user can set the number of cohorts. The default is 500 and the maximum in 1000. This is per cell.
 
 - `Dispersion` - cohorts can disperse between grid cells 
 

@@ -407,12 +407,13 @@ mdata <-  madingley_init(spatial_window = spatial_window,
                        spatial_inputs = sptl_inp,
                        max_cohort = 100)
 ```
-Using 100 years instead of 10
-```{r, cache=T}
+
+Using 200 years instead of 100
+```{r, cache=T, eval=F}
 mdata2 <-  madingley_run(
   out_dir = "temp",
   madingley_data = mdata, 
-  years = 100, 
+  years = 200, 
   cohort_def = chrt_def, 
   stock_def = stck_def, 
   spatial_inputs = sptl_inp, 
@@ -420,15 +421,57 @@ mdata2 <-  madingley_run(
   max_cohort = 100,
   silenced = TRUE)
 
-# Runtime approx 45 sec
+# Runtime approx 2-3 min
 ```
 
-```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+Save the output.
+```{r, eval=F}
+save(mdata2, #, chrt_def, mdl_prms, sptl_inp, stck_def, 
+        file = "data/NorwayDefaultSpinup_1cell.RData")
+```
+
+And read back
+```{r}
+load("data/NorwayDefaultSpinup_1cell.RData")
+```
+
+```{r, message=FALSE,error=FALSE,linewidth=90}
 plot_timelines(mdata2)
 ```
 
-The components seem to stabilise relatively fast, and after ~20 years there are no long-term trends (results vary between each time this page is rendered). The relative biomass distribution between functional groups is different. This is probably a characteristic of this grid cell, and have less to do with the number of years simulated by the model. 
+Looks messy.
 
+Plant biomass years 190-200
+```{r}
+temp <- mdata2$time_line_stocks
+temp <- temp[temp$Year >190,] # last 10 years of the simulation
+ggplot(data = temp,
+       aes(x = Month, 
+           y = TotalStockBiomass/10^12))+
+  geom_line(lwd = 1.5, colour = "grey")+
+  geom_point(size = 3 )+
+  theme_bw()+
+  ylab("Autrophic biomass (megatons)")+
+  ylim(c(0,0.025))
+```
 
+Pattern is the same as before, but the values are a lot lower! 
+
+Insect herbivores years 190-200:
+```{r}
+temp <- mdata2$time_line_cohorts
+temp <- temp[temp$Year>90,]
+
+ggplot(data = temp[temp$Year>90,],
+       aes(x = Month, 
+           y = Biomass_FG_3/10^6),
+       group = )+
+  geom_line(lwd = 1, colour = "black")+
+  geom_point(size = 3 )+
+  theme_bw()+
+  ylab("Biomass (tons) for herbivorous,\nectothermic and semelparous species")
+```
+
+Again, values are a lot lower! The insects here are showing erruptive or irruptive behavious as well. 
 
 
