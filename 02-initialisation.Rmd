@@ -97,7 +97,7 @@ mdata <-  madingley_init(spatial_window = spatial_window,
                        spatial_inputs = sptl_inp,
                        max_cohort = 100)
 ```
-Runtime is just a few seconds.
+Run time is just a few seconds.
 
 ```{r}
 str(mdata, 1)

@@ -13,6 +13,9 @@ link-citations: yes
 
 This work is part of the MadFates project, run by Joachim Töpper. The goal is to learn bit about the Madingley model and its potential for modeling biomass distributions across trophic levels in Norwegian boreal ecosystem. Perhaps limited to forests.
 
+* How can we validate the model?
+* What can we use the model for?
+
 This page is hosted in GitHub and produced using bookdown.
 
 ## Some useful links
