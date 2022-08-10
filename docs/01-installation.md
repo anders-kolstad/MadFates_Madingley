@@ -2,7 +2,7 @@
 
 Madingley is written in C++, but an R version is also available. Although a little bit less flexible perhaps, it should be more than sufficient four this project. And much more familiar.
 
-Madinley requires libm.so.6: version GLIBC_2.29. I thnk this is required for running the C++ executables. Perhaps its only requires on linux machines, i don't know. But in any case, the Rstudio server on NINA (Ubuntu 18.04) har libc6 v. 2.27 and IT don't want to upgrade due to dependencies with other software. Therefore I'm forces to work locally on my Windows laptop.
+Madingley requires libm.so.6: version GLIBC_2.29. I think this is required for running the C++ executables. Perhaps its only requires on linux machines, i don't know. But in any case, the Rstudio server on NINA (Ubuntu 18.04) has libc6 v. 2.27 and IT don't want to upgrade due to dependencies with other software. Therefore I'm forces to work locally on my Windows laptop.
 
 
 

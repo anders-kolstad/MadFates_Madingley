@@ -1,10 +1,10 @@
 # Exploring spatial inputs
 
 
-This page was last updated ``2021-12-22 10:01:46``
+This page was last updated ``2022-08-10 14:56:41``
 
 
-On this page I am exploring the spatial inputs to see if they make sense fir Norway.
+On this page I am exploring the spatial inputs to see if they make sense for Norway.
 
 
 
@@ -48,7 +48,7 @@ tm_shape(temp, bbox = box)+
 rm(temp)
 ```
 
-This looks a bit un-nuanced. Ket's first see this pattern in a continental context. Note: there's only one band here (annual means). 
+This looks a bit un-nuanced. Let's first see this pattern in a continental context. Note: there's only one band here (annual means I think). 
 
 
 ```r
@@ -66,7 +66,7 @@ tm_shape(temp, bbox = box2)+
 rm(temp)
 ```
 
-The majo, expected patterns are visible, but Norway non-the-less have values that are comparateble to parts of Sahara. WHat does this environmental varieble actually represent? 
+The major expected patterns are visible, but Norway non-the-less have values that are comparable to southern Greece. What does this environmental variable actually represent? 
 
 
 <h3> Temperature </h3>
@@ -83,10 +83,6 @@ tm_shape(temp[[c(1,6)]], bbox = box)+
 ```
 
 <img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-4-1.png" width="672" />
-
-```r
-rm(temp)
-```
 
 Minusgrader i Januar (øverst) og varmegrader i juni (nederst).
 
@@ -105,11 +101,7 @@ tm_shape(temp[[c(1,3,6, 9)]], bbox = box)+
 
 <img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
-```r
-rm(temp)
-```
-
-The W-E gradiant is evident in the precipitatin data. 
+The W-E gradient is evident in the precipitation data. 
 
 <h3> Ground frost frequency </h3>
 
@@ -124,10 +116,6 @@ tm_shape(temp[[c(1,3,6, 9)]], bbox = box)+
 
 <img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
-```r
-rm(temp)
-```
-
 <h3> Diurnal temperature range </h3>
 
 
@@ -141,11 +129,7 @@ tm_shape(temp[[c(1,3,6, 9)]], bbox = box)+
 
 <img src="05-Norway_spatialInputs_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-```r
-rm(temp)
-```
-
-This must be the difference between day and nighttime temperatures. There is a coast-inlanbd gradient with oceanic climates being lass variable on a diurnal scale. 
+This must be the difference between day and nighttime temperatures. There is a coast-inland gradient with oceanic climates being less variable on a diurnal scale. 
 
 <h3> WorldClim </h3>
 
@@ -182,7 +166,7 @@ cat(names(sptl_inp[-c(4,10,11,12,13)]), sep="\n")
 % terrestrial_net_primary_productivity
 ```
 
-Realm classifivation and the land mask are basically the same. They're just a masks seperating terrestrial land from the marine environment. Realm classifications has three levels (sea, land, antarctica, whereas land_mask treats Antarctica as land. Only terrestrial ecosystems are supported in the R version of Madingley. The C++ version also include marine ecosystems.
+Realm classification and the land mask are basically the same. They're just a masks seperating terrestrial land from the marine environment. Realm classifications has three levels (sea, land, antarctica, whereas land_mask treats Antarctica as land. Only terrestrial ecosystems are supported in the R version of Madingley. The C++ version also include marine ecosystems.
 
 
 ```r
@@ -210,6 +194,8 @@ The human land use is very limited in Norway according to this data. It's probab
 
 
 <h3> Max and min individual biomass </h3>
+
+These maps shpw the maximum individual size (mass) for the different functional groups. First I show the whole world, and then I zoom in on Norway.
 
 
 ```r
@@ -251,6 +237,7 @@ maxValue(sptl_inp$Endo_O_max)/1000
 % [1] 190.7923
 ```
 
+Then the same maps, but looking just at Norway
 
 ```r
 tmap_arrange(
@@ -269,11 +256,11 @@ tm_shape(sptl_inp$Endo_O_max, bbox = box)+
 In Norway, ectotherms can get to about 6 kg. The biggest species are probably snakes.
 Carnivores can grow to 40 kg. About right for a wolf. Bears are omnivores. They can grow to 200 kg in Norway. Pure herbivores are allowed to grow to about 500 kg.
 
-The data make sense, also for Norway.
+The data make sense, also for Norway. One could discuss I it's correct to treat large carnivores as functionally extinct.
 
 
 
-<h3> NPP </h3>
+<h3> Net Primary Productivity </h3>
 
 
 

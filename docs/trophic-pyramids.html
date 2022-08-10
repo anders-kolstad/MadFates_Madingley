@@ -24,7 +24,7 @@
 <meta name="author" content="Anders L. Kolstad" />
 
 
-<meta name="date" content="2021-12-22" />
+<meta name="date" content="2022-08-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="exploring-spatial-inputs.html"/>
 
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,34 +51,33 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.19/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/dt-ext-fixedcolumns-1.10.20/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
-<script src="libs/dt-ext-fixedcolumns-1.10.20/js/dataTables.fixedColumns.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<script src="libs/datatables-binding-0.20/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/dt-ext-fixedcolumns-1.11.3/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedcolumns-1.11.3/js/dataTables.fixedColumns.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -97,7 +97,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -143,28 +143,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#some-useful-links"><i class="fa fa-check"></i><b>1.1</b> Some useful links</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#some-useful-links"><i class="fa fa-check"></i><b>1.1</b> Some useful links</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#examples-of-use"><i class="fa fa-check"></i><b>1.1.1</b> Examples of use</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#terms-and-definitions"><i class="fa fa-check"></i><b>1.2</b> Terms and definitions</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a></li>
-<li class="chapter" data-level="3" data-path="step-1---3.html"><a href="step-1---3.html"><i class="fa fa-check"></i><b>3</b> Step 1 - 3</a><ul>
+<li class="chapter" data-level="3" data-path="step-1---3.html"><a href="step-1---3.html"><i class="fa fa-check"></i><b>3</b> Step 1 - 3</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="step-1---3.html"><a href="step-1---3.html#step-1---load-data"><i class="fa fa-check"></i><b>3.1</b> Step 1 - Load data</a></li>
 <li class="chapter" data-level="3.2" data-path="step-1---3.html"><a href="step-1---3.html#step-2---modify-input-parameters"><i class="fa fa-check"></i><b>3.2</b> Step 2 - Modify input parameters</a></li>
 <li class="chapter" data-level="3.3" data-path="step-1---3.html"><a href="step-1---3.html#step-3---initialisation"><i class="fa fa-check"></i><b>3.3</b> Step 3 - Initialisation</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="step-4---spin-up-and-demonstrating-plotting-functions.html"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html"><i class="fa fa-check"></i><b>4</b> Step 4 - Spin-up and demonstrating plotting functions</a></li>
-<li class="chapter" data-level="5" data-path="norway---default-settings.html"><a href="norway---default-settings.html"><i class="fa fa-check"></i><b>5</b> Norway - default settings</a><ul>
+<li class="chapter" data-level="5" data-path="norway---default-settings.html"><a href="norway---default-settings.html"><i class="fa fa-check"></i><b>5</b> Norway - default settings</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="norway---default-settings.html"><a href="norway---default-settings.html#grid-cells"><i class="fa fa-check"></i><b>5.1</b> 16 grid cells</a></li>
 <li class="chapter" data-level="5.2" data-path="norway---default-settings.html"><a href="norway---default-settings.html#single-grid-cell"><i class="fa fa-check"></i><b>5.2</b> Single grid cell</a></li>
+<li class="chapter" data-level="5.3" data-path="norway---default-settings.html"><a href="norway---default-settings.html#biomass-densities-rather-than-total-biomass"><i class="fa fa-check"></i><b>5.3</b> Biomass densities rather than total biomass</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html"><i class="fa fa-check"></i><b>6</b> Exploring spatial inputs</a><ul>
+<li class="chapter" data-level="6" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html"><i class="fa fa-check"></i><b>6</b> Exploring spatial inputs</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html#climate-data"><i class="fa fa-check"></i><b>6.1</b> Climate data</a></li>
 <li class="chapter" data-level="6.2" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html#other-spatial-inputs"><i class="fa fa-check"></i><b>6.2</b> Other spatial inputs</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="trophic-pyramids.html"><a href="trophic-pyramids.html"><i class="fa fa-check"></i><b>7</b> Trophic pyramids</a></li>
+<li class="chapter" data-level="7" data-path="trophic-pyramids.html"><a href="trophic-pyramids.html"><i class="fa fa-check"></i><b>7</b> Trophic pyramids</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="trophic-pyramids.html"><a href="trophic-pyramids.html#fixing-a-bug-inthe-r-package"><i class="fa fa-check"></i><b>7.1</b> Fixing a bug inthe R package</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -182,106 +191,123 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="trophic-pyramids" class="section level1">
+<div id="trophic-pyramids" class="section level1" number="7">
 <h1><span class="header-section-number">Chapter 7</span> Trophic pyramids</h1>
-<p>Exploring the biomass time series produced from running a 10 year spinup for 16 grid cells in central Norway.</p>
-<p>This page was last updated <code>2022-01-11 21:23:37</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="trophic-pyramids.html#cb1-1"></a><span class="kw">plot_trophicpyramid</span>(mdata2)</span></code></pre></div>
-<pre><code>% loading inputs from: temp/madingley_outs_22_12_21_08_31_24/</code></pre>
+<p>Exploring the biomass time series produced from running a 100 year spinup for 16 grid cells in central Norway.</p>
+<p>This page was last updated <code>2022-08-10 14:57:28</code></p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="trophic-pyramids.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_trophicpyramid</span>(mdata2)</span></code></pre></div>
+<pre><code>% loading inputs from: temp/madingley_outs_09_08_22_13_49_03/</code></pre>
 <p><img src="06-Trophic_pyramids_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>The autotrophic or plant biomass is 10^15.17 kg. Written in a more familiar different way, that is the same as</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="trophic-pyramids.html#cb3-1"></a>((<span class="dv">10</span><span class="op">^</span><span class="fl">15.17</span>)<span class="op">/</span><span class="dv">1000</span>)<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">9</span> <span class="co"># divided by 1 000 to go from kg to tons, and 1 000 000 000 to get Gt</span></span></code></pre></div>
+<p>These are monthly means (se below). The</p>
+<p>plant:animal ratio is</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="trophic-pyramids.html#cb117-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">10</span><span class="sc">^</span><span class="fl">8.9</span><span class="sc">+</span><span class="dv">10</span><span class="sc">^</span><span class="fl">9.41</span><span class="sc">+</span><span class="dv">10</span><span class="sc">^</span><span class="fl">9.76</span>)<span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="fl">11.16</span></span></code></pre></div>
+<pre><code>% [1] 0.06308892</code></pre>
+<p>or about 6%.</p>
+<p>Plant biomass converted to gigatons:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="trophic-pyramids.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="fl">11.16</span><span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="dv">12</span></span></code></pre></div>
+<pre><code>% [1] 0.144544</code></pre>
+<p>… or tons</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="trophic-pyramids.html#cb121-1" aria-hidden="true" tabindex="-1"></a>(plants <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="fl">11.16</span><span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>% [1] 144543977</code></pre>
+<p>Plant biomass presented as biomass densities (tons/km):</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="trophic-pyramids.html#cb123-1" aria-hidden="true" tabindex="-1"></a>gridProps <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">list_output_paths</span>(mdata2)<span class="sc">$</span>grid_properties[<span class="dv">1</span>])</span>
+<span id="cb123-2"><a href="trophic-pyramids.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate area of simulation, exclude marine grid cells</span></span>
+<span id="cb123-3"><a href="trophic-pyramids.html#cb123-3" aria-hidden="true" tabindex="-1"></a>AreaKm2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(gridProps<span class="sc">$</span>GetCellArea[gridProps<span class="sc">$</span>IsMarine<span class="sc">==</span><span class="dv">0</span>])</span>
+<span id="cb123-4"><a href="trophic-pyramids.html#cb123-4" aria-hidden="true" tabindex="-1"></a>plants<span class="sc">/</span>AreaKm2</span></code></pre></div>
+<pre><code>% [1] 1498.688</code></pre>
+<p>These values can perhaps be validated using landskog etc…?</p>
+<div id="fixing-a-bug-inthe-r-package" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Fixing a bug inthe R package</h2>
+<p>The autotrophic or plant biomass was initially 10^15.17 kg, or Written in a more familiar different way, that is the same as</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="trophic-pyramids.html#cb125-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">10</span><span class="sc">^</span><span class="fl">15.17</span>)<span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="dv">12</span> <span class="co"># divided by 1 000 to go from kg to tons, and 1 000 000 000 to get Gt</span></span></code></pre></div>
 <pre><code>% [1] 1479.108</code></pre>
-<p>Gigatons (Gt).</p>
-<p>Where does this number come from?
-I can recreate the number by summing the biomass for the whole last year of the simulation:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="trophic-pyramids.html#cb5-1"></a>biom &lt;-<span class="st"> </span><span class="kw">sum</span>(mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>TotalStockBiomass[</span>
-<span id="cb5-2"><a href="trophic-pyramids.html#cb5-2"></a>  mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year<span class="op">==</span><span class="kw">max</span>(mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year) ])</span>
-<span id="cb5-3"><a href="trophic-pyramids.html#cb5-3"></a></span>
-<span id="cb5-4"><a href="trophic-pyramids.html#cb5-4"></a><span class="co">#Converted to base10 scientific</span></span>
-<span id="cb5-5"><a href="trophic-pyramids.html#cb5-5"></a><span class="kw">paste0</span>(<span class="st">&quot;10^&quot;</span>, <span class="kw">round</span>(</span>
-<span id="cb5-6"><a href="trophic-pyramids.html#cb5-6"></a>  <span class="kw">log10</span>(biom), <span class="dv">2</span>))</span></code></pre></div>
-<pre><code>% [1] &quot;10^15.17&quot;</code></pre>
+<p>Gigatons (Gt). But after the authors fixed the model <a href="https://github.com/MadingleyR/MadingleyR/issues/1">following our input</a>, this estimate was reduced to 10^11.16 kg, or 0.14 gigatons.</p>
+<p>Where did/does this number come from?<br />
+I used to be able to recreate the number (that is, before they updated the package) by summing the biomass for the whole last year of the simulation:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="trophic-pyramids.html#cb127-1" aria-hidden="true" tabindex="-1"></a>biom <span class="ot">&lt;-</span> <span class="fu">sum</span>(mdata2<span class="sc">$</span>time_line_stocks<span class="sc">$</span>TotalStockBiomass[</span>
+<span id="cb127-2"><a href="trophic-pyramids.html#cb127-2" aria-hidden="true" tabindex="-1"></a>  mdata2<span class="sc">$</span>time_line_stocks<span class="sc">$</span>Year<span class="sc">==</span><span class="fu">max</span>(mdata2<span class="sc">$</span>time_line_stocks<span class="sc">$</span>Year) ])</span>
+<span id="cb127-3"><a href="trophic-pyramids.html#cb127-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-4"><a href="trophic-pyramids.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Converted to base10 scientific</span></span>
+<span id="cb127-5"><a href="trophic-pyramids.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;10^&quot;</span>, <span class="fu">round</span>(</span>
+<span id="cb127-6"><a href="trophic-pyramids.html#cb127-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log10</span>(biom), <span class="dv">2</span>))</span>
+<span id="cb127-7"><a href="trophic-pyramids.html#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="co"># result =  &quot;10^15.17&quot;</span></span></code></pre></div>
+<p>In the updated version, the biomass estimate used in the trophic pyramid is the annual mean instead:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="trophic-pyramids.html#cb128-1" aria-hidden="true" tabindex="-1"></a>biom <span class="ot">&lt;-</span> <span class="fu">mean</span>(mdata2<span class="sc">$</span>time_line_stocks<span class="sc">$</span>TotalStockBiomass[</span>
+<span id="cb128-2"><a href="trophic-pyramids.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  mdata2<span class="sc">$</span>time_line_stocks<span class="sc">$</span>Year<span class="sc">==</span><span class="fu">max</span>(mdata2<span class="sc">$</span>time_line_stocks<span class="sc">$</span>Year) ])</span>
+<span id="cb128-3"><a href="trophic-pyramids.html#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-4"><a href="trophic-pyramids.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Converted to base10 scientific</span></span>
+<span id="cb128-5"><a href="trophic-pyramids.html#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;10^&quot;</span>, <span class="fu">round</span>(</span>
+<span id="cb128-6"><a href="trophic-pyramids.html#cb128-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log10</span>(biom), <span class="dv">2</span>))</span>
+<span id="cb128-7"><a href="trophic-pyramids.html#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="co"># result =  &quot;10^15.17&quot;</span></span></code></pre></div>
 <p>According to <a href="https://en.wikipedia.org/wiki/Biomass_(ecology)">Wikipedia</a> the total biomass of the world is about 1 000 billion tons (assuming 50% C). This is the same as 1 000 gigatons Gt. A <a href="https://www.weforum.org/agenda/2021/08/total-biomass-weight-species-earth">different source</a> says 500 Gt for the total world biomass.</p>
-<p>Our estimate for the plant biomass of south Norway is therefore about 50% bigger than the total biomass of the planet!</p>
-<p><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/geb.13354">Hoeks et al 2020 Glo. Eco. Bio.</a> got comparable values to us when using the same R package and same study extent (4x4 degrees). If our numbers are wrong in thi example, then their numbers must be wrong as well.</p>
+<p>Our estimate for the plant biomass of south Norway was therefore about 50% bigger than the total biomass of the planet!</p>
+<p><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/geb.13354">Hoeks et al 2020 Glo. Eco. Bio.</a> got comparable values to us when using the same R package and same study extent (4x4 degrees). If our numbers are wrong in this example, then their numbers must be wrong as well.</p>
 <p><a href="https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841">Harfoot et al 2014</a> got much lower values using the C# version of Madingley. For a single grid cell (aseasonal ecosystem in tropical Uganda) they got 24 611 tons of plant biomass. If we multiply that with 16 to become comparable to our study extent, and convert it to Gt, we get</p>
 <pre><code>% [1] 0.000393776</code></pre>
-<p>This is much, much lower than our estimate.</p>
+<p>This is much, much lower than our first estimate.
+<em>J. Hoeks ponited out that Harfoot had reported biomass densities, (kg/km), and shoed how that goes a long way to explaining the differences shoed here</em></p>
 <p>This is roughly the script that produces the trophic pyramid figure above (plot_trophicpyramid())</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="trophic-pyramids.html#cb8-1"></a>years &lt;-<span class="st">  </span><span class="dv">0</span></span>
-<span id="cb8-2"><a href="trophic-pyramids.html#cb8-2"></a>tl &lt;-<span class="st">  </span>mdata2<span class="op">$</span>time_line_stocks</span>
-<span id="cb8-3"><a href="trophic-pyramids.html#cb8-3"></a>tl &lt;-<span class="st">  </span><span class="kw">aggregate</span>(tl, <span class="dt">by =</span> <span class="kw">list</span>(tl<span class="op">$</span>Year), <span class="dt">FUN =</span> sum)</span>
-<span id="cb8-4"><a href="trophic-pyramids.html#cb8-4"></a>tl &lt;-<span class="st">  </span>tl[(<span class="kw">nrow</span>(tl) <span class="op">-</span><span class="st"> </span><span class="kw">length</span>(years) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="kw">nrow</span>(tl), ]</span>
-<span id="cb8-5"><a href="trophic-pyramids.html#cb8-5"></a>(biom &lt;-<span class="st"> </span><span class="kw">mean</span>(tl<span class="op">$</span>TotalStockBiomass))</span></code></pre></div>
-<p>I suspect that the unit in mdata2$time_line_stocks is grams, and not kg. As we will see below, it’s grams for the heterotrofic cohorts.
-But even so, the numbers are way off.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="trophic-pyramids.html#cb130-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span>  <span class="dv">0</span></span>
+<span id="cb130-2"><a href="trophic-pyramids.html#cb130-2" aria-hidden="true" tabindex="-1"></a>tl <span class="ot">&lt;-</span>  mdata2<span class="sc">$</span>time_line_stocks</span>
+<span id="cb130-3"><a href="trophic-pyramids.html#cb130-3" aria-hidden="true" tabindex="-1"></a>tl <span class="ot">&lt;-</span>  <span class="fu">aggregate</span>(tl, <span class="at">by =</span> <span class="fu">list</span>(tl<span class="sc">$</span>Year), <span class="at">FUN =</span> mean) <span class="co"># FUN used to be sum before they changed it</span></span>
+<span id="cb130-4"><a href="trophic-pyramids.html#cb130-4" aria-hidden="true" tabindex="-1"></a>tl <span class="ot">&lt;-</span>  tl[(<span class="fu">nrow</span>(tl) <span class="sc">-</span> <span class="fu">length</span>(years) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">nrow</span>(tl), ]</span>
+<span id="cb130-5"><a href="trophic-pyramids.html#cb130-5" aria-hidden="true" tabindex="-1"></a>tl<span class="sc">$</span>TotalStockBiomass<span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="dv">12</span></span></code></pre></div>
+<p>I suspect that the unit in <code>mdata2$time_line_stocks</code> is grams, and not kg. ( <em>this was later confirmed by Hoeks</em>.) As we will see below, it’s grams for the heterotrophic cohorts. But even so, the numbers are way off.</p>
 <p>How do our monthly estimates compare to Harfoot et al 2014.
 This is our maximum monthly estimate in the last year of the spin up, converted to Gt:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="trophic-pyramids.html#cb9-1"></a>(temp &lt;-<span class="st"> </span><span class="kw">max</span>(</span>
-<span id="cb9-2"><a href="trophic-pyramids.html#cb9-2"></a>  mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>TotalStockBiomass[</span>
-<span id="cb9-3"><a href="trophic-pyramids.html#cb9-3"></a>   mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year<span class="op">==</span><span class="kw">max</span>(mdata2<span class="op">$</span>time_line_stocks<span class="op">$</span>Year) ])<span class="op">/</span><span class="dv">1000</span><span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">9</span>)</span></code></pre></div>
-<pre><code>% [1] 214.235</code></pre>
-<p>This estimate is still too big.
-Is we assume the the unit should’ve been g and not kg, we still get 0.2 Gt (compare with 0.0004 in Harfoot et l 2014).</p>
-<p>There must be more to this than the g and kg mistage and the fact that the biomass is an accumulated monthly sum.</p>
-<p>But why does the R function use an accumulated monthly sum? I can not think of a good reason.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="trophic-pyramids.html#cb131-1" aria-hidden="true" tabindex="-1"></a>(temp <span class="ot">&lt;-</span> <span class="fu">max</span>(</span>
+<span id="cb131-2"><a href="trophic-pyramids.html#cb131-2" aria-hidden="true" tabindex="-1"></a>  mdata2<span class="sc">$</span>time_line_stocks<span class="sc">$</span>TotalStockBiomass[</span>
+<span id="cb131-3"><a href="trophic-pyramids.html#cb131-3" aria-hidden="true" tabindex="-1"></a>   mdata2<span class="sc">$</span>time_line_stocks<span class="sc">$</span>Year<span class="sc">==</span><span class="fu">max</span>(mdata2<span class="sc">$</span>time_line_stocks<span class="sc">$</span>Year) ])<span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>% [1] 0.238697</code></pre>
+<p>Our first estimate (before the package update) was 214, which was way to high.
+Is we’d then assumed the the unit should’ve been g and not kg, we’d still get 0.2 Gt (compare with 0.0004 in Harfoot et l 2014).</p>
+<p>There must have been more to this than the g and kg mistake and the fact that the biomass is an accumulated monthly sum. <em>turns out it was the fact that the unit was desnty not toal biomass</em></p>
+<p>But why does the R function use an accumulated monthly sum? I can not think of a good reason. <em>it was a mistake by the developers</em></p>
 <p>It makes more sense to me to just get the standing biomass for a given month, perhaps the maximum monthly value. In our area in Norway the plant biomass peaks in September.
-<img src="06-Trophic_pyramids_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<img src="06-Trophic_pyramids_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>What about the herbivore data. How are those biomass estimates that are reported in the trophic pyramid above calculated?
-In the trophic pyramid we see a value of about 0.09 Gt:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="trophic-pyramids.html#cb11-1"></a>((<span class="dv">10</span><span class="op">^</span><span class="fl">10.97</span>)<span class="op">/</span><span class="dv">1000</span>)<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">9</span> <span class="co"># divided by 1000 to go from kg to tons, and 1 000 000 000 to get Gt</span></span></code></pre></div>
-<pre><code>% [1] 0.09332543</code></pre>
-<p>Harfoot et al 2014 report for their study system (converted to 16 grid cells and to Gt)</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="trophic-pyramids.html#cb13-1"></a>(<span class="dv">240</span><span class="op">*</span><span class="dv">16</span>)<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">9</span></span></code></pre></div>
-<pre><code>% [1] 3.84e-06</code></pre>
-<p>We have a similar situation here.</p>
+In the trophic pyramid we see a value of about 0.006 Gt:</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="trophic-pyramids.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="fl">9.76</span><span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="dv">12</span></span></code></pre></div>
+<pre><code>% [1] 0.005754399</code></pre>
 <p>Here is the heterotrophic biomass over the last year of our simulation</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="trophic-pyramids.html#cb15-1"></a>dat &lt;-<span class="st"> </span>mdata2<span class="op">$</span>time_line_cohorts</span>
-<span id="cb15-2"><a href="trophic-pyramids.html#cb15-2"></a></span>
-<span id="cb15-3"><a href="trophic-pyramids.html#cb15-3"></a>dat &lt;-<span class="st"> </span>dat[dat<span class="op">$</span>Year <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(dat<span class="op">$</span>Year),] <span class="co">#subset to only the last year</span></span>
-<span id="cb15-4"><a href="trophic-pyramids.html#cb15-4"></a></span>
-<span id="cb15-5"><a href="trophic-pyramids.html#cb15-5"></a>datm &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">melt</span>(dat,</span>
-<span id="cb15-6"><a href="trophic-pyramids.html#cb15-6"></a>                         <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;Month&quot;</span>),</span>
-<span id="cb15-7"><a href="trophic-pyramids.html#cb15-7"></a>                         <span class="dt">variable.name =</span> <span class="st">&quot;FG&quot;</span>,</span>
-<span id="cb15-8"><a href="trophic-pyramids.html#cb15-8"></a>                         <span class="dt">value.name =</span> <span class="st">&quot;biomass&quot;</span>)</span></code></pre></div>
-<pre><code>% Warning in data.table::melt(dat, id.vars = c(&quot;Year&quot;, &quot;Month&quot;), variable.name
-% = &quot;FG&quot;, : The melt generic in data.table has been passed a data.frame and will
-% attempt to redirect to the relevant reshape2 method; please note that reshape2
-% is deprecated, and this redirection is now deprecated as well. To continue using
-% melt methods from reshape2 while both libraries are attached, e.g. melt.list,
-% you can prepend the namespace like reshape2::melt(dat). In the next version,
-% this warning will become an error.</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="trophic-pyramids.html#cb17-1"></a>datm<span class="op">$</span>tons &lt;-<span class="st"> </span>datm<span class="op">$</span>biomass<span class="op">/</span><span class="dv">1000000</span>  <span class="co"># assuming the unit is g, so i divide by 10^6 to give tons</span></span>
-<span id="cb17-2"><a href="trophic-pyramids.html#cb17-2"></a><span class="kw">ggplot</span>(<span class="dt">dat =</span> datm, <span class="kw">aes</span>(<span class="dt">x =</span> Month, <span class="dt">y =</span> tons, </span>
-<span id="cb17-3"><a href="trophic-pyramids.html#cb17-3"></a>                       <span class="dt">colour =</span> FG,</span>
-<span id="cb17-4"><a href="trophic-pyramids.html#cb17-4"></a>                       <span class="dt">linetype=</span>FG))<span class="op">+</span></span>
-<span id="cb17-5"><a href="trophic-pyramids.html#cb17-5"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="fl">1.5</span>)<span class="op">+</span></span>
-<span id="cb17-6"><a href="trophic-pyramids.html#cb17-6"></a><span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">12</span>)<span class="op">+</span></span>
-<span id="cb17-7"><a href="trophic-pyramids.html#cb17-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Biomass (tons)&quot;</span>)</span></code></pre></div>
-<p><img src="06-Trophic_pyramids_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="trophic-pyramids.html#cb135-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> mdata2<span class="sc">$</span>time_line_cohorts</span>
+<span id="cb135-2"><a href="trophic-pyramids.html#cb135-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-3"><a href="trophic-pyramids.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="co">#subset to only the last year</span></span>
+<span id="cb135-4"><a href="trophic-pyramids.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="co">#the last year only has 11 month for some reason:</span></span>
+<span id="cb135-5"><a href="trophic-pyramids.html#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="co">#table(dat$Year)</span></span>
+<span id="cb135-6"><a href="trophic-pyramids.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="co">#looking at the plot_pyramid() function, they still used the last 12 months</span></span>
+<span id="cb135-7"><a href="trophic-pyramids.html#cb135-7" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>Month <span class="sc">&gt;</span> <span class="fu">max</span>(dat<span class="sc">$</span>Month)<span class="sc">-</span><span class="dv">12</span>,] </span>
+<span id="cb135-8"><a href="trophic-pyramids.html#cb135-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-9"><a href="trophic-pyramids.html#cb135-9" aria-hidden="true" tabindex="-1"></a><span class="co"># melt data</span></span>
+<span id="cb135-10"><a href="trophic-pyramids.html#cb135-10" aria-hidden="true" tabindex="-1"></a>datm <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">melt</span>(data.table<span class="sc">::</span><span class="fu">setDT</span>(dat),</span>
+<span id="cb135-11"><a href="trophic-pyramids.html#cb135-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">id.vars =</span> <span class="fu">c</span>(<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;Month&quot;</span>),</span>
+<span id="cb135-12"><a href="trophic-pyramids.html#cb135-12" aria-hidden="true" tabindex="-1"></a>                         <span class="at">variable.name =</span> <span class="st">&quot;FG&quot;</span>,</span>
+<span id="cb135-13"><a href="trophic-pyramids.html#cb135-13" aria-hidden="true" tabindex="-1"></a>                         <span class="at">value.name =</span> <span class="st">&quot;biomass&quot;</span>)</span>
+<span id="cb135-14"><a href="trophic-pyramids.html#cb135-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-15"><a href="trophic-pyramids.html#cb135-15" aria-hidden="true" tabindex="-1"></a><span class="co"># assuming the unit is g, so i divide by 10^6 to give tons</span></span>
+<span id="cb135-16"><a href="trophic-pyramids.html#cb135-16" aria-hidden="true" tabindex="-1"></a>datm<span class="sc">$</span>tons <span class="ot">&lt;-</span> datm<span class="sc">$</span>biomass<span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="dv">6</span>  </span>
+<span id="cb135-17"><a href="trophic-pyramids.html#cb135-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-18"><a href="trophic-pyramids.html#cb135-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">dat =</span> datm, <span class="fu">aes</span>(<span class="at">x =</span> Month, <span class="at">y =</span> tons, </span>
+<span id="cb135-19"><a href="trophic-pyramids.html#cb135-19" aria-hidden="true" tabindex="-1"></a>                       <span class="at">colour =</span> FG,</span>
+<span id="cb135-20"><a href="trophic-pyramids.html#cb135-20" aria-hidden="true" tabindex="-1"></a>                       <span class="at">linetype=</span>FG))<span class="sc">+</span></span>
+<span id="cb135-21"><a href="trophic-pyramids.html#cb135-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="fl">1.5</span>)<span class="sc">+</span></span>
+<span id="cb135-22"><a href="trophic-pyramids.html#cb135-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">12</span>)<span class="sc">+</span></span>
+<span id="cb135-23"><a href="trophic-pyramids.html#cb135-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Biomass (tons)&quot;</span>)</span></code></pre></div>
+<p><img src="06-Trophic_pyramids_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Now, let me try to recreate the number in the trophic pyramid.
 Combining the herbivores</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="trophic-pyramids.html#cb18-1"></a>datherb &lt;-<span class="st"> </span>datm[datm<span class="op">$</span>FG <span class="op">==</span><span class="st"> &quot;Biomass_FG_0&quot;</span> <span class="op">|</span></span>
-<span id="cb18-2"><a href="trophic-pyramids.html#cb18-2"></a><span class="st">                  </span>datm<span class="op">$</span>FG <span class="op">==</span><span class="st"> &quot;Biomass_FG_3&quot;</span> <span class="op">|</span></span>
-<span id="cb18-3"><a href="trophic-pyramids.html#cb18-3"></a><span class="st">                  </span>datm<span class="op">$</span>FG <span class="op">==</span><span class="st"> &quot;Biomass_FG_6&quot;</span> ,]</span></code></pre></div>
-<p>Summed biomass across all months in the raw/unknown units</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="trophic-pyramids.html#cb19-1"></a><span class="kw">sum</span>(datherb<span class="op">$</span>biomass)</span></code></pre></div>
-<pre><code>% [1] 83650279400</code></pre>
-<p>If we assume that units are in grams, this is the same as</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="trophic-pyramids.html#cb21-1"></a><span class="kw">sum</span>(datherb<span class="op">$</span>biomass)<span class="op">/</span><span class="dv">1000</span><span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">9</span></span></code></pre></div>
-<pre><code>% [1] 0.08365028</code></pre>
-<p>Gt, which is quite close the number we were aiming for.</p>
-<p>It may look like the heterotrophic biomass and the autrophic biomass is calculated in the same way.</p>
-<p>The ration between autrophic and herbivore biomass is in our Norwegian case study</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="trophic-pyramids.html#cb23-1"></a>(<span class="dv">10</span><span class="op">^</span><span class="fl">10.97</span>)<span class="op">/</span>(<span class="dv">10</span><span class="op">^</span><span class="fl">15.17</span>)</span></code></pre></div>
-<pre><code>% [1] 6.309573e-05</code></pre>
-<p>, or 0.000063,</p>
-<p>and in Harfoot et al 2014 it is</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="trophic-pyramids.html#cb25-1"></a><span class="fl">240.2</span><span class="op">/</span><span class="fl">24610.8</span></span></code></pre></div>
-<pre><code>% [1] 0.009759943</code></pre>
-<p>Norway apparently has a much higher autrophic biomass compared to heterotrophic biomass, but I don’t think that is the reality</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="trophic-pyramids.html#cb136-1" aria-hidden="true" tabindex="-1"></a>datherb <span class="ot">&lt;-</span> datm[datm<span class="sc">$</span>FG <span class="sc">==</span> <span class="st">&quot;Biomass_FG_0&quot;</span> <span class="sc">|</span></span>
+<span id="cb136-2"><a href="trophic-pyramids.html#cb136-2" aria-hidden="true" tabindex="-1"></a>                  datm<span class="sc">$</span>FG <span class="sc">==</span> <span class="st">&quot;Biomass_FG_3&quot;</span> <span class="sc">|</span></span>
+<span id="cb136-3"><a href="trophic-pyramids.html#cb136-3" aria-hidden="true" tabindex="-1"></a>                  datm<span class="sc">$</span>FG <span class="sc">==</span> <span class="st">&quot;Biomass_FG_6&quot;</span> ,]</span></code></pre></div>
+<p>Summed biomass across all months in the raw/unknown units. I checked, and the unit is kg, therefore to get Gt:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="trophic-pyramids.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(datherb<span class="sc">$</span>biomass)<span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="dv">12</span></span></code></pre></div>
+<pre><code>% [1] 0.0687903</code></pre>
+<p>Again, checking the plot_pyramid() function, they then too this value and divided på 12 to get mean monthly biomass</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="trophic-pyramids.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="fu">sum</span>(datherb<span class="sc">$</span>biomass)<span class="sc">/</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>% [1] 9.758346</code></pre>
+<p>The aniaml biomass is therefore comparable to the plants - both show monthly means.</p>
 
+</div>
 </div>
             </section>
 

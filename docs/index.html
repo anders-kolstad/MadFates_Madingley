@@ -24,7 +24,7 @@
 <meta name="author" content="Anders L. Kolstad" />
 
 
-<meta name="date" content="2021-12-22" />
+<meta name="date" content="2022-08-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 
 <link rel="next" href="installation.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,34 +51,33 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.19/datatables.js"></script>
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/dt-ext-fixedcolumns-1.10.20/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
-<script src="libs/dt-ext-fixedcolumns-1.10.20/js/dataTables.fixedColumns.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<script src="libs/datatables-binding-0.20/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/dt-ext-fixedcolumns-1.11.3/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedcolumns-1.11.3/js/dataTables.fixedColumns.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -97,7 +97,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -143,28 +143,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#some-useful-links"><i class="fa fa-check"></i><b>1.1</b> Some useful links</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#some-useful-links"><i class="fa fa-check"></i><b>1.1</b> Some useful links</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#examples-of-use"><i class="fa fa-check"></i><b>1.1.1</b> Examples of use</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#terms-and-definitions"><i class="fa fa-check"></i><b>1.2</b> Terms and definitions</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a></li>
-<li class="chapter" data-level="3" data-path="step-1---3.html"><a href="step-1---3.html"><i class="fa fa-check"></i><b>3</b> Step 1 - 3</a><ul>
+<li class="chapter" data-level="3" data-path="step-1---3.html"><a href="step-1---3.html"><i class="fa fa-check"></i><b>3</b> Step 1 - 3</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="step-1---3.html"><a href="step-1---3.html#step-1---load-data"><i class="fa fa-check"></i><b>3.1</b> Step 1 - Load data</a></li>
 <li class="chapter" data-level="3.2" data-path="step-1---3.html"><a href="step-1---3.html#step-2---modify-input-parameters"><i class="fa fa-check"></i><b>3.2</b> Step 2 - Modify input parameters</a></li>
 <li class="chapter" data-level="3.3" data-path="step-1---3.html"><a href="step-1---3.html#step-3---initialisation"><i class="fa fa-check"></i><b>3.3</b> Step 3 - Initialisation</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="step-4---spin-up-and-demonstrating-plotting-functions.html"><a href="step-4---spin-up-and-demonstrating-plotting-functions.html"><i class="fa fa-check"></i><b>4</b> Step 4 - Spin-up and demonstrating plotting functions</a></li>
-<li class="chapter" data-level="5" data-path="norway---default-settings.html"><a href="norway---default-settings.html"><i class="fa fa-check"></i><b>5</b> Norway - default settings</a><ul>
+<li class="chapter" data-level="5" data-path="norway---default-settings.html"><a href="norway---default-settings.html"><i class="fa fa-check"></i><b>5</b> Norway - default settings</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="norway---default-settings.html"><a href="norway---default-settings.html#grid-cells"><i class="fa fa-check"></i><b>5.1</b> 16 grid cells</a></li>
 <li class="chapter" data-level="5.2" data-path="norway---default-settings.html"><a href="norway---default-settings.html#single-grid-cell"><i class="fa fa-check"></i><b>5.2</b> Single grid cell</a></li>
+<li class="chapter" data-level="5.3" data-path="norway---default-settings.html"><a href="norway---default-settings.html#biomass-densities-rather-than-total-biomass"><i class="fa fa-check"></i><b>5.3</b> Biomass densities rather than total biomass</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html"><i class="fa fa-check"></i><b>6</b> Exploring spatial inputs</a><ul>
+<li class="chapter" data-level="6" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html"><i class="fa fa-check"></i><b>6</b> Exploring spatial inputs</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html#climate-data"><i class="fa fa-check"></i><b>6.1</b> Climate data</a></li>
 <li class="chapter" data-level="6.2" data-path="exploring-spatial-inputs.html"><a href="exploring-spatial-inputs.html#other-spatial-inputs"><i class="fa fa-check"></i><b>6.2</b> Other spatial inputs</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="trophic-pyramids.html"><a href="trophic-pyramids.html"><i class="fa fa-check"></i><b>7</b> Trophic pyramids</a></li>
+<li class="chapter" data-level="7" data-path="trophic-pyramids.html"><a href="trophic-pyramids.html"><i class="fa fa-check"></i><b>7</b> Trophic pyramids</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="trophic-pyramids.html"><a href="trophic-pyramids.html#fixing-a-bug-inthe-r-package"><i class="fa fa-check"></i><b>7.1</b> Fixing a bug inthe R package</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -185,40 +194,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Running the Madingley Model with Norwegian data</h1>
 <p class="author"><em>Anders L. Kolstad</em></p>
-<p class="date"><em>2021-12-22</em></p>
+<p class="date"><em>2022-08-10</em></p>
 </div>
-<div id="introduction" class="section level1">
+<div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
 <p>This work is part of the MadFates project, run by Joachim Töpper. The goal is to learn bit about the Madingley model and its potential for modeling biomass distributions across trophic levels in Norwegian boreal ecosystem. Perhaps limited to forests.</p>
+<ul>
+<li>How can we validate the model?</li>
+<li>What can we use the model for?</li>
+</ul>
 <p>This page is hosted in GitHub and produced using bookdown.</p>
-<div id="some-useful-links" class="section level2">
+<div id="some-useful-links" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Some useful links</h2>
 <p>Paper on the <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/geb.13354">R package</a></p>
 <p>Paper on the <a href="https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841">model itself</a></p>
-<div id="examples-of-use" class="section level3">
+<div id="examples-of-use" class="section level3" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> Examples of use</h3>
 <p><a href="https://onlinelibrary.wiley.com/doi/10.1111/ecog.05191">Removing carnivores</a></p>
 <p><a href="https://www.nature.com/articles/s41598-020-70960-9">Land-use change</a></p>
 </div>
 </div>
-<div id="terms-and-definitions" class="section level2">
+<div id="terms-and-definitions" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Terms and definitions</h2>
 <ul>
-<li><p>Cohorts - Organisms with similar functional roles are grouped into cohorts which are treated as sinle entities in the model to reduce computational requirements.</p></li>
-<li><p>Stock - autotrofic biomass is treated as a single entity (stock).</p></li>
-<li><p>Model initialisation - After loading input data the model is run once without a year parameter. Not sure why exactly, or what the output is.</p></li>
-<li><p>Spin-up phase - The model needs to run for 100-1000 simulated years without any user modifications to allow the ecosystem componets to reach a stable state.</p></li>
-<li><p>HANPP - human appropriation of net primary productivity. The variable spans from zero (or actually with some points &lt;0 which I don’t understand how to interpret) and 1200. I’m not sure what the units are, but probably they are the same as for the autrophic biomass. In <a href="https://github.com/MadingleyR/MadingleyR/blob/master/CaseStudies/CASESTUDY2.md">case study 2</a> they simply set the value to a uniform value between zero and one in this way:</p></li>
+<li><p><code>Function group</code> - Madingley divides animal species into 9 functional groups, confusingly numbered 0-8.</p>
+<ul>
+<li>0 = Endothermic herbivores (e.g. moose)</li>
+<li>1 = Endothermic carnivores (e.g. wolves)</li>
+<li>2 = Endothermic omnivores (e.g. bears)</li>
+<li>3 = Ectothermic semelparous herbivores (e.g. grasshoppers)</li>
+<li>4 = Ectothermic semelparous carnivores (e.g. ants)</li>
+<li>5 = Ectothermic semelparous omnivores (e.g. insects, snails)</li>
+<li>6 = Ectothermic iteroparous herbivores (e.g. ?)</li>
+<li>7 = Ectothermic iteroparous carnivores (e.g. snakes)</li>
+<li>8 = Ectothermic iteroparous omnivores (e.g. ?)</li>
+</ul></li>
+<li><p><code>Cohorts</code> - Although an individual based model, this just means that the model represents interactions between individuals, and not that it models each of these interactions uniquely. To reduce computational time, individuals are grouped into cohorts if they:</p>
+<ul>
+<li>belong to the same function group</li>
+<li>exists inthe same grid cell</li>
+<li>have identical continuous traits (e.g. body mass)</li>
+</ul></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>sptl_inp<span class="op">$</span>hanpp[] =<span class="st"> </span>fractional_veg_production[i]</span></code></pre></div>
+<p>Note that a cohort does not care about species identities. The user can set the number of cohorts. The default is 500 and the maximum in 1000. This is per cell.</p>
+<ul>
+<li><p><code>Dispersion</code> - cohorts can disperse between grid cells</p></li>
+<li><p><code>Stocks</code> - autotrophic biomass is is divided between deciduous and evergreen biomass and treated as a single entity (stock).</p></li>
+<li><p><code>Model initialisation</code> - After loading input data the model is run once without a <em>year</em> parameter. Not sure why exactly, or what the output is.</p></li>
+<li><p><code>Spin-up phase</code> - The model needs to run for 100-1000 simulated years without any user modifications to allow the ecosystem components to reach a stable state.</p></li>
+<li><p><code>HANPP</code> - human appropriation of net primary productivity. The variable spans from zero (or actually with some points &lt;0 which I don’t understand how to interpret) and 1200. I’m not sure what the units are, but probably they are the same as for the autotrophic biomass. In <a href="https://github.com/MadingleyR/MadingleyR/blob/master/CaseStudies/CASESTUDY2.md">case study 2</a> they simply set the value to a uniform value between zero and one in this way:</p></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>sptl_inp<span class="sc">$</span>hanpp[] <span class="ot">=</span> fractional_veg_production[i]</span></code></pre></div>
 <p>and set ‘apply_hanpp =1’ which reduces NPP in fractions provided in the hanpp spatial input raster.
 The example HANPP input data is from year 2005.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a><span class="kw">library</span>(MadingleyR)</span>
-<span id="cb2-2"><a href="index.html#cb2-2"></a><span class="kw">library</span>(raster)</span>
-<span id="cb2-3"><a href="index.html#cb2-3"></a>sptl_inp =<span class="st"> </span><span class="kw">madingley_inputs</span>(<span class="st">&quot;spatial inputs&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: package &#39;rgdal&#39; was built under R version 4.1.2</code></pre>
-<pre><code>## Reading default input rasters from:  C:/Users/anders.kolstad/Documents/R/R-4.1.1/library/MadingleyR/spatial_input_rasters.............</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1"></a>raster<span class="op">::</span><span class="kw">plot</span>(sptl_inp<span class="op">$</span>hanpp, <span class="dt">main =</span> <span class="st">&quot;HANPP anno 2005&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MadingleyR)</span>
+<span id="cb2-2"><a href="index.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb2-3"><a href="index.html#cb2-3" aria-hidden="true" tabindex="-1"></a>sptl_inp <span class="ot">=</span> <span class="fu">madingley_inputs</span>(<span class="st">&quot;spatial inputs&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: package &#39;rgdal&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## Reading default input rasters from:  C:/Users/anders.kolstad/Documents/R/R-4.1.2/library/MadingleyR/spatial_input_rasters.............</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a>raster<span class="sc">::</span><span class="fu">plot</span>(sptl_inp<span class="sc">$</span>hanpp, <span class="at">main =</span> <span class="st">&quot;HANPP anno 2005&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="480" /></p>
 
 </div>

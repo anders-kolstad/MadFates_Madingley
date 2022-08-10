@@ -18,9 +18,10 @@ plot_spatialwindow(spatial_window)
 ```
 
 <img src="02-initialisation_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+
 This corresponds to somewhere in the Serengetti I think.
 
-This is the  default data to initialise the model. The spatial inputs is a relatively big list of raster files, but the others are small data frames. 
+Now I will define the input data - `madingley_inputs()` just contains the default data to initialise the model. All of these can be twaked by the user, which I will do later in the Norwegian example. The spatial inputs is a relatively big list of raster files, but the others are small data frames. 
 
 ```r
 sptl_inp = madingley_inputs("spatial inputs")
@@ -173,7 +174,7 @@ We will not do any modifications at this stage
 
 ## Step 3 - Initialisation
 
-Model initialisation is done using ```madingley_init()``` by supplying the input data above (excl. model parameters). Also one can set the maximum number of cohors allowed per cell. The default is 500 and max is 1000. a higher number increases computation time due to more cohort interactions. 
+Model initialisation is done using ```madingley_init()``` by supplying the input data above (excl. model parameters). Also one can set the maximum number of cohorts allowed per cell. The default is 500 and max is 1000. a higher number increases computation time due to more cohort interactions. 
 
 
 ```r
@@ -194,7 +195,7 @@ mdata <-  madingley_init(spatial_window = spatial_window,
 % Processing: diurnal_temperature_range_1-12
 % 
 ```
-Runtime is just a few seconds.
+Run time is just a few seconds.
 
 
 ```r
@@ -211,7 +212,7 @@ str(mdata, 1)
 %  $ grid_size     : num 1
 ```
 
-The output contain the cohors and stocks for each pixel.
+The output contain the cohorts and stocks for each pixel.
 
 
 ```r

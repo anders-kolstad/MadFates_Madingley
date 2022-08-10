@@ -474,4 +474,14 @@ ggplot(data = temp[temp$Year>90,],
 
 Again, values are a lot lower! The insects here are showing erruptive or irruptive behavious as well. 
 
+## Biomass densities rather than total biomass
+
+The model predicts the total biomass for each grid cell. For reporting and for comparing with reference data, it is probably better to convert this to biomass densities. J Hoeks showed me a simple way to do this:
+```{r, eval F}
+# load grid properties, the list_output_paths() can be used to see all outputs by the model
+gridProps <- read.csv(list_output_paths(mdata2)$grid_properties[1])
+
+# calculate area of simulation, exclude marine grid cells
+AreaKm2 <- sum(gridProps$GetCellArea[gridProps$IsMarine==0])
+```
 
